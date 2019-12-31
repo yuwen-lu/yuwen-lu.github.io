@@ -2558,9 +2558,11 @@ input, select, textarea {
 			display: block;
 			margin: 0 0 2em 0;
 			width: 100%;
+			overflow: hidden;
 		}
 
 			.image.fit img {
+				
 				width: 100%;
 			}
 
