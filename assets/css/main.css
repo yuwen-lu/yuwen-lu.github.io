@@ -4115,7 +4115,11 @@ input, select, textarea {
 	}
 
 	#icon-mnt {
-		margin-top: 0.5em;
-		width: 6em;
-		height: 5em;
+		margin: 0.5em;
+		width: 5em;
+	}
+
+	#logo>a {
+		border: none;
+		text-decoration: none;
 	}
