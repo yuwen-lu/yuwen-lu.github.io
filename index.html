@@ -12,51 +12,24 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158117110-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-158117110-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'UA-158117110-1');
-</script>
+      gtag("config", "UA-158117110-1");
+    </script>
   </head>
   <body class="is-preload landing">
     <div id="page-wrapper">
       <!-- Header -->
-      <header id="header">
-        <div id="logo">
-          <a href="index.html"
-            ><img id="icon-mnt" src="./images/icon-mnt.png" alt="Yuwen"
-          /></a>
-        </div>
-
-        <nav id="nav">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li>
-              <a href="#">Projects</a>
-              <!-- <ul>
-                <li><a href="#">Gallery</a></li>
-                <li> 
-					<a href="#">Submenu</a>
-					<ul>
-					  <li><a href="#">Option 1</a></li>
-					  <li><a href="#">Option 2</a></li>
-					  <li><a href="#">Option 3</a></li>
-					  <li><a href="#">Option 4</a></li>
-					</ul>
-				  </li> 
-              </ul> -->
-            </li>
-            <li><a href="./photography.html">Photography</a></li>
-            <li><a href="https://blog.yuwen-lu.me/">Writings</a></li>
-            <li><a href="#">Activities</a></li>
-            <li></li>
-            <!-- <li><a href="#" class="button primary">Sign Up</a></li> -->
-          </ul>
-        </nav>
-      </header>
+      <header id="header"></header>
 
       <!-- Banner -->
       <section id="banner">
@@ -129,9 +102,7 @@
           </header>
           <p>
             As a software engineer, I develop apps that not just work, but are
-            also delightful to use. I try my best to think from the users'
-            perspective and improve the apps' usability.<br /><br />
-            Click below for details.
+            also delightful to use. Users first.
           </p>
           <ul class="actions">
             <li><a href="#" class="button">View Portfolio</a></li>
@@ -329,54 +300,7 @@
         </div>
       </section> -->
 
-      <!-- Footer -->
-      <footer id="footer">
-        <h3>Contact Me</h3>
-        <ul class="icons">
-          <!-- <li>
-            <a href="#" class="icon brands alt fa-twitter"
-              ><span class="label">Twitter</span></a
-            >
-          </li> -->
-          <!-- <li>
-            <a href="#" class="icon brands alt fa-facebook-f"
-              ><span class="label">Facebook</span></a
-            >
-          </li> -->
-          <li>
-            <a
-              href="https://www.linkedin.com/in/yuwen-lu-222994164/"
-              class="icon brands alt fa-linkedin-in"
-              ><span class="label">LinkedIn</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.instagram.com/this.is.yuwen.lu/"
-              class="icon brands alt fa-instagram"
-              ><span class="label">Instagram</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="https://github.com/yuwen-lu"
-              class="icon brands alt fa-github"
-              ><span class="label">GitHub</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="mailto:yuwen.lu@outlook.com"
-              class="icon solid alt fa-envelope"
-              ><span class="label">Email</span></a
-            >
-          </li>
-        </ul>
-        <ul class="copyright">
-          <li>&copy; Yuwen Lu 2019. All rights reserved.</li>
-          <li>Happy new year!</li>
-        </ul>
-      </footer>
+      <div id="footer-container"></div>
     </div>
 
     <!-- Scripts -->
@@ -388,5 +312,12 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <!-- Load the navigation bar and footer -->
+    <script>
+      $(function() {
+        $("#header").load("./navigation.html");
+        $("#footer-container").load("./footer.html");
+      });
+    </script>
   </body>
 </html>
