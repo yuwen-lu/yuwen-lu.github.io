@@ -133,6 +133,10 @@ input, select, textarea {
 		margin: 0 0 2em 0;
 	}
 
+	.small-margin {
+		margin: 0 0 1em 0;
+	}
+
 	h1, h2, h3, h4, h5, h6 {
 		color: #ffffff;
 		font-weight: 300;
@@ -233,6 +237,10 @@ input, select, textarea {
 
 	.align-right {
 		text-align: right;
+	}
+
+	.auto-margin {
+		margin: auto;
 	}
 
 /* Loader */
@@ -2557,6 +2565,12 @@ input, select, textarea {
 		.image.fit {
 			display: block;
 			margin: 0 0 2em 0;
+			width: 100%;
+		}
+
+		.image.fit.small-margin {
+			display: block;
+			margin: 0 0 1em 0;
 			width: 100%;
 		}
 
