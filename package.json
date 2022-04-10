@@ -16,7 +16,7 @@
     "react-particles-js": "^3.4.1",
     "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
+    "react-scripts": "^5.0.0",
     "react-tsparticles": "^1.18.11",
     "web-vitals": "^0.2.4"
   },

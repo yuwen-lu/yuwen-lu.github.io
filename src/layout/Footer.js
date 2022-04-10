@@ -20,14 +20,14 @@ export default function Footer () {
             <p>Contact</p>
             <div className="footerIcons">
                 {/* the style attributes here use the responsiveness const defined above: choose the style sheet accordingly */}
-                <a target="_blank" href={"mailto:yuwenlu@andrew.cmu.edu"} style={iconLinkStyle}><img src={EmailIcon} style={isDesktop? iconStyleForDesktop : iconStyleNotDesktop}></img></a>
+                <a target="_blank" href={"mailto:ylu23@nd.edu"} style={iconLinkStyle}><img src={EmailIcon} style={isDesktop? iconStyleForDesktop : iconStyleNotDesktop}></img></a>
                 <a target="_blank" href={"https://twitter.com/yuwen_lu_"} style={iconLinkStyle}><img src={TwitterIcon} style={isDesktop? iconStyleForDesktop : iconStyleNotDesktop}></img></a>
                 <a target="_blank" href={"https://www.instagram.com/yuwen_lu_/"} style={iconLinkStyle}><img src={InstagramIcon} style={isDesktop? iconStyleForDesktop : iconStyleNotDesktop}></img></a>
                 <a target="_blank" href={"https://github.com/yuwen-lu/"} style={iconLinkStyle}><img src={GithubIcon} style={isDesktop? iconStyleForDesktop : iconStyleNotDesktop}></img></a>
                 <a target="_blank" href={"https://www.linkedin.com/in/yuwen-lu/"} style={iconLinkStyle}><img src={LinkedinIcon} style={isDesktop? iconStyleForDesktop : iconStyleNotDesktop}></img></a>
             </div>
             <p style={footerBottomTextStyle}>Design and developed by Yuwen Lu with React.</p>
-            <p style={footerBottomTextStyle}>Last updated: Dec 2020</p>
+            <p style={footerBottomTextStyle}>Last updated: Mar 2022</p>
         </div>
     )
 

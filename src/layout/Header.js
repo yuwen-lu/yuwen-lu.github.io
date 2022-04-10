@@ -8,9 +8,9 @@ export default function Header() {
             <nav style={navStyle}>
                 {/* use react router to link different components */}
                 <Link className="nav-link" to="/">Home</Link>
-                <Link className="nav-link" to="/projects">Projects</Link>
+                {/* <Link className="nav-link" to="/projects">Projects</Link> */}
                 <Link className="nav-link" to="/life">Life</Link>
-                <Link className="nav-link" to="/resume">Resume</Link>
+                <Link className="nav-link" to="/cv">CV</Link>
             </nav>
         </React.Fragment>
     )

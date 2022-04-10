@@ -35,6 +35,57 @@ export default function Life() {
                     {isNotPhone && <Col style={leftColStyle}>
                         <div style={locationColWrapperStyle}>
                             <img src={LocationIcon} style={locationIconStyle}></img>
+                            Notre Dame, IN
+                        </div>
+                    </Col>}
+                    {/* right column: detailed description for the event */}
+                    <Col style={rightColStyle}>
+                        {/* time of the event */}
+                        <div style={dateWrapperStyle}>
+                            <p style={dateStyle}>Aug 2021</p>
+                        </div>
+                        {/* what actually happened */}
+                        <p style={lifeEventContentStyle}>
+                            Moved to Notre Dame, <br></br>
+                            continuing my work in HCI,<br></br>
+                        </p>
+                    </Col>
+                </Row>
+                <Row data-aos="fade-up"
+                    data-aos-offset="200"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out">
+                    {/* hide left column on phone for responsive layout */}
+                    {/* Left column: location icon and text */}
+                    {isNotPhone && <Col style={leftColStyle}>
+                        <div style={locationColWrapperStyle}>
+                            <img src={LocationIcon} style={locationIconStyle}></img>
+                            Pittsburgh, PA
+                        </div>
+                    </Col>}
+                    {/* right column: detailed description for the event */}
+                    <Col style={rightColStyle}>
+                        {/* time of the event */}
+                        <div style={dateWrapperStyle}>
+                            <p style={dateStyle}>Aug 2021</p>
+                        </div>
+                        {/* what actually happened */}
+                        <p style={lifeEventContentStyle}>
+                            Graduated from MHCI, <br></br>
+                            second graduation during a pandemic 😅<br></br>
+                            
+                        </p>
+                    </Col>
+                </Row>
+                <Row data-aos="fade-up"
+                    data-aos-offset="200"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out">
+                    {/* hide left column on phone for responsive layout */}
+                    {/* Left column: location icon and text */}
+                    {isNotPhone && <Col style={leftColStyle}>
+                        <div style={locationColWrapperStyle}>
+                            <img src={LocationIcon} style={locationIconStyle}></img>
                             Pittsburgh, PA
                         </div>
                     </Col>}
@@ -48,7 +99,7 @@ export default function Life() {
                         <p style={lifeEventContentStyle}>
                             Left California,<br></br>
                             Started grad school<br></br>
-                            at Carnegie Mellon University<br></br>
+                            MHCI @ Carnegie Mellon University<br></br>
                         </p>
                     </Col>
                 </Row>

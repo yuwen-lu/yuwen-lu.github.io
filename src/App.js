@@ -18,9 +18,9 @@ export default function App() {
 
     <React.Fragment>
       {/* the routes for different pages, <Link />s are in /layout/Header.js */}
-      <Route path="/projects">
+      {/* <Route path="/projects">
         <Projects />
-      </Route>
+      </Route> */}
 
       <Route path="/life">
         <Life />
@@ -30,13 +30,13 @@ export default function App() {
         <Resume />
       </Route>
 
-      <Route path="/HitRanger">
+      {/* <Route path="/HitRanger">
         <HitRanger />
-      </Route>
+      </Route> */}
 
-      <Route path="/goalplay">
+      {/* <Route path="/goalplay">
         <Goalplay />
-      </Route>
+      </Route> */}
 
       {/* Will add more here later with more content pages */}
       
