@@ -32,7 +32,7 @@ export default function Home() {
             <Container>
                 <Row 
                     id="introduction" 
-                    style={rowStyle} 
+                    style={introRowStyle} 
                     // add animation on scroll effects
                     data-aos="fade-in" 
                     data-aos-duration="1000"
@@ -40,9 +40,10 @@ export default function Home() {
                     {/* style attribute: choose style sheets accordingly for different responsive layout */}
                     <Col className="intro-text-column" style={isDesktop ? introductionDesktopStyle : introductionNotDesktopStyle} lg={6} md={10} sm={10}>
                         <p className="title">Hi there! I'm Yuwen.</p>
-                        <p>I am a <a target="_blank" href={"https://www.hcii.cmu.edu/academics/mhci"}>Master of Human-Computer Interaction</a> student at Human-Computer Interaction Institute, Carnegie Mellon University.</p>
-                        <p>I'm an aspired Social Media researcher and UX practitioner.</p>
-                        <p>Jump to my <Link to="/projects">Projects</Link> or my <Link to="/resume">Resume</Link>.</p>
+                        <p>I am a Ph.D. student in Computer Science and Engineering at the University of Notre Dame.</p> 
+                        <p>I research in Human-Computer Interaction and Human-AI Collaboration. My advisor is <a href={"https://toby.li/"}>Toby Li</a>.</p>
+                        <p>Previously, I graduated from the <a target="_blank" href={"https://www.hcii.cmu.edu/academics/mhci"}> Master of Human Computer Interaction program </a> at Carnegie Mellon University.</p>
+                        {/* <p>Jump to my <Link to="/projects">Projects</Link> or my <Link to="/resume">Resume</Link>.</p> */}
                     </Col>
                     <Col className="profile-pic-container" style={profilePicContainerStyle} lg={6} md={10} sm={10}>
                         <img className="profile-pic" style={isDesktop ? profilePicDesktopStyle : profilePicNotDesktopStyle} src={ProfilePic} alt="Me"></img>
@@ -63,7 +64,8 @@ export default function Home() {
 
 // style sheets
 
-const rowStyle = {
+const introRowStyle = {
+    paddingTop: "5rem",
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
@@ -75,7 +77,6 @@ const contentRowStyle = {
 }
 
 const introductionDesktopStyle = {
-    paddingTop: "5rem",
     textAlign: "right",
     fontSize: "1.3rem",
     display: "flex",
@@ -92,9 +93,10 @@ const introductionNotDesktopStyle = {
 }
 
 const profilePicContainerStyle = {
+    height: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-end",
+    justifyContent: "center",
     padding: "2rem"
 }
 

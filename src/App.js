@@ -6,7 +6,7 @@ import {
 import Projects from './pages/Projects';
 import Home from './pages/Home';
 import Life from './pages/Life';
-import Resume from './pages/Resume';
+import CV from './pages/CV';
 import HitRanger from './pages/HitRanger';
 import Goalplay from './pages/Goalplay';
 
@@ -26,8 +26,8 @@ export default function App() {
         <Life />
       </Route>
 
-      <Route path="/resume">
-        <Resume />
+      <Route path="/cv">
+        <CV />
       </Route>
 
       {/* <Route path="/HitRanger">

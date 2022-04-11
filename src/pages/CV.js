@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../layout/Header';
 import Footer from '../layout/Footer';
-import ResumeFile from '../resources/files/Resume-YuwenLu.pdf';
+// import ResumeFile from '../resources/files/Resume-YuwenLu.pdf';
 import CVFile from '../resources/files/CV_Yuwen_Lu.pdf';
 import '../App.css';
 
-// functional component for resume page
-export default function Resume() {
+// functional component for cv page
+export default function CV() {
     return (
         <React.Fragment>
             <Header />
