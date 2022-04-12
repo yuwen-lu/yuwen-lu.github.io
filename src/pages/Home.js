@@ -51,9 +51,12 @@ export default function Home() {
                 </Row>
                 <Row>
                     <Col className="home-body-img-column" style={isDesktop? bodyImgDesktopContainerStyle : bodyImgNotDesktopContainerStyle} lg={3} md={10} sm={10}>
-                        <img className="paper-pic" src={Lbw2022Pic} style={isDesktop? bodyImgDesktopStyle : bodyImgNotDesktopStyle} alt="Me"></img>
+                        <img className="paper-pic" src={Lbw2022Pic} style={isDesktop? bodyImgDesktopStyle : bodyImgNotDesktopStyle} alt="Project Snapshot"></img>
                     </Col>
                     <Col className="home-body-text-container" style={isDesktop? bodyTextDesktopStyle : bodyTextNotDesktopStyle} lg={6} md={10} sm={10}>
+                        <p>Some paper title Some paper title Some paper title Some paper title</p>
+                        <p>Yuwen Lu, Chengzhi Zhang, Iris Zhang, and Toby Jia-Jun Li</p>
+                        <p>Extended Abstracts of the 2022 CHI Conference on Human Factors in Computing Systems (CHI EA ’22)</p>
                     </Col>
                 </Row>
             </Container>
@@ -127,16 +130,15 @@ const bodyImgNotDesktopContainerStyle = {
 }
 
 const bodyImgDesktopStyle = {
-
+    width: "100%",
 }
 
 const bodyImgNotDesktopStyle = {
-    
+    width: "100%",
 }
 
 const bodyTextDesktopStyle = {
-    margin: "5rem auto",
-    padding: "2.5rem",
+
 }
 
 const bodyTextNotDesktopStyle = {
