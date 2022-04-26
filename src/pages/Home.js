@@ -50,13 +50,16 @@ export default function Home() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="home-body-img-column" style={isDesktop? bodyImgDesktopContainerStyle : bodyImgNotDesktopContainerStyle} lg={3} md={10} sm={10}>
+                    <Col className="home-body-title-container" style={homeBodyTitleContainerStyle} lg={12} md={12} sm={12}>
+                        <div className="home-body-title" style={homeBodyTitleStyle}>Publication</div>
+                    </Col>
+                    <Col className="home-body-img-column" style={isDesktop? bodyImgDesktopContainerStyle : bodyImgNotDesktopContainerStyle} lg={3}>
                         <img className="paper-pic" src={Lbw2022Pic} style={isDesktop? bodyImgDesktopStyle : bodyImgNotDesktopStyle} alt="Project Snapshot"></img>
                     </Col>
-                    <Col className="home-body-text-container" style={isDesktop? bodyTextDesktopStyle : bodyTextNotDesktopStyle} lg={6} md={10} sm={10}>
-                        <p>Some paper title Some paper title Some paper title Some paper title</p>
-                        <p>Yuwen Lu, Chengzhi Zhang, Iris Zhang, and Toby Jia-Jun Li</p>
-                        <p>Extended Abstracts of the 2022 CHI Conference on Human Factors in Computing Systems (CHI EA ’22)</p>
+                    <Col className="home-body-text-container" style={isDesktop? bodyTextDesktopStyle : bodyTextNotDesktopStyle} lg={8} md={10} sm={10}>
+                        <p className='paper-title' style={paperTitle}>Bridging the Gap Between UX Practitioners’ Work Practices and AI-Enabled Design Support Tools</p>
+                        <p className='paper-author' style={paperAuthor}><b>Yuwen Lu</b>, Chengzhi Zhang, Iris Zhang, and Toby Jia-Jun Li</p>
+                        <p className='paper-conference' style={paperConference}>Extended Abstracts of the 2022 CHI Conference on Human Factors in Computing Systems (CHI EA ’22)</p>
                     </Col>
                 </Row>
             </Container>
@@ -110,6 +113,18 @@ const profilePicDesktopStyle = {
     margin: "auto"
 }
 
+const homeBodyTitleContainerStyle = {
+    textAlign: "center"
+}
+
+const homeBodyTitleStyle = {
+    fontSize: "1.6rem",
+    fontWeight: "bold",
+    display: "inline-block",
+    borderBottom: "solid 1px #E44C65",
+    margin: "10vh auto 7vh",
+}
+
 const profilePicNotDesktopStyle = {
     borderRadius: "100%",
     display: "block",
@@ -121,8 +136,7 @@ const bodyImgDesktopContainerStyle = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    padding: "2rem",
-    margin: "auto"
+    margin: "auto 2rem auto"
 }
 
 const bodyImgNotDesktopContainerStyle = {
@@ -134,7 +148,7 @@ const bodyImgDesktopStyle = {
 }
 
 const bodyImgNotDesktopStyle = {
-    width: "100%",
+    width: "0%",
 }
 
 const bodyTextDesktopStyle = {
@@ -144,4 +158,18 @@ const bodyTextDesktopStyle = {
 const bodyTextNotDesktopStyle = {
     fontSize: "16px",
     margin: "2.5rem auto",
+}
+
+const paperTitle = {
+    fontWeight: "bold",
+    margin: "0"
+}
+
+const paperAuthor = {
+    margin: "0",
+}
+
+const paperConference = {
+    fontSize: "0.9em",
+    fontStyle: "italic"
 }
