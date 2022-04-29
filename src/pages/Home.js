@@ -252,6 +252,7 @@ const bodyImgNotDesktopContainerStyle = {
 
 const bodyImgDesktopStyle = {
     width: "100%",
+    borderRadius: "0.5rem"
 }
 
 const bodyImgNotDesktopStyle = {
