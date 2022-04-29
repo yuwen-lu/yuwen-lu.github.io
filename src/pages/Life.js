@@ -205,7 +205,7 @@ export default function Life() {
                         </div>
                         <p style={lifeEventContentStyle}>
                             Graduated from <br></br>
-                            Dalan University of Technology<br></br>
+                            Dalian University of Technology<br></br>
                             during a pandemic! 🎉<br></br>
                         </p>
                     </Col>
