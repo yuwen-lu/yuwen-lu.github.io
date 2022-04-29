@@ -5,6 +5,7 @@ import Footer from '../layout/Footer';
 import LocationIcon from '../resources/icons/location.svg';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useMediaQuery } from 'react-responsive';
+import Lbw2022Preprint from '../resources/files/LBW CHI2022/chi22extendedabstracts_394.pdf';
 
 
 // functional component for Life page
@@ -42,12 +43,75 @@ export default function Life() {
                     <Col style={rightColStyle}>
                         {/* time of the event */}
                         <div style={dateWrapperStyle}>
+                            <p style={dateStyle}>Apr 2022</p>
+                        </div>
+                        {/* what actually happened */}
+                        <p style={lifeEventContentStyle}>
+                            First ever in-person conference <a href='https://chi2022.acm.org/'>@CHI'22</a>,
+                            hosting a <a target='_blank' href="https://sites.google.com/nd.edu/computational-uichi22/home">workshop</a> and presenting a <a target='_blank' href={Lbw2022Preprint}>LBW poster</a>!
+                        </p>
+                    </Col>
+                </Row>
+                <Row data-aos="fade-up"
+                    data-aos-offset="200"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out">
+                    {/* hide left column on phone for responsive layout */}
+                    {/* Left column: location icon and text */}
+                    {isNotPhone && <Col style={leftColStyle}>
+                        <div style={locationColWrapperStyle}>
+                            <img src={LocationIcon} style={locationIconStyle}></img>
+                            Notre Dame, IN
+                        </div>
+                    </Col>}
+                    {/* right column: detailed description for the event */}
+                    <Col style={rightColStyle}>
+                        {/* time of the event */}
+                        <div style={dateWrapperStyle}>
+                            <p style={dateStyle}>Apr 2022</p>
+                        </div>
+                        {/* what actually happened */}
+                        <p style={lifeEventContentStyle}>
+                            Selected as a Lucy Scholar <br></br>
+                            at the <a href={"https://lucyinstitute.nd.edu/"}>Lucy Institute</a>
+                        </p>
+                    </Col>
+                    
+                </Row>
+                <Row data-aos="fade-up"
+                    data-aos-offset="200"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out">
+                    {/* hide left column on phone for responsive layout */}
+                    {isNotPhone && <Col style={leftColStyle}>
+                        <div style={locationColWrapperStyle}>
+                        </div>
+                    </Col>}
+                    <Col style={{...rightColStyle, height: "10rem"}}>
+                    </Col>
+                </Row>
+                <Row data-aos="fade-up"
+                    data-aos-offset="200"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out">
+                    {/* hide left column on phone for responsive layout */}
+                    {/* Left column: location icon and text */}
+                    {isNotPhone && <Col style={leftColStyle}>
+                        <div style={locationColWrapperStyle}>
+                            <img src={LocationIcon} style={locationIconStyle}></img>
+                            Notre Dame, IN
+                        </div>
+                    </Col>}
+                    {/* right column: detailed description for the event */}
+                    <Col style={rightColStyle}>
+                        {/* time of the event */}
+                        <div style={dateWrapperStyle}>
                             <p style={dateStyle}>Aug 2021</p>
                         </div>
                         {/* what actually happened */}
                         <p style={lifeEventContentStyle}>
                             Moved to Notre Dame, <br></br>
-                            continuing my work in HCI,<br></br>
+                            continuing my work in HCI and Human-AI Collaboration<br></br>
                         </p>
                     </Col>
                 </Row>
@@ -75,6 +139,27 @@ export default function Life() {
                             second graduation during a pandemic 😅<br></br>
                             
                         </p>
+                    </Col>
+                </Row>
+                <Row data-aos="fade-up"
+                    data-aos-offset="200"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out">
+                    {/* hide left column on phone for responsive layout */}
+                    {isNotPhone && <Col style={leftColStyle}>
+                        <div style={locationColWrapperStyle}>
+                            {/* <img src={LocationIcon} style={locationIconStyle}></img>
+                            Boston, MA */}
+                        </div>
+                    </Col>}
+                    <Col style={{...rightColStyle, height: "10rem"}}>
+                        {/* <div style={dateWrapperStyle}>
+                            <p style={dateStyle}>Oct 2019</p>
+                        </div>
+                        <p style={lifeEventContentStyle}>
+                            Attended <a target="_blank" href="https://2019.igem.org/Main_Page">iGEM</a> as a member of<br></br>
+                            <a target="_blank" href="https://2019.igem.org/Team:DUT_China_A">DUT_China_A</a><br></br>
+                        </p> */}
                     </Col>
                 </Row>
                 <Row data-aos="fade-up"
