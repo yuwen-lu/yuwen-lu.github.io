@@ -226,7 +226,7 @@ const homeBodyTitleContainerStyle = {
 
 const homeBodyTitleStyle = {
     fontSize: "1.6rem",
-    fontWeight: "bold",
+    fontWeight: "medium",
     display: "inline-block",
     borderBottom: "solid 1px #E44C65",
     margin: "10vh auto 4vh",
