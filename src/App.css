@@ -1,0 +1,105 @@
+/* import the Roboto font from google fonts */
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
+
+/* global stylesheets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1C1E26;
+  color: rgba(255, 255, 255, 1);
+  font-family: "Roboto", Helvetica, sans-serif;
+  font-size: 15pt;
+  font-weight: 100;
+  line-height: 2em;
+}
+
+/* change some settings for mobile and tablet */
+@media screen and (max-width: 769px) {
+  body {
+    font-size: 15px;
+    font-weight: 200;
+    line-height: 2em;
+  }
+}
+
+/* style sheet for links, with hover transition effect */
+a {
+  color: #E44C65;
+  text-decoration: none;
+  border-bottom: dotted 1px;
+  -moz-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -webkit-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -ms-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+a:hover {
+  border-color: transparent;
+}
+
+p {
+  margin-bottom: 2rem;
+}
+
+/* change style sheet for navbar since I don't want the color there. I will need to flip the hover effect */
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  margin: 1.8rem;
+}
+
+.nav-link:hover {
+  color: #E44C65;
+  text-decoration: none;
+  border-bottom: dotted 1px;
+}
+
+/* responsive nav bar */
+@media screen and (max-width: 576px) {
+  .nav-link {
+    padding: 0;
+    margin: 0.5rem;
+  }
+}
+
+/* similar to nav-link, flip the hover effect */
+.project-card-link {
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  -moz-transition: color 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out;
+  -ms-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+.project-card-link:hover {
+  color: #E44C65;
+  text-decoration: none;
+}
+
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 576px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}
