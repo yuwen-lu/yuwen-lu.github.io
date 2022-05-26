@@ -89,7 +89,9 @@ export default function Home() {
                         
                         <p className='paper-author' style={paperAuthor}>Toby Jia-Jun Li, <b>Yuwen Lu</b>, Jaylexia Clark, Meng Chen, Victor Cox, Meng Jiang, Yang Yang, Tamara Kay, Danielle Wood, Jay Brockman</p>
                         <p className='paper-conference' style={paperConference}>The Symposium on Human-Computer Interaction for Work (CHIWORK '22)</p>
-                        <p>Let me know if you will also be at CHIWORK in June 2022!</p>
+                        <p>
+                            <a className='paper-link' target='_blank' href={"https://arxiv.org/abs/2204.13842"} style={paperLinkStyle}>Preprint</a>
+                        </p>
                         <p>
                             {/* <a className='paper-link' target="_blank" href={CHIWORK2022Preprint} style={paperLinkStyle}>Preprint</a> */}
                         </p>
