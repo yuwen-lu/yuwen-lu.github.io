@@ -15,10 +15,12 @@ import Lbw2022Poster from '../resources/files/LBW CHI2022/Poster_YuwenLu_LBWCHI2
 import Lbw2022Preprint from '../resources/files/LBW CHI2022/chi22extendedabstracts_394.pdf';
 import CHIWORK2022Preprint from '../resources/files/CHIWORK_2022_gigworkvision.pdf';
 import CHIWORK2022Pic from '../resources/images/CHIWORK22_approach.png';
+import CHIWORK2022Video from '../resources/files/CHIWORK2022/CHIWORKS_Yuwen.mp4';
 import CHI2022WorkshopPic from '../resources/images/user-interface-workshop.jpeg';
 import CHI2022WorkshopPreprint from "../resources/files/CHI2022_Workshop_Proposal.pdf";
 import MaskPic from "../resources/images/mask.png";
 import MarsPic from "../resources/images/mars.png";
+
 import { isElementOfType } from 'react-dom/test-utils';
 
 // Functional Component for homepage
@@ -91,6 +93,7 @@ export default function Home() {
                         <p className='paper-conference' style={paperConference}>The Symposium on Human-Computer Interaction for Work (CHIWORK '22)</p>
                         <p>
                             <a className='paper-link' target='_blank' href={"https://arxiv.org/abs/2204.13842"} style={paperLinkStyle}>Preprint</a>
+                            <a className='paper-link' target='_blank' href={CHIWORK2022Video} style={paperLinkStyle}>Video (will autoplay on open)</a>
                         </p>
                         <p>
                             {/* <a className='paper-link' target="_blank" href={CHIWORK2022Preprint} style={paperLinkStyle}>Preprint</a> */}
