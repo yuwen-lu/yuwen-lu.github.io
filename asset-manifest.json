@@ -1,9 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.2a410140.css",
-    "main.js": "/static/js/main.5e692abe.js",
+    "main.js": "/static/js/main.4e7a79a6.js",
     "static/js/377.41840739.chunk.js": "/static/js/377.41840739.chunk.js",
-    "static/media/CHIWORKS_Yuwen.mp4": "/static/media/CHIWORKS_Yuwen.5d7968ec55e9a0cb8705.mp4",
     "static/media/mask.png": "/static/media/mask.c8e3b8c3e220874d81bd.png",
     "static/media/CHIWORK_2022_gigworkvision.pdf": "/static/media/CHIWORK_2022_gigworkvision.25aaa51da5ba6c356691.pdf",
     "static/media/personal-profile.jpg": "/static/media/personal-profile.e83295f25a2c10df8de9.jpg",
@@ -26,11 +25,11 @@
     "static/media/location.svg": "/static/media/location.79b68791371d516936c0c6f0293ea3fe.svg",
     "static/media/arrow-back.svg": "/static/media/arrow-back.d46eab4c129e8cb403d5f92da40e8da2.svg",
     "main.2a410140.css.map": "/static/css/main.2a410140.css.map",
-    "main.5e692abe.js.map": "/static/js/main.5e692abe.js.map",
+    "main.4e7a79a6.js.map": "/static/js/main.4e7a79a6.js.map",
     "377.41840739.chunk.js.map": "/static/js/377.41840739.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2a410140.css",
-    "static/js/main.5e692abe.js"
+    "static/js/main.4e7a79a6.js"
   ]
 }
