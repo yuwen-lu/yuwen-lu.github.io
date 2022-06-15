@@ -93,7 +93,7 @@ export default function Home() {
                         <p className='paper-conference' style={paperConference}>The Symposium on Human-Computer Interaction for Work (CHIWORK '22)</p>
                         <p>
                             <a className='paper-link' target='_blank' href={"https://arxiv.org/abs/2204.13842"} style={paperLinkStyle}>Preprint</a>
-                            <a className='paper-link' target='_blank' href={CHIWORK2022Video} style={paperLinkStyle}>Video (will autoplay on open)</a>
+                            <a className='paper-link' target='_blank' href={"https://youtu.be/8zCOj9G3I_o"} style={paperLinkStyle}>Video (will autoplay on open)</a>
                         </p>
                         <p>
                             {/* <a className='paper-link' target="_blank" href={CHIWORK2022Preprint} style={paperLinkStyle}>Preprint</a> */}
