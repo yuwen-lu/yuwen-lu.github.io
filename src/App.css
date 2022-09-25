@@ -115,7 +115,7 @@ p {
 #blur-purple {
   background-color: #A58BF0;
   border-radius: 50% 30% 50% 30%;
-  top: -10vh;
+  top: -8vh;
   left: -18vw;
   width: 45vw;
   height: 60vh;
@@ -129,8 +129,8 @@ p {
   -webkit-filter: blur(90px);
   
   top: 25vh;
-  left: -35vw;
-  width: 45vw;
+  left: -25vw;
+  width: 35vw;
   height: 60vh;
 }
 
@@ -141,9 +141,9 @@ p {
   filter: blur(90px);
   -webkit-filter: blur(90px);
   
-  right: -25vw;
+  right: -15vw;
   bottom: -20vh;
-  width: 25vw;
+  width: 20vw;
   height: 60vh;
 }
 
@@ -155,7 +155,7 @@ p {
   -webkit-filter: blur(90px);
   
   right: -10vw;
-  bottom: -60vh;
-  width: 60vw;
-  height: 60vh;
+  bottom: -25vh;
+  width: 40vw;
+  height: 30vh;
 }
