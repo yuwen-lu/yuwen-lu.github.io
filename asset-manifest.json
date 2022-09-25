@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.2a410140.css",
-    "main.js": "/static/js/main.4e7a79a6.js",
+    "main.css": "/static/css/main.a13396a2.css",
+    "main.js": "/static/js/main.c03c5825.js",
     "static/js/377.41840739.chunk.js": "/static/js/377.41840739.chunk.js",
     "static/media/mask.png": "/static/media/mask.c8e3b8c3e220874d81bd.png",
     "static/media/CHIWORK_2022_gigworkvision.pdf": "/static/media/CHIWORK_2022_gigworkvision.25aaa51da5ba6c356691.pdf",
@@ -24,12 +24,12 @@
     "static/media/email.svg": "/static/media/email.70698e9ea1acb21ece92c7fd013e6941.svg",
     "static/media/location.svg": "/static/media/location.79b68791371d516936c0c6f0293ea3fe.svg",
     "static/media/arrow-back.svg": "/static/media/arrow-back.d46eab4c129e8cb403d5f92da40e8da2.svg",
-    "main.2a410140.css.map": "/static/css/main.2a410140.css.map",
-    "main.4e7a79a6.js.map": "/static/js/main.4e7a79a6.js.map",
+    "main.a13396a2.css.map": "/static/css/main.a13396a2.css.map",
+    "main.c03c5825.js.map": "/static/js/main.c03c5825.js.map",
     "377.41840739.chunk.js.map": "/static/js/377.41840739.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2a410140.css",
-    "static/js/main.4e7a79a6.js"
+    "static/css/main.a13396a2.css",
+    "static/js/main.c03c5825.js"
   ]
 }
