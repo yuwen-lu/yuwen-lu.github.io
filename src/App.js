@@ -7,8 +7,8 @@ import Projects from './pages/Projects';
 import Home from './pages/Home';
 import Life from './pages/Life';
 import CV from './pages/CV';
-import HitRanger from './pages/HitRanger';
-import Goalplay from './pages/Goalplay';
+// import HitRanger from './pages/HitRanger';
+// import Goalplay from './pages/Goalplay';
 
 
 export default function App() {

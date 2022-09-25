@@ -18,6 +18,10 @@ export default function Life() {
 
     return (
         <React.Fragment>
+            <div class="blur-block" id="blur-purple"></div>
+            <div class="blur-block" id="blur-pink"></div>
+            <div class="blur-block" id="blur-green"></div>
+            <div class="blur-block" id="blur-yellow"></div>
             <Header />
             <Container>
                 {/* the p tag needs a container, otherwise the width of p tag would be the same as the parent tag */}

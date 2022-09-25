@@ -36,6 +36,10 @@ export default function Home() {
     console.log(isDesktop);
     return (
         <React.Fragment>
+            <div class="blur-block" id="blur-purple"></div>
+            <div class="blur-block" id="blur-pink"></div>
+            <div class="blur-block" id="blur-green"></div>
+            <div class="blur-block" id="blur-yellow"></div>
             <Header />
             {/* Container component from react-bootstrap, wrapping around Rows and Cols for responsive layout */}
             <Container>
@@ -51,7 +55,7 @@ export default function Home() {
                         <p className="title">Hi there! I'm Yuwen.</p>
                         <p>I am a Ph.D. student in Computer Science and Engineering at the University of Notre Dame.</p> 
                         <p>I research in Human-Computer Interaction and Human-AI Collaboration. My advisor is <a href={"https://toby.li/"}>Toby Li</a>.</p>
-                        <p>Previously, I graduated from the <a target="_blank" href={"https://www.hcii.cmu.edu/academics/mhci"}> Master of Human Computer Interaction program </a> at Carnegie Mellon University.</p>
+                        <p>Previously, I graduated with a <a target="_blank" href={"https://www.hcii.cmu.edu/academics/mhci"}> Master of Human Computer Interaction </a> at Carnegie Mellon University.</p>
                         {/* <p>Jump to my <Link to="/projects">Projects</Link> or my <Link to="/resume">Resume</Link>.</p> */}
                     </Col>
                     <Col className="profile-pic-container" style={profilePicContainerStyle} lg={6} md={10} sm={10}>
