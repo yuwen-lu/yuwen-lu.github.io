@@ -9,17 +9,18 @@ import '../App.css';
 export default function CV() {
     return (
         <React.Fragment>
-            <div class="blur-block" id="blur-purple"></div>
+            {/* <div class="blur-block" id="blur-purple"></div>
             <div class="blur-block" id="blur-pink"></div>
             <div class="blur-block" id="blur-green"></div>
             <div class="blur-block" id="blur-yellow"></div>
             <Header />
-            <div className="content-wrapper">
+            <div className="content-wrapper"> */}
                 {/* use iframe to display the image */}
-                <iframe src={CVFile} style={resumeFileStyle} frameBorder="0"></iframe>
+                {/* <iframe src={CVFile} style={resumeFileStyle} frameBorder="0"></iframe>
             </div>
             
-            <Footer />
+            <Footer /> */}
+            <iframe src={CVFile} style={resumeFileStyle} frameBorder="0"></iframe>
         </React.Fragment>
     )
 }
@@ -27,7 +28,7 @@ export default function CV() {
 // style sheet 
 
 const resumeFileStyle = {
-    width: "70vw",
-    height:"120vh",
+    width: "100vw",
+    height:"100vh",
     margin: "auto"
 }
