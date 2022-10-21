@@ -1,10 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.7d2cc256.css",
-    "main.js": "/static/js/main.a6b519b7.js",
+    "main.js": "/static/js/main.8b88df74.js",
     "static/js/377.41840739.chunk.js": "/static/js/377.41840739.chunk.js",
     "static/media/mask.png": "/static/media/mask.c8e3b8c3e220874d81bd.png",
     "static/media/CHIWORK_2022_gigworkvision.pdf": "/static/media/CHIWORK_2022_gigworkvision.25aaa51da5ba6c356691.pdf",
+    "static/media/dark_pita_dalle.png": "/static/media/dark_pita_dalle.83dcc11b81ab6c08dc3c.png",
     "static/media/chi22extendedabstracts_394.pdf": "/static/media/chi22extendedabstracts_394.fbb362f5c5d5940e5478.pdf",
     "static/media/user-interface-workshop.jpeg": "/static/media/user-interface-workshop.49b9204e0ad7d62879b9.jpeg",
     "static/media/CHIWORK22_approach.png": "/static/media/CHIWORK22_approach.202a97c0507a27d48bd8.png",
@@ -25,11 +26,11 @@
     "static/media/location.svg": "/static/media/location.79b68791371d516936c0c6f0293ea3fe.svg",
     "static/media/arrow-back.svg": "/static/media/arrow-back.d46eab4c129e8cb403d5f92da40e8da2.svg",
     "main.7d2cc256.css.map": "/static/css/main.7d2cc256.css.map",
-    "main.a6b519b7.js.map": "/static/js/main.a6b519b7.js.map",
+    "main.8b88df74.js.map": "/static/js/main.8b88df74.js.map",
     "377.41840739.chunk.js.map": "/static/js/377.41840739.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7d2cc256.css",
-    "static/js/main.a6b519b7.js"
+    "static/js/main.8b88df74.js"
   ]
 }
