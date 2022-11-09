@@ -10,7 +10,6 @@ export default function Header() {
                 <Link className="nav-link" to="/">Home</Link>
                 {/* <Link className="nav-link" to="/projects">Projects</Link> */}
                 <Link className="nav-link" to="/life">Life</Link>
-                <Link className="nav-link" to="/cv">CV</Link>
             </nav>
         </React.Fragment>
     )
