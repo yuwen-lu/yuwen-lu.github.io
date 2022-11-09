@@ -80,6 +80,10 @@ export default function Home() {
               </a>{" "}
               from Carnegie Mellon University. I have a background in programming and UX design & research.
             </p>
+
+            <p>
+              Drop me an email at <a href="mailto:ylu23@nd.edu">ylu23@nd.edu</a> if you want a copy of my CV, or just chat!
+            </p>
             {/* <p>Jump to my <Link to="/projects">Projects</Link> or my <Link to="/resume">Resume</Link>.</p> */}
           </Col>
           <Col

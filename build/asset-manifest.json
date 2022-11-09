@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7d2cc256.css",
-    "main.js": "/static/js/main.fdbcec8a.js",
+    "main.js": "/static/js/main.2749ddcf.js",
     "static/js/377.41840739.chunk.js": "/static/js/377.41840739.chunk.js",
     "static/media/mask.png": "/static/media/mask.c8e3b8c3e220874d81bd.png",
     "static/media/CHIWORK_2022_gigworkvision.pdf": "/static/media/CHIWORK_2022_gigworkvision.25aaa51da5ba6c356691.pdf",
@@ -16,7 +16,6 @@
     "static/media/goalplay-screenshot-homepage-lowres.PNG": "/static/media/goalplay-screenshot-homepage-lowres.359db63d6723ea8c136e.PNG",
     "static/media/mars.png": "/static/media/mars.1c53505e50d4e0cbd4d2.png",
     "static/media/Poster_YuwenLu_LBWCHI2022.pdf": "/static/media/Poster_YuwenLu_LBWCHI2022.760cdbed9bae4813c774.pdf",
-    "static/media/CV_Yuwen_Lu.pdf": "/static/media/CV_Yuwen_Lu.56883c12e5ea52c21069.pdf",
     "static/media/twitter.svg": "/static/media/twitter.ac55ca0944422f26536d3490d8374bd1.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.1970f9405c92d6a2dd77c62d5ca1a64f.svg",
     "static/media/github.svg": "/static/media/github.5bcb0e2a64daa10a7c84e43abca0f154.svg",
@@ -26,11 +25,11 @@
     "static/media/location.svg": "/static/media/location.79b68791371d516936c0c6f0293ea3fe.svg",
     "static/media/arrow-back.svg": "/static/media/arrow-back.d46eab4c129e8cb403d5f92da40e8da2.svg",
     "main.7d2cc256.css.map": "/static/css/main.7d2cc256.css.map",
-    "main.fdbcec8a.js.map": "/static/js/main.fdbcec8a.js.map",
+    "main.2749ddcf.js.map": "/static/js/main.2749ddcf.js.map",
     "377.41840739.chunk.js.map": "/static/js/377.41840739.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7d2cc256.css",
-    "static/js/main.fdbcec8a.js"
+    "static/js/main.2749ddcf.js"
   ]
 }
