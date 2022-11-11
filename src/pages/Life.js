@@ -115,7 +115,7 @@ export default function Life() {
                         {/* what actually happened */}
                         <p style={lifeEventContentStyle}>
                             Moved to Notre Dame, <br></br>
-                            continuing my work in HCI and Human-AI Collaboration<br></br>
+                            continuing my work in HCI<br></br>
                         </p>
                     </Col>
                 </Row>
