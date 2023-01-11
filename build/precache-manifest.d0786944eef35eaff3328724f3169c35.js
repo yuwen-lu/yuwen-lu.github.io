@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "ec637f14a030f0ba32d5",
-    "url": "/static/css/main.390e98c4.chunk.css"
+    "revision": "8d128a88ab8b487d3c3d",
+    "url": "/static/css/main.dd2b490d.chunk.css"
   },
   {
-    "revision": "ec637f14a030f0ba32d5",
-    "url": "/static/js/main.ec637f14.chunk.js"
+    "revision": "8d128a88ab8b487d3c3d",
+    "url": "/static/js/main.8d128a88.chunk.js"
   },
   {
     "revision": "fec9b88f6787e9c5d6b0",
     "url": "/static/js/1.fec9b88f.chunk.js"
   },
   {
-    "revision": "104b1f6771381b1406e5",
-    "url": "/static/css/2.19adb19c.chunk.css"
+    "revision": "ad5f6e3457374a9bdb05",
+    "url": "/static/css/2.ab0b187c.chunk.css"
   },
   {
-    "revision": "104b1f6771381b1406e5",
-    "url": "/static/js/2.104b1f67.chunk.js"
+    "revision": "ad5f6e3457374a9bdb05",
+    "url": "/static/js/2.ad5f6e34.chunk.js"
   },
   {
     "revision": "fe8e1519f46ed3b1dbca",
@@ -88,10 +88,6 @@ self.__precacheManifest = [
     "url": "/static/media/CHI2022_Workshop_Proposal.a832626a.pdf"
   },
   {
-    "revision": "914138a7a949fd7adb400e58efc59269",
-    "url": "/static/media/mask.914138a7.png"
-  },
-  {
     "revision": "60af1debfb06c3c7839922d3fa28030e",
     "url": "/static/media/mars.60af1deb.png"
   },
@@ -108,7 +104,11 @@ self.__precacheManifest = [
     "url": "/static/media/CHIWORK_2022_gigworkvision.d6310a15.pdf"
   },
   {
-    "revision": "abdc5b5cf08d7b855b50a702809364f7",
+    "revision": "914138a7a949fd7adb400e58efc59269",
+    "url": "/static/media/mask.914138a7.png"
+  },
+  {
+    "revision": "0f5a686aa5bff9c7ef3bf8e86ce6695d",
     "url": "/index.html"
   }
 ];
