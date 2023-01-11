@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "1d7d43d920adb875aaff",
+    "revision": "ec637f14a030f0ba32d5",
     "url": "/static/css/main.390e98c4.chunk.css"
   },
   {
-    "revision": "1d7d43d920adb875aaff",
-    "url": "/static/js/main.1d7d43d9.chunk.js"
+    "revision": "ec637f14a030f0ba32d5",
+    "url": "/static/js/main.ec637f14.chunk.js"
   },
   {
     "revision": "fec9b88f6787e9c5d6b0",
@@ -108,7 +108,7 @@ self.__precacheManifest = [
     "url": "/static/media/CHIWORK_2022_gigworkvision.d6310a15.pdf"
   },
   {
-    "revision": "7f24b4e4dbf3f46c337da99e7bf2a8d1",
+    "revision": "abdc5b5cf08d7b855b50a702809364f7",
     "url": "/index.html"
   }
 ];
