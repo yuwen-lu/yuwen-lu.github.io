@@ -418,7 +418,7 @@ export default function Home() {
             </p>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col
             className="home-body-img-column"
             style={
@@ -434,9 +434,8 @@ export default function Home() {
               style={isDesktop ? bodyImgDesktopStyle : bodyImgNotDesktopStyle}
               alt="Project Snapshot"
             ></img>
-          </Col>
-          <Col lg={8} md={10} sm={10}>
-            {/* Another Paper */}
+          </Col> */}
+          {/* <Col lg={8} md={10} sm={10}>
             <p className="paper-title" style={paperTitle}>
               The Social Amplification and Attenuation of COVID-19 Risk
               Perception Shaping Mask Wearing Behavior: A Longitudinal Twitter
@@ -463,8 +462,8 @@ export default function Home() {
                 Paper
               </a>
             </p>
-          </Col>
-        </Row>
+          </Col> */}
+        {/* </Row> */}
       </Container>
       <Footer />
     </React.Fragment>

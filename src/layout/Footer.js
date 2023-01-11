@@ -27,7 +27,7 @@ export default function Footer () {
                 <a target="_blank" href={"https://www.linkedin.com/in/yuwen-lu/"} style={iconLinkStyle}><img src={LinkedinIcon} style={isDesktop? iconStyleForDesktop : iconStyleNotDesktop}></img></a>
             </div>
             <p style={footerBottomTextStyle}>Design and developed by Yuwen Lu with React.</p>
-            <p style={footerBottomTextStyle}>Last updated: Sep 2022</p>
+            <p style={footerBottomTextStyle}>Last updated: Jan 2023</p>
         </div>
     )
 
