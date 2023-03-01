@@ -1,7 +1,7 @@
 {
   "main.css": "/static/css/main.dd2b490d.chunk.css",
-  "main.js": "/static/js/main.ab4b4170.chunk.js",
-  "main.js.map": "/static/js/main.ab4b4170.chunk.js.map",
+  "main.js": "/static/js/main.c0870937.chunk.js",
+  "main.js.map": "/static/js/main.c0870937.chunk.js.map",
   "static/js/1.fec9b88f.chunk.js": "/static/js/1.fec9b88f.chunk.js",
   "static/js/1.fec9b88f.chunk.js.map": "/static/js/1.fec9b88f.chunk.js.map",
   "static/css/2.ab0b187c.chunk.css": "/static/css/2.ab0b187c.chunk.css",
@@ -27,12 +27,12 @@
   "static/media/CHI2022_Workshop_Proposal.pdf": "/static/media/CHI2022_Workshop_Proposal.a832626a.pdf",
   "static/media/mars.png": "/static/media/mars.60af1deb.png",
   "static/media/dark_pita_dalle.png": "/static/media/dark_pita_dalle.6883c92c.png",
-  "static/media/CV_Yuwen_Lu.pdf": "/static/media/CV_Yuwen_Lu.70f80b32.pdf",
+  "static/media/CV_Yuwen_Lu.pdf": "/static/media/CV_Yuwen_Lu.21aa34a1.pdf",
   "static/media/CHIWORK_2022_gigworkvision.pdf": "/static/media/CHIWORK_2022_gigworkvision.d6310a15.pdf",
   "static/media/mask.png": "/static/media/mask.914138a7.png",
-  "static/css/main.dd2b490d.chunk.css.map": "/static/css/main.dd2b490d.chunk.css.map",
   "static/css/2.ab0b187c.chunk.css.map": "/static/css/2.ab0b187c.chunk.css.map",
+  "static/css/main.dd2b490d.chunk.css.map": "/static/css/main.dd2b490d.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.aad091bb67c438c4b6aa71cf5660b84f.js": "/precache-manifest.aad091bb67c438c4b6aa71cf5660b84f.js",
+  "precache-manifest.0b699c5d529a53080eb30bdf6ec7ef21.js": "/precache-manifest.0b699c5d529a53080eb30bdf6ec7ef21.js",
   "service-worker.js": "/service-worker.js"
 }
