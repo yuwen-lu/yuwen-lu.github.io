@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "8e3714eb7c5880a4679e",
+    "revision": "ef86b5f06eb74bf43af1",
     "url": "/static/css/main.62f85928.chunk.css"
   },
   {
-    "revision": "8e3714eb7c5880a4679e",
-    "url": "/static/js/main.87ddfc66.chunk.js"
+    "revision": "ef86b5f06eb74bf43af1",
+    "url": "/static/js/main.7a01c635.chunk.js"
   },
   {
     "revision": "6b7bd3fd743fe5982141",
@@ -100,8 +100,8 @@ self.__precacheManifest = [
     "url": "/static/media/dark_pita_dalle.6883c92c.png"
   },
   {
-    "revision": "ffe279831e1ac9693353d84de04469da",
-    "url": "/static/media/CV_Yuwen_Lu.ffe27983.pdf"
+    "revision": "641a9ec83680a87dee3b5c4cf23ace3c",
+    "url": "/static/media/CV_Yuwen_Lu.641a9ec8.pdf"
   },
   {
     "revision": "d6310a15133fa4fd37dbd7420eeb5d40",
@@ -112,7 +112,7 @@ self.__precacheManifest = [
     "url": "/static/media/mask.914138a7.png"
   },
   {
-    "revision": "136c31e75ba9ec8888aa968214963862",
+    "revision": "0a9b64994f6d98782735c3d9bb9031b0",
     "url": "/index.html"
   }
 ];
