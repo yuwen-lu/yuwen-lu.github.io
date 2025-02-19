@@ -1,16 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.e527cdab.css",
-    "main.js": "/static/js/main.7c34cb25.js",
-    "static/js/422.4655f0a2.chunk.js": "/static/js/422.4655f0a2.chunk.js",
-    "static/media/mask.png": "/static/media/mask.c8e3b8c3e220874d81bd.png",
-    "static/media/CHIWORK_2022_gigworkvision.pdf": "/static/media/CHIWORK_2022_gigworkvision.25aaa51da5ba6c356691.pdf",
+    "main.css": "/static/css/main.5244f5ac.css",
+    "main.js": "/static/js/main.9f8bca68.js",
+    "static/js/422.3edc600e.chunk.js": "/static/js/422.3edc600e.chunk.js",
     "static/media/dark_pita_dalle.png": "/static/media/dark_pita_dalle.83dcc11b81ab6c08dc3c.png",
-    "static/media/chi22extendedabstracts_394.pdf": "/static/media/chi22extendedabstracts_394.fbb362f5c5d5940e5478.pdf",
+    "static/media/misty.png": "/static/media/misty.0daace81d39bb260e867.png",
     "static/media/user-interface-workshop.jpeg": "/static/media/user-interface-workshop.49b9204e0ad7d62879b9.jpeg",
     "static/media/CHIWORK22_approach.png": "/static/media/CHIWORK22_approach.202a97c0507a27d48bd8.png",
     "static/media/me.png": "/static/media/me.524c4d934fdbe41835f7.png",
-    "static/media/CHI2022_Workshop_Proposal.pdf": "/static/media/CHI2022_Workshop_Proposal.45c327dcf4289c9ab2fb.pdf",
     "static/media/chi-lbw-2022.png": "/static/media/chi-lbw-2022.e6f60c182da583214d69.png",
     "static/media/goalplay-cat-lowres.png": "/static/media/goalplay-cat-lowres.ab304b08686c46e209bc.png",
     "static/media/goalplay-screenshot-homepage-lowres.PNG": "/static/media/goalplay-screenshot-homepage-lowres.359db63d6723ea8c136e.PNG",
@@ -25,12 +22,12 @@
     "static/media/email.svg": "/static/media/email.70698e9ea1acb21ece92c7fd013e6941.svg",
     "static/media/location.svg": "/static/media/location.79b68791371d516936c0c6f0293ea3fe.svg",
     "static/media/arrow-back.svg": "/static/media/arrow-back.d46eab4c129e8cb403d5f92da40e8da2.svg",
-    "main.e527cdab.css.map": "/static/css/main.e527cdab.css.map",
-    "main.7c34cb25.js.map": "/static/js/main.7c34cb25.js.map",
-    "422.4655f0a2.chunk.js.map": "/static/js/422.4655f0a2.chunk.js.map"
+    "main.5244f5ac.css.map": "/static/css/main.5244f5ac.css.map",
+    "main.9f8bca68.js.map": "/static/js/main.9f8bca68.js.map",
+    "422.3edc600e.chunk.js.map": "/static/js/422.3edc600e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e527cdab.css",
-    "static/js/main.7c34cb25.js"
+    "static/css/main.5244f5ac.css",
+    "static/js/main.9f8bca68.js"
   ]
 }
