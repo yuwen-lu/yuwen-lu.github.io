@@ -5,7 +5,6 @@ import Footer from '../layout/Footer';
 import LocationIcon from '../resources/icons/location.svg';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useMediaQuery } from 'react-responsive';
-import Lbw2022Preprint from '../resources/files/LBW CHI2022/chi22extendedabstracts_394.pdf';
 
 
 // functional component for Life page
@@ -52,7 +51,7 @@ export default function Life() {
                         {/* what actually happened */}
                         <p style={lifeEventContentStyle}>
                             First ever in-person conference <a href='https://chi2022.acm.org/'>@CHI'22</a>,
-                            hosting a <a target='_blank' href="https://sites.google.com/nd.edu/computational-uichi22/home">workshop</a> and presenting a <a target='_blank' href={Lbw2022Preprint}>LBW poster</a>!
+                            hosting a <a target='_blank' href="https://sites.google.com/nd.edu/computational-uichi22/home">workshop</a> and presenting a <a target='_blank' href="https://dl.acm.org/doi/10.1145/3491101.3519809">LBW poster</a>!
                         </p>
                     </Col>
                 </Row>

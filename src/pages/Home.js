@@ -2,27 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import Particles from 'react-particles-js';
-import Particles from "react-tsparticles";
 import { Container, Row, Col } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import "../App.css";
-// import ProfilePic from '../resources/images/personal-profile.jpg';
 import ProfilePic from "../resources/images/me.png";
+import MistyPic from "../resources/images/misty.png";
 import Lbw2022Pic from "../resources/images/chi-lbw-2022.png";
 import Lbw2022Poster from "../resources/files/LBW CHI2022/Poster_YuwenLu_LBWCHI2022.pdf";
-import Lbw2022Preprint from "../resources/files/LBW CHI2022/chi22extendedabstracts_394.pdf";
-import CHIWORK2022Preprint from "../resources/files/CHIWORK_2022_gigworkvision.pdf";
 import CHIWORK2022Pic from "../resources/images/CHIWORK22_approach.png";
 import CHI2022WorkshopPic from "../resources/images/user-interface-workshop.jpeg";
-import CHI2022WorkshopPreprint from "../resources/files/CHI2022_Workshop_Proposal.pdf";
-import MaskPic from "../resources/images/mask.png";
 import MarsPic from "../resources/images/mars.png";
 import DarkPitaPic from "../resources/images/dark_pita_dalle.png";
-
-import { isElementOfType } from "react-dom/test-utils";
 
 // Functional Component for homepage
 
@@ -121,14 +113,12 @@ export default function Home() {
           <Col lg={12} md={12} sm={12}>
             <div style={centerText}>
               <div>
-                Using generative machine learning models to facilitate UX
-                design,
+                Exploring UI for AI (maybe <a className="paper-link" target="_blank" href="https://machinelearning.apple.com/research/interactive-prototyping">more direct manipulation</a>?),
               </div>
               <div>
-                Helping end users avoid design dark patterns by changing website
-                interfaces, and
+                Using AI to <a className="paper-link" target="_blank" href="https://arxiv.org/abs/2406.16177">support design</a>,
               </div>
-              <div>Supporting gig workers with personal AI agents.</div>
+              <div>Dealing with <a className="paper-link" target="_blank" href="https://dl.acm.org/doi/10.1145/3637336">dark patterns</a> and <a className="paper-link" target="_blank" href="https://arxiv.org/abs/2406.16177">support end users</a>.</div>
             </div>
           </Col>
         </Row>
@@ -147,7 +137,55 @@ export default function Home() {
           </Col>
         </Row>
 
-        
+        <Row>
+          <Col
+            className="home-body-img-column"
+            style={
+              isDesktop
+                ? bodyImgDesktopContainerStyle
+                : bodyImgNotDesktopContainerStyle
+            }
+            lg={3}
+          >
+            <img
+              className="paper-pic"
+              src={MistyPic}
+              style={isDesktop ? bodyImgDesktopStyle : bodyImgNotDesktopStyle}
+              alt="Misty Project Snapshot"
+            ></img>
+          </Col>
+          <Col
+            className="home-body-text-container"
+            style={isDesktop ? bodyTextDesktopStyle : bodyTextNotDesktopStyle}
+            lg={8}
+            md={10}
+            sm={10}
+          >
+            {/* One Paper */}
+
+            <p className="paper-title" style={paperTitle}>
+              Misty: UI Prototyping Through Interactive Conceptual Blending
+            </p>
+
+            <p className="paper-author" style={paperAuthor}>
+              <b>Yuwen Lu</b>, Alan Leung, Amanda Swearngin, Jeffrey Nichols, Titus Barik
+            </p>
+            <p className="paper-conference" style={paperConference}>
+              CHI 2025
+            </p>
+            <p className="paper-conference" style={paperConference}>
+              Work done during internship at Apple AIML
+            </p>
+
+            <p>
+              <a className='paper-link' target="_blank" href="https://machinelearning.apple.com/research/interactive-prototyping" style={paperLinkStyle}>Paper</a>
+              <a className='paper-link' target="_blank" href="https://github.com/ND-SaNDwichLAB/Misty" style={paperLinkStyle}>Code</a>
+              <a className='paper-link' target="_blank" href="https://x.com/yuwen_lu_/status/1850574331539276198" style={paperLinkStyle}>Video</a>
+
+            </p>
+          </Col>
+        </Row>
+
         <Row>
           <Col
             className="home-body-img-column"
@@ -175,7 +213,7 @@ export default function Home() {
             {/* One Paper */}
 
             <p className="paper-title" style={paperTitle}>
-            From Design Transparency to Malleable Interfaces: Exploring End-User Interventions for Dark Patterns in UX
+              From Awareness to Action: Exploring End-User Empowerment Interventions for Dark Patterns in UX
             </p>
 
             <p className="paper-author" style={paperAuthor}>
@@ -185,11 +223,13 @@ export default function Home() {
               CSCW 2023 🏆 <strong>Best Paper Award</strong> (Top 1%)
             </p>
             <p className="paper-conference" style={paperConference}>
-            Left image generated by DALL-E 2, with prompt "a picture showing the experience of a user using a browser extension that helps them change dark patterns on website interfaces"
+              Left image generated by DALL-E 2, with prompt "a picture showing the experience of a user using a browser extension that helps them change dark patterns on website interfaces"
             </p>
 
             <p>
-              {/* <a className='paper-link' target="_blank" href={CHIWORK2022Preprint} style={paperLinkStyle}>Preprint</a> */}
+              <a className='paper-link' target="_blank" href="https://dl.acm.org/doi/10.1145/3637336" style={paperLinkStyle}>Paper</a>
+              <a className='paper-link' target="_blank" href="https://github.com/yuwen-lu/dark-pita" style={paperLinkStyle}>Code</a>
+
             </p>
           </Col>
         </Row>
@@ -232,16 +272,16 @@ export default function Home() {
               Brockman
             </p>
             <p className="paper-conference" style={paperConference}>
-              The Symposium on Human-Computer Interaction for Work (CHIWORK '22)
+              CHIWORK 2022
             </p>
             <p>
               <a
                 className="paper-link"
                 target="_blank"
-                href={"https://arxiv.org/abs/2204.13842"}
+                href={"https://dl.acm.org/doi/10.1145/3533406.3533418"}
                 style={paperLinkStyle}
               >
-                Preprint
+                Paper
               </a>
               <a
                 className="paper-link"
@@ -286,14 +326,13 @@ export default function Home() {
               <b>Yuwen Lu</b>, Chengzhi Zhang, Iris Zhang, and Toby Jia-Jun Li
             </p>
             <p className="paper-conference" style={paperConference}>
-              Extended Abstracts of the 2022 CHI Conference on Human Factors in
-              Computing Systems (CHI EA ’22)
+              CHI 2022 Extended Abstracts (Late-Breaking Work)
             </p>
             <p>
               <a
                 className="paper-link"
                 target="_blank"
-                href={Lbw2022Preprint}
+                href="https://dl.acm.org/doi/10.1145/3491101.3519809"
                 style={paperLinkStyle}
               >
                 Preprint
@@ -348,17 +387,16 @@ export default function Home() {
               Kumar, Toby Jia-Jun Li (* equal contribution)
             </p>
             <p className="paper-conference" style={paperConference}>
-              Extended Abstracts of the 2022 CHI Conference on Human Factors in
-              Computing Systems (CHI EA ’22)
+              CHI 2022 (we also held this workshop at <a className="paper-link" target="_blank" href="https://sites.google.com/view/computational-uichi23/home?pli=1">CHI 2023</a>, <a className="paper-link" target="_blank" href="https://sites.google.com/view/computational-uichi24/home?pli=1">CHI 2024</a>, and <a className="paper-link" target="_blank" href="https://sites.google.com/view/computational-uichi25/home?pli=1">CHI 2025</a>)
             </p>
             <p>
               <a
                 className="paper-link"
                 target="_blank"
-                href={CHI2022WorkshopPreprint}
+                href="https://dl.acm.org/doi/10.1145/3491101.3504030"
                 style={paperLinkStyle}
               >
-                Preprint
+                Proposal
               </a>
               <a
                 className="paper-link"
@@ -435,7 +473,7 @@ export default function Home() {
               alt="Project Snapshot"
             ></img>
           </Col> */}
-          {/* <Col lg={8} md={10} sm={10}>
+        {/* <Col lg={8} md={10} sm={10}>
             <p className="paper-title" style={paperTitle}>
               The Social Amplification and Attenuation of COVID-19 Risk
               Perception Shaping Mask Wearing Behavior: A Longitudinal Twitter
