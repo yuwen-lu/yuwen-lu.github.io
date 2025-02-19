@@ -42,34 +42,6 @@ export default function Life() {
                     {isNotPhone && <Col style={leftColStyle}>
                         <div style={locationColWrapperStyle}>
                             <img src={LocationIcon} style={locationIconStyle}></img>
-                            Honolulu, HI
-                        </div>
-                    </Col>}
-                    {/* right column: detailed description for the event */}
-                    <Col style={rightColStyle}>
-                        {/* time of the event */}
-                        <div style={dateWrapperStyle}>
-                            <p style={dateStyle}>May 2024</p>
-                        </div>
-                        {/* what actually happened */}
-                        <p style={lifeEventContentStyle}>
-                            Attended CHI 2024 in Hawaii, 
-                            presented a <a className='paper-link' target="_blank" href="https://dl.acm.org/doi/10.1145/3613905.3637135">
-                                Case Study paper
-                            </a> on AI & design tools
-                        </p>
-                    </Col>
-                </Row>
-
-                <Row data-aos="fade-up"
-                    data-aos-offset="200"
-                    data-aos-duration="1000"
-                    data-aos-easing="ease-in-out">
-                    {/* hide left column on phone for responsive layout */}
-                    {/* Left column: location icon and text */}
-                    {isNotPhone && <Col style={leftColStyle}>
-                        <div style={locationColWrapperStyle}>
-                            <img src={LocationIcon} style={locationIconStyle}></img>
                             Seattle WA
                         </div>
                     </Col>}
