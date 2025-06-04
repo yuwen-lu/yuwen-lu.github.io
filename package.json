@@ -28,11 +28,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && cp .nojekyll docs/",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "deploy": "npm run build && git add docs && git commit -m 'Deploy to GitHub Pages' && git push origin master"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "eslintConfig": {
     "extends": [

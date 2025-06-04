@@ -1,8 +1,9 @@
 # dependencies
 /node_modules
 
-# production build (note: docs folder is committed for GitHub Pages)
+# production build
 /dist
+/docs
 
 # misc
 .DS_Store
@@ -38,3 +39,6 @@ dist-ssr
 
 # Legacy build folder
 /build
+
+# Vercel
+.vercel
