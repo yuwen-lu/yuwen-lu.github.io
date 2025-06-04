@@ -324,7 +324,7 @@ export const Events = () => {
               >
                 {event.showLocation && !event.spacer && (
                   <div 
-                    className="flex items-center text-right"
+                    className="flex items-center text-right space-grotesk-regular"
                     style={{
                       paddingRight: "2rem",
                       position: "relative",
@@ -332,9 +332,9 @@ export const Events = () => {
                     }}
                   >
                     <div className="mr-2">
-                      <MapPin size={18} className="text-[#E44C65]" style={{ position: "relative", bottom: "4px" }} />
+                      <MapPin size={20} className="text-[#E44C65]" style={{ position: "relative", bottom: "4px" }} />
                     </div>
-                    <span className="text-sm opacity-80">{event.location}</span>
+                    <span className="opacity-80" style={{ fontSize: "1rem" }}>{event.location}</span>
                   </div>
                 )}
               </div>
@@ -361,10 +361,11 @@ export const Events = () => {
                       }}
                     >
                       <p 
+                        className="space-grotesk-medium"
                         style={{
-                          fontSize: isNotPhone ? "0.85rem" : "0.9rem",
+                          fontSize: isNotPhone ? "1rem" : "0.9rem",
                           margin: "0",
-                          fontWeight: isNotPhone ? "normal" : "500",
+                          fontWeight: isNotPhone ? "500" : "500",
                           color: isNotPhone ? "inherit" : "#E44C65"
                         }}
                       >
@@ -381,11 +382,12 @@ export const Events = () => {
                   {/* Content */}
                   {event.content && (
                     <div 
-                      className={`text-lg leading-relaxed ${isNotPhone ? 'inline-block' : 'block'}`}
+                      className={`text-lg leading-relaxed space-grotesk-regular ${isNotPhone ? 'inline-block' : 'block'}`}
                       style={isNotPhone ? { 
                         margin: "0 0 0 1rem",
                         lineHeight: "2em",
                         position: "relative",
+                        fontSize: "1.1rem"
                       } : {
                         margin: "0",
                         lineHeight: "1.6em",

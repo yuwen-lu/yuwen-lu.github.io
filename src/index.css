@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,100italic,300italic");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,11 +14,107 @@
     margin: 0;
     background-color: #1C1E26;
     color: rgba(255, 255, 255, 1);
-    font-family: "Roboto", Helvetica, sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 15pt;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 2em;
     min-height: 100vh;
+  }
+  
+  .space-grotesk {
+    font-family: "Space Grotesk", sans-serif;
+  }
+  
+  .space-grotesk-light {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 300;
+  }
+  
+  .space-grotesk-regular {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 400;
+  }
+  
+  .space-grotesk-medium {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+  }
+  
+  .space-grotesk-semibold {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+  }
+  
+  .space-grotesk-bold {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+  }
+  
+  .jost {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+  }
+  
+  .jost-thin {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+  }
+  
+  .jost-light {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+  }
+  
+  .jost-regular {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+  }
+  
+  .jost-medium {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+  }
+  
+  .jost-semibold {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+  }
+  
+  .jost-bold {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+  }
+  
+  .jost-italic {
+    font-style: italic;
+  }
+  
+  .alumni-sans {
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    font-size: 1.4em;
+    letter-spacing: 0.02em;
+  }
+  
+  .alumni-sans-regular {
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.6em;
+    letter-spacing: 0.02em;
+  }
+  
+  .alumni-sans-italic {
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.5em;
+    letter-spacing: 0.02em;
   }
   
   /* Mobile and tablet adjustments */
@@ -143,6 +240,11 @@
     font-weight: 300;
   }
   
+  .title.alumni-sans-regular {
+    font-size: 3.5rem;
+    line-height: 1.2;
+  }
+  
   /* Special styling for the graduation announcement */
   .title.text-center {
     font-size: 3rem;
@@ -199,7 +301,8 @@
     text-decoration: none;
     border: none;
     margin: 1.8rem;
-    font-weight: 300;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
     transition: color 0.2s ease-in-out;
   }
   
@@ -212,7 +315,7 @@
   @media screen and (max-width: 768px) {
     .nav-link {
       margin: 1rem;
-      font-weight: 400;
+      font-weight: 500;
     }
   }
   
@@ -220,7 +323,7 @@
     .nav-link {
       padding: 0;
       margin: 0.5rem;
-      font-weight: 400;
+      font-weight: 500;
     }
   }
   
@@ -229,7 +332,8 @@
     color: #E44C65 !important;
     text-decoration: none;
     border-bottom: dotted 1px;
-    font-weight: 400;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
     transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
   

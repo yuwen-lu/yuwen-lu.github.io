@@ -37,7 +37,7 @@ export const Footer = () => {
   }
 
   return (
-    <div className="text-center mt-40 px-4 sm:px-6 lg:px-8">
+    <div className="text-center mt-40 px-4 sm:px-6 lg:px-8 space-grotesk-regular">
       {/* Copied email banner with subtle bouncy animation */}
       <AnimatePresence>
         {showCopiedBanner && (
@@ -63,7 +63,7 @@ export const Footer = () => {
               scale: 0.9,
               transition: { duration: 0.2 }
             }}
-            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-[#E44C65] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2"
+            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-[#E44C65] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 space-grotesk-medium"
           >
             <motion.div
               animate={{ 
@@ -81,7 +81,7 @@ export const Footer = () => {
         )}
       </AnimatePresence>
       
-      <p className="mb-6 text-lg">Contact</p>
+      <p className="mb-6 text-lg space-grotesk-medium">Contact</p>
       <div className="footer-icons mb-8 flex justify-center items-center gap-2 sm:gap-4">
         <motion.button 
           onClick={copyEmailToClipboard}
@@ -169,7 +169,7 @@ export const Footer = () => {
           />
         </motion.a>
       </div>
-      <p className="text-base leading-6 opacity-80 max-w-md mx-auto">
+      <p className="text-base leading-6 opacity-80 max-w-md mx-auto space-grotesk-regular">
         Last updated: June 2025
       </p>
     </div>

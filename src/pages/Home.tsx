@@ -228,7 +228,7 @@ export const Home = () => {
         style={{ marginTop: "1rem" }}
       >
         <div className="space-y-4 lg:space-y-6 order-2 lg:order-1">
-          <h1 className="title">
+          <h1 className="title space-grotesk-medium" style={{ fontSize: isDesktop ? "3.5rem" : "2.8rem", letterSpacing: "-0.02em" }}>
             {renderTextWithColoredUnderscores(displayText)}
             <span 
               className={`typing-cursor ${isComplete ? 'blink' : ''}`}
@@ -248,7 +248,7 @@ export const Home = () => {
             </span>
           </h1>
           <div className="space-y-3 lg:space-y-4">
-            <p>
+            <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am Yuwen, a Ph.D. Candidate in Computer Science and Engineering at the
               University of Notre Dame.
             </p>
@@ -369,11 +369,16 @@ export const Home = () => {
         className="mb-12 lg:mb-16"
       >
         <div className="text-center mb-6 lg:mb-8">
-          <h2 className="text-xl lg:text-2xl font-medium mb-6 lg:mb-8" style={{ fontSize: isDesktop ? "1.5rem" : "1.3rem", lineHeight: "1.5" }}>
+          <h2 className="text-xl lg:text-2xl mb-6 lg:mb-8 space-grotesk-medium" 
+              style={{ 
+                fontSize: isDesktop ? "2rem" : "1.6rem", 
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em"
+              }}>
             Currently Working On...
           </h2>
         </div>
-        <div className="text-center space-y-3 lg:space-y-4" style={{ lineHeight: "1.8em" }}>
+        <div className="text-center space-y-3 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.8em" }}>
           <div>
             Exploring UI for AI (maybe{" "}
             <a
@@ -430,7 +435,12 @@ export const Home = () => {
         className="mb-12 lg:mb-16"
       >
         <div className="text-center mb-6 lg:mb-8">
-          <h2 className="text-xl lg:text-2xl font-light mb-6 lg:mb-8" style={{ fontSize: isDesktop ? "1.5rem" : "1.3rem", lineHeight: "1.5" }}>
+          <h2 className="text-xl lg:text-2xl mb-6 lg:mb-8 space-grotesk-regular" 
+              style={{ 
+                fontSize: isDesktop ? "2rem" : "1.6rem", 
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em"
+              }}>
             Publications
           </h2>
         </div>
@@ -509,10 +519,10 @@ export const Home = () => {
                 )}
               </div>
               <div className="hidden lg:flex lg:flex-col lg:justify-center lg:flex-1 lg:min-w-0 space-y-4">
-                <h3 className="text-xl font-light leading-relaxed" style={{ fontSize: "1.4rem", lineHeight: "1.6", marginBottom: "0.5rem" }}>
+                <h3 className="text-xl font-light leading-relaxed space-grotesk-medium" style={{ fontSize: "1.6rem", lineHeight: "1.5", marginBottom: "0.5rem" }}>
                   {pub.title}
                 </h3>
-                <p className="text-lg opacity-80 leading-relaxed" style={{ fontSize: "1rem", lineHeight: "1.6" }}>
+                <p className="text-lg opacity-80 leading-relaxed space-grotesk-regular" style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
                   {pub.authors.includes('Yuwen Lu*') || pub.authors.includes('**Yuwen Lu**') ? (
                     <>
                       <strong>{pub.authors.split(',')[0]}</strong>
@@ -524,9 +534,9 @@ export const Home = () => {
                     )
                   )}
                 </p>
-                <p className="text-[#E44C65] font-medium text-lg" style={{ fontSize: "1rem" }}>{pub.conference}</p>
+                <p className="text-[#E44C65] font-medium text-lg space-grotesk-medium" style={{ fontSize: "1.05rem" }}>{pub.conference}</p>
                 {pub.note && (
-                  <p className="text-base opacity-60 italic" style={{ fontSize: "0.9rem" }}>{pub.note}</p>
+                  <p className="text-base opacity-60 italic space-grotesk-regular" style={{ fontSize: "1rem" }}>{pub.note}</p>
                 )}
                 {pub.links.length > 0 && (
                   <div className="flex flex-wrap gap-4 pt-2">
@@ -537,7 +547,7 @@ export const Home = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="paper-link"
-                        style={{ fontSize: "1rem" }}
+                        style={{ fontSize: "1.05rem" }}
                       >
                         {link.label}
                       </a>
