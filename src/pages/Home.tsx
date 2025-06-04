@@ -433,11 +433,11 @@ export const Home = () => {
             Publications
           </h2>
         </div>
-        <div className="space-y-6 lg:space-y-12">
+        <div className="space-y-8 lg:space-y-16">
           {publications.map((pub, index) => (
             <div
               key={index}
-              className="flex flex-col lg:grid lg:grid-cols-4 gap-4 lg:gap-6 p-4 lg:p-8 card-hover rounded-lg"
+              className="flex flex-col lg:flex-row gap-6 lg:gap-8 p-4 lg:p-8 card-hover rounded-lg"
             >
               {/* Mobile: Image and basic info in a row */}
               <div className="flex gap-4 items-center lg:hidden">
@@ -492,25 +492,26 @@ export const Home = () => {
                 )}
               </div>
 
-              {/* Desktop: Original layout */}
-              <div className="hidden lg:flex lg:col-span-1 justify-start items-center">
+              {/* Desktop: Fixed layout with proper spacing */}
+              <div className="hidden lg:flex lg:flex-shrink-0">
                 {pub.image && (
                   <img
                     src={pub.image}
                     alt={pub.title}
-                    className="w-full max-w-none object-cover rounded-lg"
+                    className="object-cover rounded-lg"
                     style={{
-                      height: "10rem",
-                      width: "15rem"
+                      height: "12rem",
+                      width: "16rem",
+                      minWidth: "16rem"
                     }}
                   />
                 )}
               </div>
-              <div className="hidden lg:block lg:col-span-3 space-y-3">
-                <h3 className="text-xl font-light" style={{ fontSize: "1.4rem", lineHeight: "1.9rem", marginBottom: "1.5rem" }}>
+              <div className="hidden lg:flex lg:flex-col lg:justify-center lg:flex-1 lg:min-w-0 space-y-4">
+                <h3 className="text-xl font-light leading-relaxed" style={{ fontSize: "1.4rem", lineHeight: "1.6", marginBottom: "0.5rem" }}>
                   {pub.title}
                 </h3>
-                <p className="text-lg opacity-80">
+                <p className="text-lg opacity-80 leading-relaxed" style={{ fontSize: "1rem", lineHeight: "1.6" }}>
                   {pub.authors.includes('Yuwen Lu*') || pub.authors.includes('**Yuwen Lu**') ? (
                     <>
                       <strong>{pub.authors.split(',')[0]}</strong>
@@ -522,19 +523,20 @@ export const Home = () => {
                     )
                   )}
                 </p>
-                <p className="text-[#E44C65] font-medium text-lg">{pub.conference}</p>
+                <p className="text-[#E44C65] font-medium text-lg" style={{ fontSize: "1rem" }}>{pub.conference}</p>
                 {pub.note && (
-                  <p className="text-base opacity-60 italic">{pub.note}</p>
+                  <p className="text-base opacity-60 italic" style={{ fontSize: "0.9rem" }}>{pub.note}</p>
                 )}
                 {pub.links.length > 0 && (
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-4 pt-2">
                     {pub.links.map((link, linkIndex) => (
                       <a
                         key={linkIndex}
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="paper-link text-lg"
+                        className="paper-link"
+                        style={{ fontSize: "1rem" }}
                       >
                         {link.label}
                       </a>
