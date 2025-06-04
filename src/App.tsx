@@ -15,7 +15,7 @@ function App() {
       <div className="blur-block" id="blur-yellow"></div>
       
       <Navigation />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cv" element={<CV />} />

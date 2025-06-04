@@ -37,7 +37,7 @@ export const Footer = () => {
   }
 
   return (
-    <div className="text-center mt-40">
+    <div className="text-center mt-40 px-4 sm:px-6 lg:px-8">
       {/* Copied email banner with subtle bouncy animation */}
       <AnimatePresence>
         {showCopiedBanner && (
@@ -81,25 +81,25 @@ export const Footer = () => {
         )}
       </AnimatePresence>
       
-      <p className="mb-6">Contact</p>
-      <div className="footer-icons mb-8">
+      <p className="mb-6 text-lg">Contact</p>
+      <div className="footer-icons mb-8 flex justify-center items-center gap-2 sm:gap-4">
         <motion.button 
           onClick={copyEmailToClipboard}
-          className="inline-block cursor-pointer bg-transparent border-none p-0"
+          className="inline-block cursor-pointer bg-transparent border-none p-2"
           title="Copy email to clipboard"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           style={{ cursor: "pointer" }}
         >
           <Mail 
-            size={isDesktop ? 28 : 20} 
-            className={`text-white hover:text-[#E44C65] transition-colors ${isDesktop ? "mx-4 mb-12" : "mx-2 mb-8"}`}
+            size={isDesktop ? 28 : 24} 
+            className="text-white hover:text-[#E44C65] transition-colors"
           />
         </motion.button>
         <motion.a 
           target="_blank" 
           href="https://twitter.com/yuwen_lu_" 
-          className="inline-block"
+          className="inline-block p-2"
           style={{ border: "none", cursor: "pointer", borderBottom: "none" }}
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1 }}
@@ -108,7 +108,7 @@ export const Footer = () => {
           <img 
             src={TwitterIcon} 
             alt="Twitter"
-            className={`transition-all duration-200 hover:brightness-0 hover:saturate-100 hover:invert-0 hover:sepia-100 hover:hue-rotate-[320deg] ${isDesktop ? "w-7 mx-4 mb-12" : "w-5 mx-2 mb-8"}`}
+            className={`transition-all duration-200 hover:brightness-0 hover:saturate-100 hover:invert-0 hover:sepia-100 hover:hue-rotate-[320deg] ${isDesktop ? "w-7" : "w-6"}`}
             style={{
               filter: 'brightness(0) saturate(100%) invert(100%)',
             }}
@@ -123,7 +123,7 @@ export const Footer = () => {
         <motion.a 
           target="_blank" 
           href="https://github.com/yuwen-lu/" 
-          className="inline-block"
+          className="inline-block p-2"
           style={{ border: "none", cursor: "pointer", borderBottom: "none" }}
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1 }}
@@ -132,7 +132,7 @@ export const Footer = () => {
           <img 
             src={GithubIcon} 
             alt="GitHub"
-            className={`transition-all duration-200 ${isDesktop ? "w-7 mx-4 mb-12" : "w-5 mx-2 mb-8"}`}
+            className={`transition-all duration-200 ${isDesktop ? "w-7" : "w-6"}`}
             style={{
               filter: 'brightness(0) saturate(100%) invert(100%)',
             }}
@@ -147,7 +147,7 @@ export const Footer = () => {
         <motion.a 
           target="_blank" 
           href="https://www.linkedin.com/in/yuwen-lu/" 
-          className="inline-block"
+          className="inline-block p-2"
           style={{ border: "none", cursor: "pointer", borderBottom: "none" }}
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1 }}
@@ -156,7 +156,7 @@ export const Footer = () => {
           <img 
             src={LinkedinIcon} 
             alt="LinkedIn"
-            className={`transition-all duration-200 ${isDesktop ? "w-7 mx-4 mb-12" : "w-5 mx-2 mb-8"}`}
+            className={`transition-all duration-200 ${isDesktop ? "w-7" : "w-6"}`}
             style={{
               filter: 'brightness(0) saturate(100%) invert(100%)',
             }}
@@ -169,7 +169,7 @@ export const Footer = () => {
           />
         </motion.a>
       </div>
-      <p className="text-base leading-6 opacity-80">
+      <p className="text-base leading-6 opacity-80 max-w-md mx-auto">
         Last updated: June 2025
       </p>
     </div>

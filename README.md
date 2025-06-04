@@ -1,120 +1,132 @@
 # Yuwen Lu - Portfolio Website
 
-A modern, responsive portfolio website built with React 18, TypeScript, Vite, and Tailwind CSS.
+A personal portfolio website built with React 18, TypeScript, Vite, and Tailwind CSS.
 
-## 🚀 Features
+## Features
 
-- **Modern Stack**: React 18, TypeScript, Vite for fast development
-- **Styling**: Tailwind CSS with custom design system
-- **Animations**: Framer Motion for smooth animations
-- **Icons**: Lucide React for beautiful, consistent icons
-- **Routing**: React Router v6 for client-side navigation
-- **Responsive**: Mobile-first design that works on all devices
-- **Performance**: Optimized builds with Vite and code splitting
+- React 18 with TypeScript for type safety
+- Vite for fast development and optimized builds
+- Tailwind CSS for styling
+- Framer Motion for animations
+- React Router v6 for client-side routing
+- Responsive design
+- GitHub Pages deployment
+- ESLint and testing setup
 
-## 🛠️ Technologies Used
+## Tech Stack
 
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- React Router DOM v6
-- Lucide React
+- **Frontend**: React 18, TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS, PostCSS, Autoprefixer
+- **Animations**: Framer Motion, AOS
+- **Routing**: React Router DOM v6
+- **Icons**: Lucide React
+- **Effects**: Canvas Confetti
+- **Testing**: Vitest, React Testing Library
+- **Linting**: ESLint
+- **Deployment**: GitHub Pages
 
-## 📋 Prerequisites
+## Prerequisites
 
-- Node.js (version 16 or higher)
+- Node.js 16+
 - npm or yarn
 
-## 🚀 Getting Started
+## Installation
 
-1. **Clone the repository**
+1. Clone the repository:
    ```bash
    git clone https://github.com/yuwen-lu/yuwen-lu.github.io.git
    cd yuwen-lu.github.io
    ```
 
-2. **Install dependencies**
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. **Start the development server**
+3. Start development server:
    ```bash
    npm run dev
    ```
 
-4. **Open your browser** and navigate to `http://localhost:3000`
+4. Open http://localhost:3000
 
-## 📜 Available Scripts
+## Scripts
 
-- `npm run dev` - Start the development server
-- `npm run build` - Build the project for production
-- `npm run preview` - Preview the production build locally
-- `npm run lint` - Run ESLint to check for code quality issues
+- `npm run dev` - Development server
+- `npm run build` - Production build
+- `npm run preview` - Preview production build
+- `npm run test` - Run tests
+- `npm run lint` - Run ESLint
 - `npm run deploy` - Deploy to GitHub Pages
 
-## 🚀 Deployment
+## Deployment
 
-This site is deployed on GitHub Pages. To deploy your changes:
+Deployed at [yuwen.io](http://yuwen.io) via GitHub Pages.
 
+To deploy changes:
 ```bash
 npm run deploy
 ```
 
-## 📁 Project Structure
+This builds the project and pushes the `dist` folder to the `gh-pages` branch.
+
+## Project Structure
 
 ```
 src/
-├── components/          # Reusable UI components
-│   └── Navigation.tsx   # Main navigation component
+├── components/          # Reusable components
+│   └── Navigation.tsx
 ├── pages/              # Page components
-│   ├── Home.tsx        # Homepage
-│   ├── Projects.tsx    # Projects showcase
-│   ├── CV.tsx          # Curriculum Vitae
-│   └── Life.tsx        # Personal interests
-├── App.tsx             # Main app component
-├── main.tsx            # Application entry point
-└── index.css           # Global styles with Tailwind
+│   ├── Home.tsx
+│   ├── Projects.tsx
+│   ├── CV.tsx
+│   └── Life.tsx
+├── resources/          # Static assets
+├── App.tsx             # Main app with routing
+├── main.tsx            # Entry point
+├── index.css           # Global styles
+└── vite-env.d.ts       # Vite types
 ```
 
-## 🎨 Customization
+## Configuration
 
-### Colors
-The color scheme is defined in `tailwind.config.js`. You can modify the primary colors and add new ones.
+### Styling
+- Colors and theme: `tailwind.config.js`
+- Typography: Inter font (configurable in Tailwind)
 
-### Typography
-Inter font is used throughout the site. You can change this in the Tailwind configuration.
+### Build
+- Output directory: `dist`
+- Source maps enabled for production
+- Code splitting configured for vendor and router chunks
 
-### Content
-Update the content in each page component (`src/pages/`) to reflect your information.
+## Development
 
-## 📱 Responsive Design
+### Hot Reload
+Vite provides fast hot module replacement during development.
 
-The site is built with a mobile-first approach and includes:
-- Responsive navigation with mobile menu
-- Flexible grid layouts
-- Optimized typography scaling
-- Touch-friendly interactive elements
+### Testing
+```bash
+npm run test
+```
+Uses Vitest with React Testing Library.
 
-## ⚡ Performance
+### Linting
+```bash
+npm run lint
+```
+ESLint configuration extends React app defaults.
 
-- Code splitting for optimal loading
-- Image optimization
-- Minimal bundle size with tree shaking
-- Modern ES modules for better caching
+## Browser Support
 
-## 📄 License
+Modern browsers supporting ES2015+. See `browserslist` in `package.json` for details.
 
-This project is open source and available under the [MIT License](LICENSE).
+## License
 
-## 🤝 Contributing
+MIT License
 
-Feel free to submit issues and enhancement requests!
+## Contact
 
-## 📧 Contact
-
-Yuwen Lu - [ylu5@nd.edu](mailto:ylu5@nd.edu)
-
-Project Link: [https://github.com/yuwen-lu/yuwen-lu.github.io](https://github.com/yuwen-lu/yuwen-lu.github.io) 
+- Email: ylu5@nd.edu
+- Website: yuwen.io
+- GitHub: yuwen-lu 

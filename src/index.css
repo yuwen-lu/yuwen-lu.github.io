@@ -23,9 +23,17 @@
   /* Mobile and tablet adjustments */
   @media screen and (max-width: 769px) {
     body {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 400;
-      line-height: 2em;
+      line-height: 1.8em;
+    }
+  }
+  
+  /* Small mobile adjustments */
+  @media screen and (max-width: 480px) {
+    body {
+      font-size: 15px;
+      line-height: 1.7em;
     }
   }
   
@@ -48,6 +56,13 @@
   
   p {
     margin-bottom: 2rem;
+  }
+  
+  /* Mobile paragraph spacing */
+  @media screen and (max-width: 769px) {
+    p {
+      margin-bottom: 1.5rem;
+    }
   }
 }
 
@@ -134,15 +149,47 @@
     line-height: 1.2;
   }
   
+  /* Tablet adjustments */
+  @media screen and (max-width: 768px) {
+    .title {
+      font-size: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+    
+    .title.text-center {
+      font-size: 2.5rem;
+      line-height: 1.3;
+    }
+  }
+  
+  /* Mobile adjustments */
   @media screen and (max-width: 576px) {
     .title {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
       font-weight: 400;
     }
     
     .title.text-center {
       font-size: 2rem;
       line-height: 1.3;
+    }
+  }
+  
+  /* Small mobile adjustments */
+  @media screen and (max-width: 480px) {
+    .title {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .title.text-center {
+      font-size: 1.75rem;
+      line-height: 1.4;
     }
   }
   
@@ -160,6 +207,13 @@
     color: #E44C65;
     text-decoration: none;
     border-bottom: dotted 1px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-link {
+      margin: 1rem;
+      font-weight: 400;
+    }
   }
   
   @media screen and (max-width: 576px) {
@@ -190,6 +244,20 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
   }
+  
+  /* Better mobile card styling */
+  @media screen and (max-width: 768px) {
+    .card-hover {
+      margin-bottom: 1rem;
+      padding: 1rem !important;
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+    
+    .card-hover:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
 
   /* Footer icons cursor fix */
   .footer-icons a,
@@ -211,5 +279,32 @@
   
   .typing-cursor {
     display: inline-block;
+  }
+  
+  /* Improved mobile container spacing */
+  @media screen and (max-width: 768px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
+
+  /* Better mobile touch targets */
+  @media screen and (max-width: 768px) {
+    .paper-link {
+      border-bottom: dotted 1px !important;
+      font-size: 0.875rem !important;
+    }
+    
+    .paper-link:hover {
+      border-color: transparent;
+    }
   }
 } 

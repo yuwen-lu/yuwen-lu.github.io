@@ -309,7 +309,7 @@ export const Events = () => {
             data-aos-offset="200"
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
-            style={{ minHeight: event.spacer ? '10rem' : '6rem' }}
+            style={{ minHeight: event.spacer ? '10rem' : isNotPhone ? '6rem' : '5rem' }}
           >
             {/* Left column: location icon and text with connecting line */}
             {isNotPhone && (
@@ -343,23 +343,29 @@ export const Events = () => {
             {/* Right column: date and content */}
             <div className={`${isNotPhone ? 'col-span-9' : 'col-span-12'} ${!event.spacer ? 'flex items-center' : ''}`} style={{ margin: "0", padding: "0", height: "100%" }}>
               {!event.spacer && (
-                <>
+                <div className={`${isNotPhone ? 'flex items-center' : 'block'} w-full`}>
                   {/* Date with bottom border line that connects to vertical line */}
                   {event.date && (
                     <div 
-                      className="inline-block"
-                      style={{
+                      className={`${isNotPhone ? 'inline-block' : 'block mb-3'}`}
+                      style={isNotPhone ? {
                         width: "10rem",
                         paddingLeft: "1rem",
                         borderBottom: "#e44c65 4px solid",
                         position: "relative",
                         bottom: "1rem"
+                      } : {
+                        paddingLeft: "1rem",
+                        borderLeft: "#e44c65 3px solid",
+                        paddingBottom: "0.5rem"
                       }}
                     >
                       <p 
                         style={{
-                          fontSize: "0.85rem",
-                          margin: "0"
+                          fontSize: isNotPhone ? "0.85rem" : "0.9rem",
+                          margin: "0",
+                          fontWeight: isNotPhone ? "normal" : "500",
+                          color: isNotPhone ? "inherit" : "#E44C65"
                         }}
                       >
                         {event.date}
@@ -367,33 +373,30 @@ export const Events = () => {
                     </div>
                   )}
                   
-                  {/* Empty date space for events without dates but still need layout */}
-                  {!event.date && (
+                  {/* Empty date space for events without dates but still need layout - only on desktop */}
+                  {!event.date && isNotPhone && (
                     <div style={{ width: "10rem" }}></div>
                   )}
                   
                   {/* Content */}
                   {event.content && (
                     <div 
-                      className="text-lg leading-relaxed inline-block"
-                      style={{ 
+                      className={`text-lg leading-relaxed ${isNotPhone ? 'inline-block' : 'block'}`}
+                      style={isNotPhone ? { 
                         margin: "0 0 0 1rem",
                         lineHeight: "2em",
                         position: "relative",
+                      } : {
+                        margin: "0",
+                        lineHeight: "1.6em",
+                        paddingLeft: "1rem",
+                        fontSize: "1rem"
                       }}
                     >
                       {event.content}
                     </div>
                   )}
-                  
-                  {/* Mobile location display */}
-                  {!isNotPhone && event.showLocation && (
-                    <div className="flex items-center mt-2 text-sm opacity-60">
-                      <MapPin size={14} className="text-[#E44C65] mr-1" />
-                      <span>{event.location}</span>
-                    </div>
-                  )}
-                </>
+                </div>
               )}
             </div>
           </div>
