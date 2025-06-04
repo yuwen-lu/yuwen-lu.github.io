@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,100italic,300italic");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-light antialiased;
+    margin: 0;
+    background-color: #1C1E26;
+    color: rgba(255, 255, 255, 1);
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 15pt;
+    font-weight: 300;
+    line-height: 2em;
+    min-height: 100vh;
+  }
+  
+  /* Mobile and tablet adjustments */
+  @media screen and (max-width: 769px) {
+    body {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 2em;
+    }
+  }
+  
+  #root {
+    min-height: 100vh;
+  }
+  
+  /* Original link styling */
+  a {
+    color: #E44C65;
+    text-decoration: none;
+    border-bottom: dotted 1px;
+    transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  a:hover {
+    border-color: transparent;
+  }
+  
+  p {
+    margin-bottom: 2rem;
+  }
+}
+
+@layer components {
+  /* Original blur blocks */
+  .blur-block {
+    position: fixed;
+    opacity: 0.45;
+    filter: blur(70px);
+    -webkit-filter: blur(70px);
+    z-index: -1;
+  }
+  
+  /* Simple fade-in animation for publication cards */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  #blur-purple {
+    background-color: #A58BF0;
+    border-radius: 50% 30% 50% 30%;
+    top: -8vh;
+    left: -18vw;
+    width: 45vw;
+    height: 60vh;
+  }
+  
+  #blur-pink {
+    background-color: #f8b6f2;
+    border-radius: 50% 60% 50% 60%;
+    filter: blur(90px);
+    -webkit-filter: blur(90px);
+    top: 25vh;
+    left: -25vw;
+    width: 35vw;
+    height: 60vh;
+  }
+  
+  #blur-green {
+    background-color: #d8f0aa;
+    border-radius: 50% 60% 50% 60%;
+    filter: blur(90px);
+    -webkit-filter: blur(90px);
+    right: -15vw;
+    bottom: -20vh;
+    width: 20vw;
+    height: 60vh;
+  }
+  
+  #blur-yellow {
+    background-color: #FBF2D2;
+    border-radius: 50% 60% 50% 60%;
+    filter: blur(90px);
+    -webkit-filter: blur(90px);
+    right: -10vw;
+    bottom: -25vh;
+    width: 40vw;
+    height: 30vh;
+  }
+  
+  /* Title styling */
+  .title {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  
+  /* Special styling for the graduation announcement */
+  .title.text-center {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+  
+  @media screen and (max-width: 576px) {
+    .title {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+    
+    .title.text-center {
+      font-size: 2rem;
+      line-height: 1.3;
+    }
+  }
+  
+  /* Navigation link styling */
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    margin: 1.8rem;
+    font-weight: 300;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #E44C65;
+    text-decoration: none;
+    border-bottom: dotted 1px;
+  }
+  
+  @media screen and (max-width: 576px) {
+    .nav-link {
+      padding: 0;
+      margin: 0.5rem;
+      font-weight: 400;
+    }
+  }
+  
+  /* Original paper link styling */
+  .paper-link {
+    color: #E44C65 !important;
+    text-decoration: none;
+    border-bottom: dotted 1px;
+    font-weight: 400;
+    transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  .paper-link:hover {
+    border-color: transparent;
+  }
+  
+  /* Card styling for publications and other content */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Footer icons cursor fix */
+  .footer-icons a,
+  .footer-icons button,
+  .footer-icons a img,
+  .footer-icons button img {
+    cursor: pointer !important;
+  }
+
+  /* Typing cursor animation */
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  .typing-cursor {
+    display: inline-block;
+  }
+} 
