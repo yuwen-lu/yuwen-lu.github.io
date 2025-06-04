@@ -283,8 +283,9 @@ export const Home = () => {
             style={{
               perspective: '1000px',
               transformStyle: 'preserve-3d',
-              padding: isDesktop ? '200px' : '80px', // Reduced padding on mobile
-              margin: isDesktop ? '-200px' : '-80px' // Corresponding negative margin
+              padding: isDesktop ? '120px' : '60px', // Reduced padding
+              margin: isDesktop ? '-120px' : '-60px', // Corresponding negative margin
+              zIndex: 1 // Lower z-index
             }}
           >
             {/* Click Effects */}

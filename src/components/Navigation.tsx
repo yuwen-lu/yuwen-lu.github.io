@@ -20,10 +20,12 @@ export const Navigation = () => {
       height: "10vh",
       padding: "4vw",
       alignItems: "center",
-      justifyContent: "flex-end"
+      justifyContent: "flex-end",
+      position: "relative",
+      zIndex: 100
     }}>
       {/* Desktop Navigation */}
-      <div className="hidden md:flex">
+      <div className="hidden md:flex" style={{ position: "relative", zIndex: 100 }}>
         {navItems.map((item) => (
           <NavLink
             key={item.path}
