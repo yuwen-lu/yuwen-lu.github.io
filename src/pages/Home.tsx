@@ -57,19 +57,6 @@ export const Home = () => {
   // 3D rotation effect for profile picture
   const profileImageRef = useRef<HTMLDivElement>(null)
   const [rotation, setRotation] = useState({ x: 0, y: 0 })
-  const [clickEffects, setClickEffects] = useState<Array<{
-    id: number;
-    x: number;
-    y: number;
-    particles: Array<{
-      id: number;
-      angle: number;
-      velocity: number;
-      size: number;
-      duration: number;
-      delay: number;
-    }>;
-  }>>([])
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!profileImageRef.current) return
@@ -112,53 +99,6 @@ export const Home = () => {
 
   const handleTouchEnd = () => {
     setRotation({ x: 0, y: 0 })
-  }
-
-  const handleClick = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-    if (!profileImageRef.current) return
-
-    const rect = profileImageRef.current.getBoundingClientRect()
-    let clickX: number, clickY: number
-
-    if ('touches' in event && event.touches.length > 0) {
-      // Touch event
-      clickX = event.touches[0].clientX - rect.left
-      clickY = event.touches[0].clientY - rect.top
-    } else if ('changedTouches' in event && event.changedTouches.length > 0) {
-      // Touch end event
-      clickX = event.changedTouches[0].clientX - rect.left
-      clickY = event.changedTouches[0].clientY - rect.top
-    } else {
-      // Mouse event
-      const mouseEvent = event as React.MouseEvent<HTMLDivElement>
-      clickX = mouseEvent.clientX - rect.left
-      clickY = mouseEvent.clientY - rect.top
-    }
-    
-    const newEffect = {
-      id: Date.now(),
-      x: clickX,
-      y: clickY,
-      particles: Array.from({ length: 12 }, (_, i) => {
-        const angle = (Math.PI * 2 * i) / 12 + (Math.random() - 0.5) * 0.3
-        const velocity = isDesktop ? 80 + Math.random() * 40 : 60 + Math.random() * 30 // Smaller on mobile
-        const size = isDesktop ? 2 + Math.random() * 3 : 1.5 + Math.random() * 2.5 // Smaller on mobile
-        return {
-          id: i,
-          angle,
-          velocity,
-          size,
-          duration: 0.8 + Math.random() * 0.4,
-          delay: Math.random() * 0.1
-        }
-      })
-    }
-
-    setClickEffects(prev => [...prev, newEffect])
-
-    setTimeout(() => {
-      setClickEffects(prev => prev.filter(effect => effect.id !== newEffect.id))
-    }, 1500)
   }
 
   const publications = [
@@ -224,10 +164,10 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center mb-12 lg:mb-16"
+        className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center mb-16 lg:mb-16"
         style={{ marginTop: "1rem" }}
       >
-        <div className="space-y-4 lg:space-y-6 order-2 lg:order-1">
+        <div className="space-y-12 lg:space-y-6 order-2 lg:order-1">
           <h1 className="title space-grotesk-medium" style={{ fontSize: isDesktop ? "3.5rem" : "2.8rem", letterSpacing: "-0.02em" }}>
             {renderTextWithColoredUnderscores(displayText)}
             <span 
@@ -247,12 +187,12 @@ export const Home = () => {
               &nbsp;
             </span>
           </h1>
-          <div className="space-y-3 lg:space-y-4">
+          <div className="space-y-12 lg:space-y-4">
             <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am Yuwen, a Ph.D. Candidate in Computer Science and Engineering at the
               University of Notre Dame.
             </p>
-            <p>
+            <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
               <a href="https://toby.li/">Toby Li</a>.
             </p>
@@ -277,8 +217,6 @@ export const Home = () => {
             onMouseLeave={handleMouseLeave}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            onClick={handleClick}
-            onTouchStart={handleClick}
             className="relative"
             style={{
               perspective: '1000px',
@@ -288,49 +226,6 @@ export const Home = () => {
               zIndex: 1 // Lower z-index
             }}
           >
-            {/* Click Effects */}
-            {clickEffects.map((effect) => (
-              <div key={effect.id} className="absolute pointer-events-none" style={{ left: effect.x, top: effect.y }}>
-                {/* Simple Particle Burst */}
-                {effect.particles.map((particle) => {
-                  const endX = Math.cos(particle.angle) * particle.velocity
-                  const endY = Math.sin(particle.angle) * particle.velocity
-                  
-                  return (
-                    <motion.div
-                      key={particle.id}
-                      initial={{ 
-                        scale: 0,
-                        x: 0, 
-                        y: 0, 
-                        opacity: 1
-                      }}
-                      animate={{ 
-                        scale: [0, 1, 0.8, 0],
-                        x: endX, 
-                        y: endY, 
-                        opacity: [1, 0.8, 0.3, 0]
-                      }}
-                      transition={{ 
-                        duration: particle.duration,
-                        delay: particle.delay,
-                        ease: [0.25, 0.46, 0.45, 0.94]
-                      }}
-                      className="absolute rounded-full bg-white"
-                      style={{
-                        width: `${particle.size}px`,
-                        height: `${particle.size}px`,
-                        left: `-${particle.size / 2}px`,
-                        top: `-${particle.size / 2}px`,
-                        boxShadow: `0 0 ${particle.size * 2}px rgba(255, 255, 255, 0.6)`,
-                        backgroundColor: 'rgba(255, 255, 255, 0.9)'
-                      }}
-                    />
-                  )
-                })}
-              </div>
-            ))}
-
             <motion.div
               animate={{
                 rotateX: rotation.x,
@@ -350,7 +245,7 @@ export const Home = () => {
               <img
                 src={ProfilePic}
                 alt="Yuwen Lu"
-                className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 object-cover rounded-full shadow-lg transition-shadow duration-300 hover:shadow-2xl"
+                className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-full shadow-lg transition-shadow duration-300 hover:shadow-2xl"
                 style={{ 
                   filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
                   transformStyle: 'preserve-3d'
@@ -366,10 +261,10 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-12 lg:mb-16"
+        className="mb-16 lg:mb-16"
       >
-        <div className="text-center mb-6 lg:mb-8">
-          <h2 className="text-xl lg:text-2xl mb-6 lg:mb-8 space-grotesk-medium" 
+        <div className="text-center mb-8 lg:mb-8">
+          <h2 className="text-xl lg:text-2xl mb-8 lg:mb-8 space-grotesk-medium" 
               style={{ 
                 fontSize: isDesktop ? "2rem" : "1.6rem", 
                 lineHeight: "1.3",
@@ -378,38 +273,35 @@ export const Home = () => {
             Currently Working On...
           </h2>
         </div>
-        <div className="text-center space-y-3 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.8em" }}>
-          <div>
-            Exploring UI for AI (maybe{" "}
+        <div className="text-left lg:text-center space-y-6 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.8em" }}>
+          <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
+            Exploring the UI for AI (maybe{" "}
             <a
               href="https://machinelearning.apple.com/research/interactive-prototyping"
               target="_blank"
-              rel="noopener noreferrer"
-              className="paper-link"
+              rel="noopener noreferrer" 
             >
               more direct manipulation
             </a>
             ?),
           </div>
-          <div>
+          <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
             Using AI to{" "}
             <a
               href="https://arxiv.org/abs/2406.16177"
               target="_blank"
               rel="noopener noreferrer"
-              className="paper-link"
             >
               support design
             </a>
             ,
           </div>
-          <div>
+          <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
             Dealing with{" "}
             <a
               href="https://dl.acm.org/doi/10.1145/3637336"
               target="_blank"
               rel="noopener noreferrer"
-              className="paper-link"
             >
               dark patterns
             </a>
@@ -418,7 +310,6 @@ export const Home = () => {
               href="https://arxiv.org/abs/2406.16177"
               target="_blank"
               rel="noopener noreferrer"
-              className="paper-link"
             >
               support end users
             </a>
