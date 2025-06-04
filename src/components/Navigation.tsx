@@ -15,12 +15,12 @@ export const Navigation = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   return (
-    <nav style={{ 
-      display: "flex", 
-      height: "10vh", 
-      padding: "4vw", 
-      alignItems: "center", 
-      justifyContent: "flex-end" 
+    <nav style={{
+      display: "flex",
+      height: "10vh",
+      padding: "4vw",
+      alignItems: "center",
+      justifyContent: "flex-end"
     }}>
       {/* Desktop Navigation */}
       <div className="hidden md:flex">
@@ -77,16 +77,16 @@ export const Navigation = () => {
             initial={{ opacity: 0, scale: 0.85, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: -20 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 300, 
+            transition={{
+              type: "spring",
+              stiffness: 300,
               damping: 30,
-              duration: 0.3 
+              duration: 0.3
             }}
             className="md:hidden absolute top-16 right-4 z-50"
             style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              background: 'rgba(28, 30, 38, 0.5)',
+              border: '1px solid rgba(255, 255, 255, 0.4)',
               backdropFilter: 'blur(20px)',
               borderRadius: '12px',
               padding: '1.5rem',
@@ -111,8 +111,7 @@ export const Navigation = () => {
                       fontSize: '1rem',
                       fontWeight: '400',
                       textDecoration: 'none',
-                      border: 'none',
-                      mixBlendMode: 'difference'
+                      border: 'none'
                     }}
                   >
                     {item.label}
@@ -120,16 +119,16 @@ export const Navigation = () => {
                 </motion.div>
               ))}
             </div>
-            
+
             {/* Decorative elements */}
-            <div 
+            <div
               className="absolute -top-2 -right-2 w-8 h-8 rounded-full opacity-20"
               style={{
                 background: 'linear-gradient(45deg, #E44C65, #A58BF0)',
                 filter: 'blur(8px)'
               }}
             />
-            <div 
+            <div
               className="absolute -bottom-3 -left-3 w-6 h-6 rounded-full opacity-15"
               style={{
                 background: 'linear-gradient(45deg, #A58BF0, #f8b6f2)',
