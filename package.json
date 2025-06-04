@@ -1,5 +1,5 @@
 {
-  "name": "yuwen-lu-portfolio",
+  "name": "yuwen-lu",
   "version": "0.2.0",
   "private": true,
   "homepage": "http://yuwen.io",
@@ -32,7 +32,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && cp .nojekyll dist/",
     "deploy": "gh-pages -b gh-pages -d dist"
   },
   "eslintConfig": {

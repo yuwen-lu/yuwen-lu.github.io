@@ -1,6 +1,6 @@
-# Yuwen Lu - Portfolio Website
+# Yuwen Lu - Personal Website
 
-A personal portfolio website built with React 18, TypeScript, Vite, and Tailwind CSS.
+A personal personal website built with React 18, TypeScript, Vite, and Tailwind CSS.
 
 ## Features
 
