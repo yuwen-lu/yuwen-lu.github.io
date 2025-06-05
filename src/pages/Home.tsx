@@ -39,9 +39,9 @@ export const Home = () => {
       if (part === '\/almost\/') {
         return (
           <span key={index}>
-            <span style={{ color: '#E44C65', fontWeight: '500' }}>/</span>
+            <span style={{ color: '#a1db08', fontWeight: '500' }}>/</span>
             <span style={{ fontWeight: '500' }}>almost</span>
-            <span style={{ color: '#E44C65', fontWeight: '500' }}>/</span>
+            <span style={{ color: '#a1db08', fontWeight: '500' }}>/</span>
           </span>
         )
       }
@@ -174,7 +174,7 @@ export const Home = () => {
               className={`typing-cursor ${isComplete ? 'blink' : ''}`}
               style={{
                 animation: isComplete ? 'blink 1s infinite' : 'none',
-                borderBottom: '5px solid #E44C65',
+                borderBottom: '5px solid #a1db08',
                 marginLeft: '2px',
                 display: 'inline-block',
                 width: '16px',
@@ -356,7 +356,7 @@ export const Home = () => {
                   <h3 className="text-lg font-light leading-tight mb-2" style={{ fontSize: "1.1rem", lineHeight: "1.4" }}>
                     {pub.title}
                   </h3>
-                  <p className="text-[#E44C65] font-medium text-sm mb-2">{pub.conference}</p>
+                  <p className="text-[#a1db08] font-medium text-sm mb-2">{pub.conference}</p>
                 </div>
               </div>
               
@@ -425,7 +425,7 @@ export const Home = () => {
                     )
                   )}
                 </p>
-                <p className="text-[#E44C65] font-medium text-lg space-grotesk-medium" style={{ fontSize: "1.05rem" }}>{pub.conference}</p>
+                <p className="text-[#a1db08] font-medium text-lg space-grotesk-medium" style={{ fontSize: "1.05rem" }}>{pub.conference}</p>
                 {pub.note && (
                   <p className="text-base opacity-60 italic space-grotesk-regular" style={{ fontSize: "1rem" }}>{pub.note}</p>
                 )}

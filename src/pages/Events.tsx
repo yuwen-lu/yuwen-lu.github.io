@@ -293,7 +293,7 @@ export const Events = () => {
     <div className="max-w-6xl mx-auto">
       {/* Title with original styling */}
       <div className="text-center mb-8">
-        <h1 className="title inline-block" style={{ borderBottom: "#E44C65 2px solid" }}>
+        <h1 className="title inline-block" style={{ borderBottom: "#a1db08 2px solid" }}>
           Events
         </h1>
       </div>
@@ -316,7 +316,7 @@ export const Events = () => {
               <div 
                 className="col-span-3 flex items-center justify-end"
                 style={{ 
-                  borderRight: "#e44c65 4px solid",
+                  borderRight: "#a1db08 4px solid",
                   margin: "0",
                   padding: "0",
                   height: "100%"
@@ -332,7 +332,7 @@ export const Events = () => {
                     }}
                   >
                     <div className="mr-2">
-                      <MapPin size={20} className="text-[#E44C65]" style={{ position: "relative", bottom: "4px" }} />
+                      <MapPin size={20} className="text-[#a1db08]" style={{ position: "relative", bottom: "4px" }} />
                     </div>
                     <span className="opacity-80" style={{ fontSize: "1rem" }}>{event.location}</span>
                   </div>
@@ -351,12 +351,12 @@ export const Events = () => {
                       style={isNotPhone ? {
                         width: "10rem",
                         paddingLeft: "1rem",
-                        borderBottom: "#e44c65 4px solid",
+                        borderBottom: "#a1db08 4px solid",
                         position: "relative",
                         bottom: "1rem"
                       } : {
                         paddingLeft: "1rem",
-                        borderLeft: "#e44c65 3px solid",
+                        borderLeft: "#a1db08 3px solid",
                         paddingBottom: "0.5rem"
                       }}
                     >
@@ -366,7 +366,7 @@ export const Events = () => {
                           fontSize: isNotPhone ? "1rem" : "0.9rem",
                           margin: "0",
                           fontWeight: isNotPhone ? "500" : "500",
-                          color: isNotPhone ? "inherit" : "#E44C65"
+                          color: isNotPhone ? "inherit" : "#a1db08"
                         }}
                       >
                         {event.date}

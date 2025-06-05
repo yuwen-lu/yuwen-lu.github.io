@@ -24,7 +24,7 @@ export const Footer = () => {
         particleCount: 30,
         spread: 45,
         origin: { y: 0.9 }, // Launch from bottom area
-        colors: ['#E44C65', '#A58BF0']
+        colors: ['#a1db08', '#A58BF0']
       })
       
       setShowCopiedBanner(true)
@@ -63,7 +63,7 @@ export const Footer = () => {
               scale: 0.9,
               transition: { duration: 0.2 }
             }}
-            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-[#E44C65] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 space-grotesk-medium"
+            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-[#a1db08] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 space-grotesk-medium"
           >
             <motion.div
               animate={{ 
@@ -93,7 +93,7 @@ export const Footer = () => {
         >
           <Mail 
             size={isDesktop ? 28 : 24} 
-            className="text-white hover:text-[#E44C65] transition-colors"
+            className="text-white hover:text-[#a1db08] transition-colors"
           />
         </motion.button>
         <motion.a 
@@ -113,7 +113,7 @@ export const Footer = () => {
               filter: 'brightness(0) saturate(100%) invert(100%)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(320deg) brightness(1.2)';
+              e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(120deg) brightness(1.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(100%)';
@@ -137,7 +137,7 @@ export const Footer = () => {
               filter: 'brightness(0) saturate(100%) invert(100%)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(320deg) brightness(1.2)';
+              e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(120deg) brightness(1.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(100%)';
@@ -161,7 +161,7 @@ export const Footer = () => {
               filter: 'brightness(0) saturate(100%) invert(100%)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(320deg) brightness(1.2)';
+              e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(1500%) hue-rotate(120deg) brightness(1.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.filter = 'brightness(0) saturate(100%) invert(100%)';

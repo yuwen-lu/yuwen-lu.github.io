@@ -12,7 +12,7 @@ export const CV = () => {
           href="/src/resources/files/CV_Yuwen_Lu.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-[#E44C65] text-white px-6 py-3 rounded-lg hover:bg-[#d63850] transition-colors no-underline"
+          className="inline-flex items-center gap-2 bg-[#a1db08] text-black px-6 py-3 rounded-lg hover:bg-[#8bc406] transition-colors no-underline"
           style={{ borderBottom: "none" }}
         >
           <Download size={20} />

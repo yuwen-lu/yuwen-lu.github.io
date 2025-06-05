@@ -41,7 +41,7 @@ export const Navigation = () => {
       <div className="md:hidden">
         <motion.button
           onClick={toggleMenu}
-          className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-[#E44C65] transition-colors space-grotesk-medium"
+          className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-[#a1db08] transition-colors space-grotesk-medium"
           aria-expanded={isMenuOpen}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -126,7 +126,7 @@ export const Navigation = () => {
             <div
               className="absolute -top-2 -right-2 w-8 h-8 rounded-full opacity-20"
               style={{
-                background: 'linear-gradient(45deg, #E44C65, #A58BF0)',
+                background: 'linear-gradient(45deg, #a1db08, #A58BF0)',
                 filter: 'blur(8px)'
               }}
             />

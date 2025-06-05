@@ -140,7 +140,7 @@
   
   /* Original link styling */
   a {
-    color: #E44C65;
+    color: #a1db08;
     text-decoration: none;
     border-bottom: dotted 1px;
     transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -307,7 +307,7 @@
   }
   
   .nav-link:hover {
-    color: #E44C65;
+    color: #a1db08;
     text-decoration: none;
     border-bottom: dotted 1px;
   }
@@ -329,7 +329,7 @@
   
   /* Original paper link styling */
   .paper-link {
-    color: #E44C65 !important;
+    color: #a1db08 !important;
     text-decoration: none;
     border-bottom: dotted 1px;
     font-family: "Space Grotesk", sans-serif;
