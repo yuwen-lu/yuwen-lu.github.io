@@ -66,16 +66,16 @@ export const Home = () => {
 
   useEffect(() => {
     const handleGlobalMouseMove = (event: MouseEvent) => {
-      // Subtle perspective effect based on global mouse position
+      // Enhanced perspective effect based on global mouse position
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
 
       const mouseX = event.clientX - centerX
       const mouseY = event.clientY - centerY
 
-      // Much more subtle rotation for perspective (max 8 degrees)
-      const rotateY = (mouseX / (window.innerWidth / 2)) * 8
-      const rotateX = -(mouseY / (window.innerHeight / 2)) * 8
+      // More pronounced rotation for better visual feedback (max 20 degrees)
+      const rotateY = (mouseX / (window.innerWidth / 2)) * 20
+      const rotateX = -(mouseY / (window.innerHeight / 2)) * 20
 
       setPerspectiveRotation({ x: rotateX, y: rotateY })
     }
