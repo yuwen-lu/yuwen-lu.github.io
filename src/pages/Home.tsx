@@ -57,6 +57,7 @@ export const Home = () => {
   // 3D rotation effect for profile picture
   const profileImageRef = useRef<HTMLDivElement>(null)
   const [rotation, setRotation] = useState({ x: 0, y: 0 })
+  const [totalRotation, setTotalRotation] = useState(0)
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!profileImageRef.current) return
@@ -99,6 +100,11 @@ export const Home = () => {
 
   const handleTouchEnd = () => {
     setRotation({ x: 0, y: 0 })
+  }
+
+  const handleImageClick = () => {
+    // Each click adds 540 (360 flashy animation + 180° to flip sides)
+    setTotalRotation(prev => prev + 540)
   }
 
   const publications = [
@@ -217,7 +223,8 @@ export const Home = () => {
             onMouseLeave={handleMouseLeave}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            className="relative"
+            onClick={handleImageClick}
+            className="relative cursor-pointer"
             style={{
               perspective: '1000px',
               transformStyle: 'preserve-3d',
@@ -229,17 +236,18 @@ export const Home = () => {
             <motion.div
               animate={{
                 rotateX: rotation.x,
-                rotateY: rotation.y,
+                rotateY: rotation.y + totalRotation,
               }}
               transition={{
                 type: "spring",
-                stiffness: 100,
-                damping: 15,
-                mass: 0.8
+                stiffness: 80,
+                damping: 20,
+                mass: 1.2,
+                duration: 1.5
               }}
               style={{
                 transformStyle: 'preserve-3d',
-                transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+                transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y + totalRotation}deg)`,
               }}
             >
               <img
@@ -248,9 +256,64 @@ export const Home = () => {
                 className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-full shadow-lg transition-shadow duration-300 hover:shadow-2xl"
                 style={{ 
                   filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
-                  transformStyle: 'preserve-3d'
+                  transformStyle: 'preserve-3d',
+                  backfaceVisibility: 'hidden'
                 }}
               />
+              {/* Back face of the image - glass/acrylic texture */}
+              <div
+                className="absolute top-0 left-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full flex items-center justify-center text-white font-bold text-xl sm:text-2xl space-grotesk-medium"
+                style={{
+                  backfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg)',
+                  filter: 'drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4))',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15))',
+                  backdropFilter: 'blur(40px) saturate(150%)',
+                  border: '3px solid rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0 15px 45px 0 rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
+                  position: 'absolute',
+                  overflow: 'hidden'
+                }}
+              >
+                {/* Additional depth layer for thickness effect */}
+                <div 
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(161, 219, 8, 0.15), rgba(161, 219, 8, 0.05))',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(161, 219, 8, 0.2)',
+                    pointerEvents: 'none'
+                  }}
+                />
+                {/* Glass texture overlay */}
+                <div 
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: 'linear-gradient(45deg, transparent 25%, rgba(255, 255, 255, 0.2) 50%, transparent 75%)',
+                    pointerEvents: 'none'
+                  }}
+                />
+                {/* Enhanced inner glow */}
+                <div 
+                  className="absolute inset-2 rounded-full"
+                  style={{
+                    background: 'radial-gradient(circle at 30% 30%, rgba(161, 219, 8, 0.3), transparent 50%)',
+                    pointerEvents: 'none'
+                  }}
+                />
+                {/* Edge highlight for thickness */}
+                <div 
+                  className="absolute inset-1 rounded-full"
+                  style={{
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    pointerEvents: 'none'
+                  }}
+                />
+                <span className="text-center relative z-10" style={{ textShadow: '0 3px 6px rgba(0,0,0,0.4)' }}>
+                  👋<br />
+                  <span className="text-lg sm:text-xl">Hi there!</span>
+                </span>
+              </div>
             </motion.div>
           </div>
         </div>
