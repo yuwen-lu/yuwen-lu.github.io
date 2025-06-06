@@ -7,6 +7,7 @@ import CHIWORK2022Pic from '../resources/images/CHIWORK22_approach.png'
 import CHI2022WorkshopPic from '../resources/images/user-interface-workshop.jpeg'
 import Lbw2022Pic from '../resources/images/chi-lbw-2022.png'
 import { useMediaQuery } from 'react-responsive'
+import { AcrylicDisc } from '../components/AcrylicDisc'
 
 export const Home = () => {
   // Typing animation hook
@@ -56,55 +57,89 @@ export const Home = () => {
 
   // 3D rotation effect for profile picture
   const profileImageRef = useRef<HTMLDivElement>(null)
-  const [rotation, setRotation] = useState({ x: 0, y: 0 })
-  const [totalRotation, setTotalRotation] = useState(0)
+  const [perspectiveRotation, setPerspectiveRotation] = useState({ x: 0, y: 0 }) // Global mouse perspective
+  const [dragRotation, setDragRotation] = useState({ x: 0, y: 0 }) // User drag rotation
+  const [totalRotation, setTotalRotation] = useState(0) // Click flip rotation
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
+  const [hasDragged, setHasDragged] = useState(false) // Track if actual dragging occurred
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!profileImageRef.current) return
+  useEffect(() => {
+    const handleGlobalMouseMove = (event: MouseEvent) => {
+      // Subtle perspective effect based on global mouse position
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
 
-    const rect = profileImageRef.current.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
+      const mouseX = event.clientX - centerX
+      const mouseY = event.clientY - centerY
 
-    // Calculate mouse position relative to the center of the container
-    const mouseX = event.clientX - centerX
-    const mouseY = event.clientY - centerY
+      // Much more subtle rotation for perspective (max 8 degrees)
+      const rotateY = (mouseX / (window.innerWidth / 2)) * 8
+      const rotateX = -(mouseY / (window.innerHeight / 2)) * 8
 
-    // Convert to rotation values (limit rotation to make it realistic)
-    const rotateY = (mouseX / (rect.width / 2)) * 60 // Max 60 degrees - more dramatic rotation
-    const rotateX = -(mouseY / (rect.height / 2)) * 60 // Max 60 degrees - more dramatic rotation
+      setPerspectiveRotation({ x: rotateX, y: rotateY })
+    }
 
-    setRotation({ x: rotateX, y: rotateY })
+    document.addEventListener('mousemove', handleGlobalMouseMove)
+    return () => document.removeEventListener('mousemove', handleGlobalMouseMove)
+  }, [])
+
+  const handleMouseDown = (event: React.MouseEvent) => {
+    setIsDragging(true)
+    setHasDragged(false) // Reset drag flag
+    setDragStart({ x: event.clientX, y: event.clientY })
+    event.preventDefault() // Prevent text selection while dragging
   }
 
-  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
-    if (!profileImageRef.current || event.touches.length === 0) return
+  const handleMouseMove = (event: React.MouseEvent) => {
+    if (!isDragging) return
 
-    const touch = event.touches[0]
-    const rect = profileImageRef.current.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
+    const deltaX = event.clientX - dragStart.x
+    const deltaY = event.clientY - dragStart.y
 
-    const touchX = touch.clientX - centerX
-    const touchY = touch.clientY - centerY
+    // Consider it dragging if moved more than 5 pixels
+    if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+      setHasDragged(true)
+    }
 
-    const rotateY = (touchX / (rect.width / 2)) * 60
-    const rotateX = -(touchY / (rect.height / 2)) * 60
+    const newRotateX = dragRotation.x - deltaY * 0.6 
+    const newRotateY = dragRotation.y + deltaX * 0.6 
 
-    setRotation({ x: rotateX, y: rotateY })
+    // Limit rotation ranges to prevent extreme positions
+    const clampedRotateX = Math.max(-75, Math.min(75, newRotateX)) // Limit vertical tilt
+    const clampedRotateY = Math.max(-90, Math.min(90, newRotateY)) // Limit horizontal spin
+
+    setDragRotation({ x: clampedRotateX, y: clampedRotateY })
+    setDragStart({ x: event.clientX, y: event.clientY })
   }
 
-  const handleMouseLeave = () => {
-    setRotation({ x: 0, y: 0 })
+  const handleMouseUp = () => {
+    setIsDragging(false)
   }
 
-  const handleTouchEnd = () => {
-    setRotation({ x: 0, y: 0 })
+  const handleImageClick = (event: React.MouseEvent) => {
+    // Only flip if there was no dragging
+    if (!hasDragged) {
+      // Do the flashy 540° animation (360° spin + 180° flip)
+      setTotalRotation(prev => prev + 540)
+      // Reset drag rotation for clean viewing position
+      setDragRotation({ x: 0, y: 0 })
+    }
+    // Reset drag flag for next interaction
+    setHasDragged(false)
   }
 
-  const handleImageClick = () => {
-    // Each click adds 540 (360 flashy animation + 180° to flip sides)
-    setTotalRotation(prev => prev + 540)
+  // Global mouse up listener to handle drag end even outside component
+  useEffect(() => {
+    const handleGlobalMouseUp = () => setIsDragging(false)
+    document.addEventListener('mouseup', handleGlobalMouseUp)
+    return () => document.removeEventListener('mouseup', handleGlobalMouseUp)
+  }, [])
+
+  // Combine all rotations
+  const combinedRotation = {
+    x: perspectiveRotation.x + dragRotation.x,
+    y: perspectiveRotation.y + dragRotation.y + totalRotation
   }
 
   const publications = [
@@ -170,27 +205,35 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center mb-16 lg:mb-16"
+        className="grid lg:grid-cols-5 gap-8 lg:gap-8 items-center mb-16 lg:mb-16"
         style={{ marginTop: "1rem" }}
       >
-        <div className="space-y-12 lg:space-y-6 order-2 lg:order-1">
-          <h1 className="title space-grotesk-medium" style={{ fontSize: isDesktop ? "3.5rem" : "2.8rem", letterSpacing: "-0.02em" }}>
-            {renderTextWithColoredUnderscores(displayText)}
-            <span 
-              className={`typing-cursor ${isComplete ? 'blink' : ''}`}
-              style={{
-                animation: isComplete ? 'blink 1s infinite' : 'none',
-                borderBottom: '5px solid #a1db08',
-                marginLeft: '2px',
-                display: 'inline-block',
-                width: '16px',
-                height: '1em',
-                verticalAlign: 'baseline',
-                position: 'relative',
-                top: '0.1em'
-              }}
-            >
-              &nbsp;
+        <div className="space-y-12 lg:space-y-6 order-2 lg:order-1 lg:col-span-3">
+          <h1 className="title space-grotesk-medium relative" style={{ fontSize: isDesktop ? "3.5rem" : "2.8rem", letterSpacing: "-0.02em" }}>
+            {/* Invisible placeholder to reserve space for full text */}
+            <span className="invisible" aria-hidden="true">
+              {renderTextWithColoredUnderscores("I am /almost/ graduating")}
+            </span>
+            
+            {/* Actual typing animation positioned absolutely over the placeholder */}
+            <span className="absolute top-0 left-0">
+              {renderTextWithColoredUnderscores(displayText)}
+              <span 
+                className={`typing-cursor ${isComplete ? 'blink' : ''}`}
+                style={{
+                  animation: isComplete ? 'blink 1s infinite' : 'none',
+                  borderBottom: '5px solid #a1db08',
+                  marginLeft: '2px',
+                  display: 'inline-block',
+                  width: '16px',
+                  height: '1em',
+                  verticalAlign: 'baseline',
+                  position: 'relative',
+                  top: '0.1em'
+                }}
+              >
+                &nbsp;
+              </span>
             </span>
           </h1>
           <div className="space-y-12 lg:space-y-4">
@@ -216,27 +259,25 @@ export const Home = () => {
           </div>
         </div>
 
-        <div className="flex justify-center order-1 lg:order-2">
+        <div className="flex justify-center order-1 lg:order-2 lg:col-span-2">
           <div
             ref={profileImageRef}
+            onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
+            onMouseUp={handleMouseUp}
             onClick={handleImageClick}
-            className="relative cursor-pointer"
+            className={`relative ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`} // Dynamic cursor based on drag state
             style={{
               perspective: '1000px',
               transformStyle: 'preserve-3d',
-              padding: isDesktop ? '120px' : '60px', // Reduced padding
-              margin: isDesktop ? '-120px' : '-60px', // Corresponding negative margin
-              zIndex: 1 // Lower z-index
+              zIndex: 0,
+              userSelect: 'none', // Prevent text selection while dragging
             }}
           >
             <motion.div
               animate={{
-                rotateX: rotation.x,
-                rotateY: rotation.y + totalRotation,
+                rotateX: combinedRotation.x,
+                rotateY: combinedRotation.y,
               }}
               transition={{
                 type: "spring",
@@ -247,73 +288,25 @@ export const Home = () => {
               }}
               style={{
                 transformStyle: 'preserve-3d',
-                transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y + totalRotation}deg)`,
+                transform: `rotateX(${combinedRotation.x}deg) rotateY(${combinedRotation.y}deg)`,
               }}
             >
               <img
                 src={ProfilePic}
                 alt="Yuwen Lu"
-                className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-full shadow-lg transition-shadow duration-300 hover:shadow-2xl"
+                className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 object-cover rounded-full shadow-lg transition-shadow duration-300 hover:shadow-2xl cursor-pointer"
                 style={{ 
                   filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
                   transformStyle: 'preserve-3d',
                   backfaceVisibility: 'hidden'
                 }}
               />
-              {/* Back face of the image - glass/acrylic texture */}
-              <div
-                className="absolute top-0 left-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full flex items-center justify-center text-white font-bold text-xl sm:text-2xl space-grotesk-medium"
-                style={{
-                  backfaceVisibility: 'hidden',
-                  transform: 'rotateY(180deg)',
-                  filter: 'drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4))',
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15))',
-                  backdropFilter: 'blur(40px) saturate(150%)',
-                  border: '3px solid rgba(255, 255, 255, 0.3)',
-                  boxShadow: '0 15px 45px 0 rgba(31, 38, 135, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
-                  position: 'absolute',
-                  overflow: 'hidden'
-                }}
-              >
-                {/* Additional depth layer for thickness effect */}
-                <div 
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(161, 219, 8, 0.15), rgba(161, 219, 8, 0.05))',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(161, 219, 8, 0.2)',
-                    pointerEvents: 'none'
-                  }}
-                />
-                {/* Glass texture overlay */}
-                <div 
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    background: 'linear-gradient(45deg, transparent 25%, rgba(255, 255, 255, 0.2) 50%, transparent 75%)',
-                    pointerEvents: 'none'
-                  }}
-                />
-                {/* Enhanced inner glow */}
-                <div 
-                  className="absolute inset-2 rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle at 30% 30%, rgba(161, 219, 8, 0.3), transparent 50%)',
-                    pointerEvents: 'none'
-                  }}
-                />
-                {/* Edge highlight for thickness */}
-                <div 
-                  className="absolute inset-1 rounded-full"
-                  style={{
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    pointerEvents: 'none'
-                  }}
-                />
-                <span className="text-center relative z-10" style={{ textShadow: '0 3px 6px rgba(0,0,0,0.4)' }}>
-                  👋<br />
-                  <span className="text-lg sm:text-xl">Hi there!</span>
-                </span>
-              </div>
+              {/* 3D Glass disc instead of CSS effect */}
+              <AcrylicDisc 
+                rotation={combinedRotation}
+                totalRotation={0} // Rotation now handled in combinedRotation
+                size={isDesktop ? 224 : 144} // Reduced to match new image sizes (was 320/192)
+              />
             </motion.div>
           </div>
         </div>
