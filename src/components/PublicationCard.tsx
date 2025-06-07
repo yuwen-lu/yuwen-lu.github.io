@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-
 interface PublicationCardProps {
   title: string
   authors?: string
@@ -8,8 +6,6 @@ interface PublicationCardProps {
   note?: string
   links: Array<{ label: string; url: string }>
   image?: string
-  gradientFrom?: string
-  gradientTo?: string
   isSystemPaper?: boolean
 }
 
@@ -21,8 +17,6 @@ export const PublicationCard = ({
   note, 
   links, 
   image,
-  gradientFrom = "from-teal-500",
-  gradientTo = "to-orange-400",
   isSystemPaper = false
 }: PublicationCardProps) => {
   return (

@@ -18,7 +18,3 @@ export const CV = () => {
           <Download size={20} />
           Download CV
         </a>
-      </div>
-    </div>
-  )
-} 

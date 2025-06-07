@@ -94,7 +94,3 @@ export const Projects = () => {
             </div>
           </motion.div>
         ))}
-      </div>
-    </div>
-  )
-} 
