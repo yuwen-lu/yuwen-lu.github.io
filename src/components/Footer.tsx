@@ -164,12 +164,96 @@ export const Footer = () => {
     setIsSendingMessage(true)
 
     try {
-      // Placeholder - no actual sending logic for now
-      console.log('Message would be sent:', messageToSend)
-      console.log('Message type:', healthStatus)
+      const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL
       
-      // Simulate sending delay
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      if (!webhookUrl) {
+        console.error('Discord webhook URL not configured')
+        throw new Error('Discord webhook not configured')
+      }
+
+      // Create embed based on health status
+      const getEmbedColor = () => {
+        switch (healthStatus) {
+          case 'healthy': return 0xa1db08  // Green
+          case 'stale': return 0xf59e0b    // Orange  
+          case 'outdated': return 0xef4444 // Red
+        }
+      }
+
+      const getEmbedTitle = () => {
+        switch (healthStatus) {
+          case 'healthy': return '💚 New Message from Portfolio'
+          case 'stale': return '🟡 Nudge from Portfolio'
+          case 'outdated': return '🔴 URGENT Nudge from Portfolio'
+        }
+      }
+
+      // Prepare Discord embed
+      const embed = {
+        title: getEmbedTitle(),
+        color: getEmbedColor(),
+        fields: [
+          {
+            name: selectedPreset ? "Preset Message" : "Custom Message",
+            value: messageToSend,
+            inline: false
+          },
+          {
+            name: "Site Health Status",
+            value: `${getHealthText()} (${lastUpdated})`,
+            inline: true
+          }
+        ],
+        timestamp: new Date().toISOString(),
+        footer: {
+          text: "Portfolio Message System"
+        }
+      }
+
+      // Add custom message field if both preset and custom exist
+      if (selectedPreset && customMessage.trim()) {
+        embed.fields = [
+          {
+            name: "Preset Message",
+            value: selectedPreset,
+            inline: false
+          },
+          {
+            name: "Additional Message",
+            value: customMessage,
+            inline: false
+          },
+          {
+            name: "Site Health Status",
+            value: `${getHealthText()} (${lastUpdated})`,
+            inline: true
+          }
+        ]
+      }
+
+      // Add contact info if provided
+      if (contactInfo.trim()) {
+        embed.fields.push({
+          name: "Contact Info",
+          value: contactInfo,
+          inline: true
+        })
+      }
+
+      // Send to Discord
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          embeds: [embed]
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error(`Discord webhook failed: ${response.status}`)
+      }
       
       // Trigger confetti based on message type
       const colors = healthStatus === 'healthy' 
@@ -198,7 +282,8 @@ export const Footer = () => {
       setContactInfo('')
 
     } catch (error) {
-      console.error('Placeholder error:', error)
+      console.error('Failed to send message:', error)
+      // You might want to show an error banner here
     } finally {
       setIsSendingMessage(false)
     }
