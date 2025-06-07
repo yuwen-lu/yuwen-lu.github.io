@@ -131,4 +131,9 @@ export const PublicationCard = ({
                 </a>
               ))}
             </div>
-       
+          )}
+        </div>
+      </div>
+    </div>
+  )
+} 
