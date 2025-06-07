@@ -149,7 +149,7 @@ export const Home = () => {
   const publications = [
     {
       title: "Misty: UI Prototyping Through Interactive Conceptual Blending",
-      authors: "Yuwen Lu, Alan Leung, Amanda Swearngin, Jeffrey Nichols, Titus Barik",
+      // authors: "Yuwen Lu, Alan Leung, Amanda Swearngin, Jeffrey Nichols, Titus Barik",
       conference: "CHI 2025",
       note: "Work done during internship at Apple AIML",
       links: [
@@ -162,10 +162,10 @@ export const Home = () => {
     },
     {
       title: "Dark Pita: Exploring End-User Interventions for Dark Patterns in UX",
-      authors: "Yuwen Lu*, Chao Zhang*, Yuewen Yang, Yaxing Yao, Toby Jia-Jun Li (* equal contribution)",
+      // authors: "Yuwen Lu*, Chao Zhang*, Yuewen Yang, Yaxing Yao, Toby Jia-Jun Li (* equal contribution)",
       conference: "CSCW 2024",
       award: "🏆 Best Paper Award (Top 1%)",
-      note: "Left image generated with DALL-E 2",
+      note: "Image generated with DALL-E 2",
       links: [
         { label: "Paper", url: "https://dl.acm.org/doi/10.1145/3637336" },
         { label: "Code", url: "https://github.com/yuwen-lu/dark-pita" },
@@ -174,7 +174,7 @@ export const Home = () => {
       isSystemPaper: true
     },
     {
-      title: "Flowy: Supporting UX Design Decisions Through AI-Driven Pattern Annotation in Multi-Screen User Flows",
+      title: "Flowy: Supporting UX Design Decisions With AI",
       authors: "Yuwen Lu, Ziang Tong, Qinyi Zhao, Yewon Oh, Bryan Wang, Toby Jia-Jun Li",
       note: "Use AI to meaningfully support UI/UX design decisions",
       links: [
@@ -185,7 +185,7 @@ export const Home = () => {
       isSystemPaper: true
     },
     {
-      title: "Crepe: A Mobile Screen Data Collector Using Graph Query",
+      title: "Crepe: Mobile Screen Data Collector",
       authors: "Yuwen Lu, Meng Chen, Qi Zhao, Victor Cox, Yang Yang, Meng Jiang, Jay Brockman, Tamara Kay, Toby Jia-Jun Li",
       note: "Collecting mobile screen data for personalized AI agents",
       links: [
@@ -195,7 +195,7 @@ export const Home = () => {
       isSystemPaper: true
     },
     {
-      title: "A Bottom-Up End-User Intelligent Assistant Approach to Empower Gig Workers against AI Inequality",
+      title: "Using AI Agents To Empower Gig Workers against AI Inequality",
       authors: "Toby Jia-Jun Li, Yuwen Lu, Jaylexia Clark, Meng Chen, Victor Cox, Meng Jiang, Yang Yang, Tamara Kay, Danielle Wood, Jay Brockman",
       conference: "CHIWORK '22",
       note: "",
@@ -206,7 +206,7 @@ export const Home = () => {
       image: CHIWORK2022Pic
     },
     {
-      title: "Computational Approaches for Understanding, Generating, and Adapting User Interfaces",
+      title: "Computational Approaches for User Interfaces",
       authors: "Yue Jiang*, Yuwen Lu*, Jeffrey Nichols, Wolfgang Stuerzlinger, Chun Yu, Christof Lutteroth, Yang Li, Ranjitha Kumar, Toby Jia-Jun Li (* equal contribution)",
       conference: "CHI '22 Workshop",
       note: "",
@@ -231,7 +231,7 @@ export const Home = () => {
   ]
 
   return (
-    <div className="w-full mx-auto px-2 sm:px-4 lg:px-12">
+    <div className="w-full mx-auto px-4 sm:px-6 lg:px-16 xl:px-20">
       {/* Hero Section - Original Bootstrap layout */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -490,7 +490,7 @@ export const Home = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 lg:px-8">
           {publications.map((pub, index) => (
             <PublicationCard
               key={index}

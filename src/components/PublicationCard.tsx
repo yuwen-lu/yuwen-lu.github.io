@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 interface PublicationCardProps {
   title: string
-  authors: string
+  authors?: string
   conference?: string
   award?: string
   note?: string
@@ -44,7 +44,7 @@ export const PublicationCard = ({
         {/* Base gradient - always visible */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 from-0% via-black/40 via-75% to-transparent to-100%"></div>
         {/* Darker gradient - appears on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 from-0% via-black/70 via-75% to-transparent to-100% opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 from-0% via-black/70 via-85% to-transparent to-100% opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
       </div>
 
       {/* System badge for system papers */}
@@ -66,25 +66,27 @@ export const PublicationCard = ({
           {/* Additional info - appears on hover just above title */}
           <div className="space-y-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-600" style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}>
             {/* Authors */}
-            <p className="text-sm font-medium drop-shadow-lg line-clamp-3" style={{ transitionDelay: '100ms' }}>
-              {authors.split(/,\s*/).map((author, i) => {
-                const trimmedAuthor = author.trim();
-                if (trimmedAuthor.includes('Yuwen Lu')) {
+            {authors && (
+              <p className="text-sm font-medium drop-shadow-lg line-clamp-3" style={{ transitionDelay: '100ms' }}>
+                {authors.split(/,\s*/).map((author, i) => {
+                  const trimmedAuthor = author.trim();
+                  if (trimmedAuthor.includes('Yuwen Lu')) {
+                    return (
+                      <span key={i}>
+                        {i > 0 && ', '}
+                        <span className="font-bold" style={{ color: '#a1db08' }}>{trimmedAuthor}</span>
+                      </span>
+                    );
+                  }
                   return (
                     <span key={i}>
                       {i > 0 && ', '}
-                      <span className="font-bold" style={{ color: '#a1db08' }}>{trimmedAuthor}</span>
+                      {trimmedAuthor}
                     </span>
                   );
-                }
-                return (
-                  <span key={i}>
-                    {i > 0 && ', '}
-                    {trimmedAuthor}
-                  </span>
-                );
-              })}
-            </p>
+                })}
+              </p>
+            )}
             
             {/* Conference */}
             {conference && (

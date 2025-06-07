@@ -2,7 +2,7 @@ import { Download } from 'lucide-react'
 
 export const CV = () => {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-20">
       <div className="text-center mb-12">
         <h1 className="title">Curriculum Vitae</h1>
         <p className="opacity-80 mb-8">

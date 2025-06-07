@@ -290,7 +290,7 @@ export const Events = () => {
   ]
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-20">
       {/* Title with original styling */}
       <div className="text-center mb-8">
         <h1 className="title inline-block" style={{ borderBottom: "#a1db08 2px solid" }}>
