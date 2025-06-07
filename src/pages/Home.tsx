@@ -205,7 +205,7 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="grid lg:grid-cols-5 gap-8 lg:gap-8 items-center mb-16 lg:mb-16"
+        className="grid lg:grid-cols-5 gap-8 lg:gap-8 items-center mb-16 lg:mb-48"
         style={{ marginTop: "1rem" }}
       >
         <div className="space-y-12 lg:space-y-6 order-2 lg:order-1 lg:col-span-3">
@@ -326,67 +326,119 @@ export const Home = () => {
         </div>
       </motion.div>
 
-      {/* Current Work Section */}
-      <motion.section
+      {/* Thesis Proposal & Current Work - Two Column Layout */}
+      <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-16 lg:mb-16"
+        className="mb-16 lg:mb-20 mt-32 lg:mt-24" // Increased margin above and below
       >
-        <div className="text-center mb-8 lg:mb-8">
-          <h2 className="text-xl lg:text-2xl mb-8 lg:mb-8 space-grotesk-medium" 
-              style={{ 
-                fontSize: isDesktop ? "2rem" : "1.6rem", 
-                lineHeight: "1.3",
-                letterSpacing: "-0.01em"
-              }}>
-            Currently Working On
-          </h2>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20"> {/* Increased gap between columns */}
+          {/* Current Work Section */}
+          <motion.section
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="text-center lg:text-left mb-6 lg:mb-8">
+              <h2 className="text-xl lg:text-2xl mb-6 lg:mb-8 space-grotesk-medium" 
+                  style={{ 
+                    fontSize: isDesktop ? "2rem" : "1.6rem", 
+                    lineHeight: "1.3",
+                    letterSpacing: "-0.01em"
+                  }}>
+                Currently Working On
+              </h2>
+            </div>
+            <div className="text-left space-y-6 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.8em" }}>
+              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
+                Exploring the UI for AI (maybe{" "}
+                <a
+                  href="https://machinelearning.apple.com/research/interactive-prototyping"
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                >
+                  more direct manipulation
+                </a>
+                ?),
+              </div>
+              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
+                Using AI to{" "}
+                <a
+                  href="https://arxiv.org/abs/2406.16177"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  support design
+                </a>
+                ,
+              </div>
+              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
+                Dealing with{" "}
+                <a
+                  href="https://dl.acm.org/doi/10.1145/3637336"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  dark patterns
+                </a>
+                {" "}and{" "}
+                <a
+                  href="https://arxiv.org/abs/2406.16177"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  support end users
+                </a>
+                .
+              </div>
+            </div>
+          </motion.section>
+
+          {/* Thesis Proposal Section */}
+          <motion.section
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="text-center lg:text-left mb-6 lg:mb-8">
+              <h2 className="text-xl lg:text-2xl mb-4 lg:mb-6 space-grotesk-medium" 
+                  style={{ 
+                    fontSize: isDesktop ? "2rem" : "1.6rem", 
+                    lineHeight: "1.3",
+                    letterSpacing: "-0.01em"
+                  }}>
+                Watch My Thesis Proposal
+              </h2>
+              <p className="space-grotesk-regular" 
+                 style={{ 
+                   fontSize: isDesktop ? "1.2rem" : "1rem", 
+                   lineHeight: "1.6", 
+                   opacity: 0.8
+                 }}>
+                April 2025. A summary of my previous research in user interfaces and human-AI interaction.
+              </p>
+            </div>
+            
+            <div className="w-full">
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                  src="https://www.youtube.com/embed/_At0jvJ_N3A"
+                  title="Thesis Proposal - Human-AI Interaction Research"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{
+                    border: 'none',
+                    borderRadius: '12px'
+                  }}
+                />
+              </div>
+            </div>
+          </motion.section>
         </div>
-        <div className="text-left lg:text-center space-y-6 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.8em" }}>
-          <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
-            Exploring the UI for AI (maybe{" "}
-            <a
-              href="https://machinelearning.apple.com/research/interactive-prototyping"
-              target="_blank"
-              rel="noopener noreferrer" 
-            >
-              more direct manipulation
-            </a>
-            ?),
-          </div>
-          <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
-            Using AI to{" "}
-            <a
-              href="https://arxiv.org/abs/2406.16177"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              support design
-            </a>
-            ,
-          </div>
-          <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
-            Dealing with{" "}
-            <a
-              href="https://dl.acm.org/doi/10.1145/3637336"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              dark patterns
-            </a>
-            {" "}and{" "}
-            <a
-              href="https://arxiv.org/abs/2406.16177"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              support end users
-            </a>
-            .
-          </div>
-        </div>
-      </motion.section>
+      </motion.div>
 
       {/* Publications Section */}
       <motion.section

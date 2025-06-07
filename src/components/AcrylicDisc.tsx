@@ -79,7 +79,7 @@ export const AcrylicDisc = ({ rotation, totalRotation, size }: AcrylicDiscProps)
         <directionalLight position={[2, 2, 1]} intensity={0.8} />
         <directionalLight position={[-2, -2, 1]} intensity={0.6} />
         <directionalLight position={[1, -1, 1]} intensity={0.5} /> */}
-        <Environment preset="dawn" />
+        <Environment preset="forest" />
         
         <DiscMesh 
           rotation={rotation} 
