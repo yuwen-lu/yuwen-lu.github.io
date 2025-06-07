@@ -276,7 +276,7 @@ export const Footer = () => {
               >
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-medium text-white space-grotesk-medium">
-                    {healthStatus === 'healthy' ? 'Hi 👋' : 'Nudge Yuwen For Update'}
+                    {healthStatus === 'healthy' ? 'Yo! You came this far?' : 'Nudge Yuwen For Update'}
                   </h3>
                   <button
                     onClick={() => setShowMessagePopup(false)}
@@ -289,7 +289,7 @@ export const Footer = () => {
                 {/* Preset Messages */}
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Quick Options:
+                    Pick One
                   </label>
                   <div className="space-y-2">
                     {getPresetMessages().map((preset, index) => (

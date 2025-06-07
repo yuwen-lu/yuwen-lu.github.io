@@ -457,11 +457,11 @@ export const Home = () => {
             Publications
           </h2>
         </div>
-        <div className="space-y-8 lg:space-y-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {publications.map((pub, index) => (
             <div
               key={index}
-              className="flex flex-col lg:flex-row gap-6 lg:gap-8 p-4 lg:p-8 card-hover rounded-lg"
+              className="flex flex-col gap-6 p-4 lg:p-6 card-hover rounded-lg"
             >
               {/* Mobile: Image and basic info in a row */}
               <div className="flex gap-4 items-center lg:hidden">
@@ -516,57 +516,53 @@ export const Home = () => {
                 )}
               </div>
 
-              {/* Desktop: Fixed layout with proper spacing */}
-              <div className="hidden lg:flex lg:flex-shrink-0">
+              {/* Desktop: Vertical card layout */}
+              <div className="hidden lg:block">
                 {pub.image && (
-                  <img
-                    src={pub.image}
-                    alt={pub.title}
-                    className="object-cover rounded-lg"
-                    style={{
-                      height: "12rem",
-                      width: "16rem",
-                      minWidth: "16rem"
-                    }}
-                  />
-                )}
-              </div>
-              <div className="hidden lg:flex lg:flex-col lg:justify-center lg:flex-1 lg:min-w-0 space-y-4">
-                <h3 className="text-xl font-light leading-relaxed space-grotesk-medium" style={{ fontSize: "1.6rem", lineHeight: "1.5", marginBottom: "0.5rem" }}>
-                  {pub.title}
-                </h3>
-                <p className="text-lg opacity-80 leading-relaxed space-grotesk-regular" style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-                  {pub.authors.includes('Yuwen Lu*') || pub.authors.includes('**Yuwen Lu**') ? (
-                    <>
-                      <strong>{pub.authors.split(',')[0]}</strong>
-                      {pub.authors.substring(pub.authors.indexOf(','))}
-                    </>
-                  ) : (
-                    pub.authors.replace('Yuwen Lu', '**Yuwen Lu**').split('**Yuwen Lu**').map((part, i) => 
-                      i === 1 ? <><strong key={i}>Yuwen Lu</strong>{part}</> : part
-                    )
-                  )}
-                </p>
-                <p className="text-[#a1db08] font-medium text-lg space-grotesk-medium" style={{ fontSize: "1.05rem" }}>{pub.conference}</p>
-                {pub.note && (
-                  <p className="text-base opacity-60 italic space-grotesk-regular" style={{ fontSize: "1rem" }}>{pub.note}</p>
-                )}
-                {pub.links.length > 0 && (
-                  <div className="flex flex-wrap gap-4 pt-2">
-                    {pub.links.map((link, linkIndex) => (
-                      <a
-                        key={linkIndex}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="paper-link"
-                        style={{ fontSize: "1.05rem" }}
-                      >
-                        {link.label}
-                      </a>
-                    ))}
+                  <div className="mb-4">
+                    <img
+                      src={pub.image}
+                      alt={pub.title}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
                   </div>
                 )}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-light leading-tight space-grotesk-medium" style={{ fontSize: "1.3rem", lineHeight: "1.4" }}>
+                    {pub.title}
+                  </h3>
+                  <p className="text-sm opacity-80 leading-relaxed space-grotesk-regular" style={{ fontSize: "0.95rem", lineHeight: "1.5" }}>
+                    {pub.authors.includes('Yuwen Lu*') || pub.authors.includes('**Yuwen Lu**') ? (
+                      <>
+                        <strong>{pub.authors.split(',')[0]}</strong>
+                        {pub.authors.substring(pub.authors.indexOf(','))}
+                      </>
+                    ) : (
+                      pub.authors.replace('Yuwen Lu', '**Yuwen Lu**').split('**Yuwen Lu**').map((part, i) => 
+                        i === 1 ? <><strong key={i}>Yuwen Lu</strong>{part}</> : part
+                      )
+                    )}
+                  </p>
+                  <p className="text-[#a1db08] font-medium space-grotesk-medium" style={{ fontSize: "0.95rem" }}>{pub.conference}</p>
+                  {pub.note && (
+                    <p className="text-sm opacity-60 italic space-grotesk-regular">{pub.note}</p>
+                  )}
+                  {pub.links.length > 0 && (
+                    <div className="flex flex-wrap gap-3 pt-1">
+                      {pub.links.map((link, linkIndex) => (
+                        <a
+                          key={linkIndex}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="paper-link text-sm"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}
