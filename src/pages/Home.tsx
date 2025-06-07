@@ -117,7 +117,7 @@ export const Home = () => {
     setIsDragging(false)
   }
 
-  const handleImageClick = (event: React.MouseEvent) => {
+  const handleImageClick = () => {
     // Only flip if there was no dragging
     if (!hasDragged) {
       // Do the flashy 540° animation (360° spin + 180° flip)

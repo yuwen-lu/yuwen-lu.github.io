@@ -357,7 +357,7 @@ export const Footer = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.8, y: 50 }}
                 className="bg-gray-900 p-6 rounded-lg shadow-2xl z-50 w-full max-w-md"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
               >
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-medium text-white space-grotesk-medium">
