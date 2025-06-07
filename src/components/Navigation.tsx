@@ -18,11 +18,12 @@ export const Navigation = () => {
     <nav style={{
       display: "flex",
       height: "10vh",
-      padding: "4vw",
+      padding: "2vw 4vw",
       alignItems: "center",
       justifyContent: "flex-end",
       position: "relative",
-      zIndex: 100
+      zIndex: 100,
+      width: "100%"
     }}>
       {/* Desktop Navigation */}
       <div className="hidden md:flex space-grotesk-medium" style={{ position: "relative", zIndex: 100 }}>

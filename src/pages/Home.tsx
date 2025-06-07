@@ -199,13 +199,13 @@ export const Home = () => {
   ]
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full mx-auto px-2 sm:px-4 lg:px-8">
       {/* Hero Section - Original Bootstrap layout */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="grid lg:grid-cols-5 gap-8 lg:gap-8 items-center mb-16 lg:mb-48"
+        className="grid lg:grid-cols-5 gap-8 lg:gap-8 items-center mb-8 lg:mb-48"
         style={{ marginTop: "1rem" }}
       >
         <div className="space-y-12 lg:space-y-6 order-2 lg:order-1 lg:col-span-3">
@@ -284,8 +284,8 @@ export const Home = () => {
               transformStyle: 'preserve-3d',
               zIndex: 0,
               userSelect: 'none', // Prevent text selection while dragging
-              width: isDesktop ? '600px' : '450px', // Increased for larger elements
-              height: isDesktop ? '600px' : '450px', // Increased for larger elements
+              width: isDesktop ? '600px' : '320px', // Reduced mobile from 450px to 320px
+              height: isDesktop ? '600px' : '320px', // Reduced mobile from 450px to 320px
             }}
           >
             <motion.div
@@ -319,7 +319,7 @@ export const Home = () => {
               <AcrylicDisc 
                 rotation={combinedRotation}
                 totalRotation={0} // Rotation now handled in combinedRotation
-                size={isDesktop ? 288 : 192} // Increased from 224/144 to 288/192
+                size={isDesktop ? 288 : 240} // Increased mobile size from 192 to 240
               />
             </motion.div>
           </div>
@@ -331,9 +331,9 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-16 lg:mb-20 mt-32 lg:mt-24" // Increased margin above and below
+        className="mb-16 lg:mb-20 mt-12 lg:mt-24" // Reduced mobile top margin from mt-32 to mt-12
       >
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20"> {/* Increased gap between columns */}
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-20"> {/* Reduced mobile gap from 12 to 6 */}
           {/* Current Work Section */}
           <motion.section
             initial={{ opacity: 0, x: -20 }}
@@ -497,7 +497,7 @@ export const Home = () => {
                   )}
                 </p>
                 {pub.note && (
-                  <p className="text-xs opacity-60 italic">{pub.note}</p>
+                  <p className="text-sm opacity-60 italic">{pub.note}</p>
                 )}
                 {pub.links.length > 0 && (
                   <div className="flex flex-wrap gap-3 pt-2">

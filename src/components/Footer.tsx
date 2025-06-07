@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, Check, Heart, Zap, AlertTriangle, Twitter, Github, Linkedin, X, Send } from 'lucide-react'
+import { Mail, Check, Twitter, Github, Linkedin, X, Send } from 'lucide-react'
 import confetti from 'canvas-confetti'
 
 export const Footer = () => {
@@ -253,7 +253,7 @@ export const Footer = () => {
   }
 
   return (
-    <div className="text-center mt-40 px-4 sm:px-6 lg:px-8 space-grotesk-regular mb-20">
+    <div className="text-center mt-12 px-4 sm:px-6 lg:px-8 space-grotesk-regular mb-20">
       {/* Message Popup Modal */}
       <AnimatePresence>
         {showMessagePopup && (
@@ -276,7 +276,7 @@ export const Footer = () => {
               >
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-medium text-white space-grotesk-medium">
-                    {healthStatus === 'healthy' ? 'Introduce Yourself' : 'Send a Nudge'}
+                    {healthStatus === 'healthy' ? 'Hi 👋' : 'Nudge Yuwen For Update'}
                   </h3>
                   <button
                     onClick={() => setShowMessagePopup(false)}
@@ -340,10 +340,10 @@ export const Footer = () => {
                 <button
                   onClick={handleSendMessage}
                   disabled={(!customMessage.trim() && !selectedPreset) || isSendingMessage}
-                  className={`w-full py-2 px-4 rounded font-medium flex items-center justify-center gap-2 transition-colors ${
+                  className={`w-full py-2 px-4 rounded font-medium flex items-center justify-center gap-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 ${
                     (customMessage.trim() || selectedPreset) && !isSendingMessage
-                      ? getButtonColor() + ' text-white'
-                      : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+                      ? getButtonColor() + ' focus:ring-[#a1db08]'
+                      : 'bg-gray-700 text-gray-400 cursor-not-allowed focus:ring-gray-500'
                   }`}
                 >
                   {isSendingMessage ? (
@@ -351,7 +351,7 @@ export const Footer = () => {
                       <motion.div
                         animate={{ rotate: 360 }}
                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                        className="w-4 h-4 border-2 border-black border-t-transparent rounded-full"
                       />
                       Sending...
                     </>
