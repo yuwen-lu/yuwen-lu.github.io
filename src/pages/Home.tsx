@@ -10,6 +10,8 @@ import Chi2022LbwPoster from '../resources/files/LBW CHI2022/Poster_YuwenLu_LBWC
 import { useMediaQuery } from 'react-responsive'
 import { AcrylicDisc } from '../components/AcrylicDisc'
 import { PublicationCard } from '../components/PublicationCard'
+import FlowyPic from '../resources/images/flowy_card.png'
+import CrepePic from '../resources/images/crepe.png'
 
 export const Home = () => {
   // Typing animation hook
@@ -155,18 +157,42 @@ export const Home = () => {
         { label: "Code", url: "https://github.com/ND-SaNDwichLAB/Misty" },
         { label: "Video", url: "https://x.com/yuwen_lu_/status/1850574331539276198" },
       ],
-      image: MistyPic
+      image: MistyPic,
+      isSystemPaper: true
     },
     {
-      title: "From Design Transparency to Malleable Interfaces: Exploring End-User Interventions for Dark Patterns in UX",
+      title: "Dark Pita: Exploring End-User Interventions for Dark Patterns in UX",
       authors: "Yuwen Lu*, Chao Zhang*, Yuewen Yang, Yaxing Yao, Toby Jia-Jun Li (* equal contribution)",
-      conference: "CSCW 2023 🏆 Best Paper Award (Top 1%)",
+      conference: "CSCW 2024",
+      award: "🏆 Best Paper Award (Top 1%)",
       note: "Left image generated with DALL-E 2",
       links: [
         { label: "Paper", url: "https://dl.acm.org/doi/10.1145/3637336" },
         { label: "Code", url: "https://github.com/yuwen-lu/dark-pita" },
       ],
-      image: DarkPitaPic
+      image: DarkPitaPic,
+      isSystemPaper: true
+    },
+    {
+      title: "Flowy: Supporting UX Design Decisions Through AI-Driven Pattern Annotation in Multi-Screen User Flows",
+      authors: "Yuwen Lu, Ziang Tong, Qinyi Zhao, Yewon Oh, Bryan Wang, Toby Jia-Jun Li",
+      note: "Use AI to meaningfully support UI/UX design decisions",
+      links: [
+        { label: "Preprint", url: "https://arxiv.org/abs/2406.16177" },
+        { label: "Demo", url: "https://flowy.design" },
+      ],
+      image: FlowyPic,
+      isSystemPaper: true
+    },
+    {
+      title: "Crepe: A Mobile Screen Data Collector Using Graph Query",
+      authors: "Yuwen Lu, Meng Chen, Qi Zhao, Victor Cox, Yang Yang, Meng Jiang, Jay Brockman, Tamara Kay, Toby Jia-Jun Li",
+      note: "Collecting mobile screen data for personalized AI agents",
+      links: [
+        { label: "Paper", url: "https://arxiv.org/abs/2406.16173" },
+      ],
+      image: CrepePic,
+      isSystemPaper: true
     },
     {
       title: "A Bottom-Up End-User Intelligent Assistant Approach to Empower Gig Workers against AI Inequality",
@@ -191,7 +217,7 @@ export const Home = () => {
       image: CHI2022WorkshopPic
     },
     {
-      title: "Bridging the Gap Between UX Practitioners’ Work Practices and AI-Enabled Design Support Tools",
+      title: "Bridging the Gap Between UX Practitioners' Work Practices and AI-Enabled Design Support Tools",
       authors: "Yuwen Lu, Chengzhi Zhang, Iris Zhang, and Toby Jia-Jun Li",
       conference: "CHI '22 Late-Breaking Work",
       note: "",
@@ -463,6 +489,7 @@ export const Home = () => {
             Publications
           </h2>
         </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
           {publications.map((pub, index) => (
             <PublicationCard
@@ -470,9 +497,11 @@ export const Home = () => {
               title={pub.title}
               authors={pub.authors}
               conference={pub.conference}
+              award={pub.award}
               note={pub.note}
               links={pub.links}
               image={pub.image}
+              isSystemPaper={pub.isSystemPaper}
             />
           ))}
         </div>

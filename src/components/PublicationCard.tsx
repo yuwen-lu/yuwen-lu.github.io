@@ -3,23 +3,27 @@ import { motion } from 'framer-motion'
 interface PublicationCardProps {
   title: string
   authors: string
-  conference: string
+  conference?: string
+  award?: string
   note?: string
   links: Array<{ label: string; url: string }>
   image?: string
   gradientFrom?: string
   gradientTo?: string
+  isSystemPaper?: boolean
 }
 
 export const PublicationCard = ({ 
   title, 
   authors, 
   conference, 
+  award,
   note, 
   links, 
   image,
   gradientFrom = "from-teal-500",
-  gradientTo = "to-orange-400"
+  gradientTo = "to-orange-400",
+  isSystemPaper = false
 }: PublicationCardProps) => {
   return (
     <div
@@ -38,10 +42,21 @@ export const PublicationCard = ({
       {/* Dark overlay for text readability - animated gradient */}
       <div className="absolute inset-0">
         {/* Base gradient - always visible */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 from-0% via-black/40 via-75% to-transparent to-100%"></div>
         {/* Darker gradient - appears on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 from-0% via-black/70 via-75% to-transparent to-100% opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
       </div>
+
+      {/* System badge for system papers */}
+      {isSystemPaper && (
+        <div className="absolute top-3 right-3 z-10">
+          <div className="px-4 py-1 rounded-full bg-black/80 backdrop-blur-sm border border-white/10 shadow-lg flex items-center">
+            <span className="text-xs font-medium tracking-wider" style={{ color: '#a1db08' }}>
+              SYSTEM
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* Content overlay */}
       <div className="relative h-full flex flex-col justify-end p-6 text-white">
@@ -72,9 +87,11 @@ export const PublicationCard = ({
             </p>
             
             {/* Conference */}
-            <p className="font-semibold text-sm drop-shadow-lg line-clamp-2" style={{ transitionDelay: '200ms', color: '#a1db08' }}>
-              {conference}
-            </p>
+            {conference && (
+              <p className="font-semibold text-sm drop-shadow-lg line-clamp-2" style={{ transitionDelay: '200ms', color: '#a1db08' }}>
+                {conference}
+              </p>
+            )}
             
             {/* Note */}
             {note && (
@@ -83,6 +100,15 @@ export const PublicationCard = ({
               </p>
             )}
           </div>
+
+          {/* Award - Always visible */}
+          {award && (
+            <div className="mb-2">
+              <p className="text-sm font-semibold drop-shadow-lg" style={{ color: '#a1db08', marginBottom: '0px' }}>
+                {award}
+              </p>
+            </div>
+          )}
 
           {/* Title */}
           <h3 className="text-xl font-bold leading-tight text-white drop-shadow-xl transition-all duration-500 group-hover:transform group-hover:-translate-y-1" style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}>
@@ -105,9 +131,4 @@ export const PublicationCard = ({
                 </a>
               ))}
             </div>
-          )}
-        </div>
-      </div>
-    </div>
-  )
-} 
+       
