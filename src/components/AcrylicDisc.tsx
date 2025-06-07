@@ -12,13 +12,13 @@ interface AcrylicDiscProps {
 const DiscMesh = ({ rotation, totalRotation, size }: AcrylicDiscProps) => {
   const meshRef = useRef<THREE.Mesh>(null)
   
-  const radius = size / 300
+  const radius = (size * 1.5) / 300 // 1.5x bigger disc
   const thickness = 0.25 // Slightly thinner for more elegant look
   
   return (
     <group
       rotation={[
-        (-rotation.x * Math.PI) / 180, // Negate to fix inverted rotation
+        (-rotation.x * Math.PI) / 180, // Negate to fix inverted rotation (no default tilt)
         ((rotation.y + totalRotation) * Math.PI) / 180, // Keep original rotation (no extra negative)
         0
       ]}
@@ -40,6 +40,7 @@ const DiscMesh = ({ rotation, totalRotation, size }: AcrylicDiscProps) => {
           clearcoat={1} // Add clearcoat for glossy finish
           clearcoatRoughness={0}
           metalness={0.1} // Slight metalness for more reflection
+          envMapIntensity={1.5} // Stronger environment reflections
         />
       </mesh>
       
@@ -70,15 +71,15 @@ export const AcrylicDisc = ({ rotation, totalRotation, size }: AcrylicDiscProps)
       }}
     >
       <Canvas
-        camera={{ position: [0, 0, 4], fov: 25 }}
+        camera={{ position: [0, 0, 5], fov: 35 }} // Slightly elevated camera to catch more sky
         style={{ width: '100%', height: '100%' }}
       >
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[0, 0, 2]} intensity={1.2} />
+        <ambientLight intensity={0.4} />
+        {/* <directionalLight position={[0, 0, 2]} intensity={1.2} />
         <directionalLight position={[2, 2, 1]} intensity={0.8} />
         <directionalLight position={[-2, -2, 1]} intensity={0.6} />
-        <directionalLight position={[1, -1, 1]} intensity={0.5} />
-        <Environment preset="sunset" />
+        <directionalLight position={[1, -1, 1]} intensity={0.5} /> */}
+        <Environment preset="dawn" />
         
         <DiscMesh 
           rotation={rotation} 

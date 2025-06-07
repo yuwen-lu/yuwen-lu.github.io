@@ -242,6 +242,18 @@ export const Home = () => {
               University of Notre Dame.
             </p>
             <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+              This summer, I will be a visiting researcher at{" "}
+              <a 
+                href="https://mj-storytelling.github.io" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+               Midjourney Storytelling Lab
+              </a>
+              {" "}in San Francisco.
+            </p>
+            
+            <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
               <a href="https://toby.li/">Toby Li</a>.
             </p>
@@ -266,12 +278,14 @@ export const Home = () => {
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onClick={handleImageClick}
-            className={`relative ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`} // Dynamic cursor based on drag state
+            className={`relative ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} flex items-center justify-center`} // Added centering classes
             style={{
               perspective: '1000px',
               transformStyle: 'preserve-3d',
               zIndex: 0,
               userSelect: 'none', // Prevent text selection while dragging
+              width: isDesktop ? '600px' : '450px', // Increased for larger elements
+              height: isDesktop ? '600px' : '450px', // Increased for larger elements
             }}
           >
             <motion.div
@@ -294,7 +308,7 @@ export const Home = () => {
               <img
                 src={ProfilePic}
                 alt="Yuwen Lu"
-                className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 object-cover rounded-full shadow-lg transition-shadow duration-300 hover:shadow-2xl cursor-pointer"
+                className="w-48 h-48 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-72 lg:h-72 object-cover rounded-full shadow-lg transition-shadow duration-300 hover:shadow-2xl cursor-pointer"
                 style={{ 
                   filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
                   transformStyle: 'preserve-3d',
@@ -305,7 +319,7 @@ export const Home = () => {
               <AcrylicDisc 
                 rotation={combinedRotation}
                 totalRotation={0} // Rotation now handled in combinedRotation
-                size={isDesktop ? 224 : 144} // Reduced to match new image sizes (was 320/192)
+                size={isDesktop ? 288 : 192} // Increased from 224/144 to 288/192
               />
             </motion.div>
           </div>
@@ -326,7 +340,7 @@ export const Home = () => {
                 lineHeight: "1.3",
                 letterSpacing: "-0.01em"
               }}>
-            Currently Working On...
+            Currently Working On
           </h2>
         </div>
         <div className="text-left lg:text-center space-y-6 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.8em" }}>
