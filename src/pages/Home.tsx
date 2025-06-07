@@ -6,8 +6,10 @@ import DarkPitaPic from '../resources/images/dark_pita_dalle.png'
 import CHIWORK2022Pic from '../resources/images/CHIWORK22_approach.png'
 import CHI2022WorkshopPic from '../resources/images/user-interface-workshop.jpeg'
 import Lbw2022Pic from '../resources/images/chi-lbw-2022.png'
+import Chi2022LbwPoster from '../resources/files/LBW CHI2022/Poster_YuwenLu_LBWCHI2022.pdf'
 import { useMediaQuery } from 'react-responsive'
 import { AcrylicDisc } from '../components/AcrylicDisc'
+import { PublicationCard } from '../components/PublicationCard'
 
 export const Home = () => {
   // Typing animation hook
@@ -172,27 +174,31 @@ export const Home = () => {
       conference: "CHIWORK '22",
       note: "",
       links: [
-        { label: "Preprint", url: "https://arxiv.org/abs/2204.13842" },
+        { label: "Paper", url: "https://dl.acm.org/doi/10.1145/3533406.3533418" },
         { label: "Video", url: "https://youtu.be/8zCOj9G3I_o" },
       ],
       image: CHIWORK2022Pic
     },
     {
-      title: "Computational Methods for Understanding How User Interface Design Affects User Decision Making",
-      authors: "Yuwen Lu, Chao Zhang, Yuewen Yang, Yaxing Yao, Toby Jia-Jun Li",
+      title: "Computational Approaches for Understanding, Generating, and Adapting User Interfaces",
+      authors: "Yue Jiang*, Yuwen Lu*, Jeffrey Nichols, Wolfgang Stuerzlinger, Chun Yu, Christof Lutteroth, Yang Li, Ranjitha Kumar, Toby Jia-Jun Li (* equal contribution)",
       conference: "CHI '22 Workshop",
       note: "",
-      links: [],
+      links: [
+        { label: "Paper", url: "https://yuejiang-nj.github.io/Publications/2022CHI_UserInterfaces/paper.pdf" },
+        { label: "Workshop Website", url: "https://sites.google.com/nd.edu/computational-uichi22/home" },
+      ],
       image: CHI2022WorkshopPic
     },
     {
-      title: "Supporting Gig Workers to Choose Gig Work Utilizing Personal AI Agents",
-      authors: "Yuwen Lu, Meng Chen, Jaylexia Clark, Victor Cox, Toby Jia-Jun Li",
+      title: "Bridging the Gap Between UX Practitioners’ Work Practices and AI-Enabled Design Support Tools",
+      authors: "Yuwen Lu, Chengzhi Zhang, Iris Zhang, and Toby Jia-Jun Li",
       conference: "CHI '22 Late-Breaking Work",
       note: "",
       links: [
-        { label: "Poster", url: "#" }, // Add actual URL when available
-        { label: "Preprint", url: "#" }, // Add actual URL when available
+        { label: "Poster", url: Chi2022LbwPoster },
+        { label: "Paper", url: "https://dl.acm.org/doi/10.1145/3491101.3519809" },
+        { label: "Video", url: "https://www.youtube.com/watch?v=TJ16TIe29xw" },
       ],
       image: Lbw2022Pic
     }
@@ -331,27 +337,27 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-16 lg:mb-32 mt-12 lg:mt-32" // Increased desktop margins
+        className="mb-8 lg:mb-16 mt-8 lg:mt-16"
       >
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-32"> {/* Increased desktop gap significantly */}
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12">
           {/* Current Work Section */}
           <motion.section
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="text-center lg:text-left mb-6 lg:mb-12">
-              <h2 className="text-xl lg:text-2xl mb-6 lg:mb-12 space-grotesk-medium"
+            <div className="text-center lg:text-left mb-4 lg:mb-6">
+              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 space-grotesk-medium"
                   style={{ 
-                    fontSize: isDesktop ? "2rem" : "1.6rem", 
+                    fontSize: isDesktop ? "1.8rem" : "1.4rem", 
                     lineHeight: "1.3",
                     letterSpacing: "-0.01em"
                   }}>
                 Currently Working On
               </h2>
             </div>
-            <div className="text-left space-y-6 lg:space-y-8 space-grotesk-regular" style={{ lineHeight: "1.8em" }}>
-              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "2rem" : "1.5rem" }}>
+            <div className="text-left space-y-3 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.6em" }}>
+              <div style={{ fontSize: isDesktop ? "1.1rem" : "1rem", lineHeight: isDesktop ? "1.6em" : "1.5em", marginBottom: isDesktop ? "1rem" : "0.8rem" }}>
                 Exploring the UI for AI (maybe{" "}
                 <a
                   href="https://machinelearning.apple.com/research/interactive-prototyping"
@@ -362,7 +368,7 @@ export const Home = () => {
                 </a>
                 ?),
               </div>
-              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "2rem" : "1.5rem" }}>
+              <div style={{ fontSize: isDesktop ? "1.1rem" : "1rem", lineHeight: isDesktop ? "1.6em" : "1.5em", marginBottom: isDesktop ? "1rem" : "0.8rem" }}>
                 Using AI to{" "}
                 <a
                   href="https://arxiv.org/abs/2406.16177"
@@ -373,7 +379,7 @@ export const Home = () => {
                 </a>
                 ,
               </div>
-              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "2rem" : "1.5rem" }}>
+              <div style={{ fontSize: isDesktop ? "1.1rem" : "1rem", lineHeight: isDesktop ? "1.6em" : "1.5em", marginBottom: isDesktop ? "1rem" : "0.8rem" }}>
                 Dealing with{" "}
                 <a
                   href="https://dl.acm.org/doi/10.1145/3637336"
@@ -401,10 +407,10 @@ export const Home = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="text-center lg:text-left mb-6 lg:mb-12">
-              <h2 className="text-xl lg:text-2xl mb-4 lg:mb-8 space-grotesk-medium"
+            <div className="text-center lg:text-left mb-4 lg:mb-6">
+              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 space-grotesk-medium"
                   style={{ 
-                    fontSize: isDesktop ? "2rem" : "1.6rem", 
+                    fontSize: isDesktop ? "1.8rem" : "1.4rem", 
                     lineHeight: "1.3",
                     letterSpacing: "-0.01em"
                   }}>
@@ -412,7 +418,7 @@ export const Home = () => {
               </h2>
               <p className="space-grotesk-regular" 
                  style={{ 
-                   fontSize: isDesktop ? "1.2rem" : "1rem", 
+                   fontSize: isDesktop ? "1rem" : "0.9rem", 
                    lineHeight: "1.6", 
                    opacity: 0.8
                  }}>
@@ -445,10 +451,10 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-12 lg:mb-24"
+        className="mb-8 lg:mb-16"
       >
-        <div className="text-center mb-6 lg:mb-16">
-          <h2 className="text-xl lg:text-2xl mb-6 lg:mb-12 space-grotesk-regular"
+        <div className="text-center mb-4 lg:mb-8">
+          <h2 className="text-xl lg:text-2xl mb-4 lg:mb-6 space-grotesk-regular"
               style={{ 
                 fontSize: isDesktop ? "2rem" : "1.6rem", 
                 lineHeight: "1.3",
@@ -457,114 +463,17 @@ export const Home = () => {
             Publications
           </h2>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
           {publications.map((pub, index) => (
-            <div
+            <PublicationCard
               key={index}
-              className="flex flex-col gap-6 p-4 lg:p-10 card-hover rounded-lg"
-            >
-              {/* Mobile: Image and basic info in a row */}
-              <div className="flex gap-4 items-center lg:hidden">
-                {pub.image && (
-                  <div className="flex-shrink-0">
-                    <img
-                      src={pub.image}
-                      alt={pub.title}
-                      className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg"
-                    />
-                  </div>
-                )}
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-light leading-tight mb-2" style={{ fontSize: "1.1rem", lineHeight: "1.4" }}>
-                    {pub.title}
-                  </h3>
-                  <p className="text-[#a1db08] font-medium text-sm mb-2">{pub.conference}</p>
-                </div>
-              </div>
-              
-              {/* Mobile: Authors and links below */}
-              <div className="lg:hidden space-y-2">
-                <p className="text-sm opacity-80">
-                  {pub.authors.includes('Yuwen Lu*') || pub.authors.includes('**Yuwen Lu**') ? (
-                    <>
-                      <strong>{pub.authors.split(',')[0]}</strong>
-                      {pub.authors.substring(pub.authors.indexOf(','))}
-                    </>
-                  ) : (
-                    pub.authors.replace('Yuwen Lu', '**Yuwen Lu**').split('**Yuwen Lu**').map((part, i) => 
-                      i === 1 ? <><strong key={i}>Yuwen Lu</strong>{part}</> : part
-                    )
-                  )}
-                </p>
-                {pub.note && (
-                  <p className="text-sm opacity-60 italic">{pub.note}</p>
-                )}
-                {pub.links.length > 0 && (
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    {pub.links.map((link, linkIndex) => (
-                      <a
-                        key={linkIndex}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="paper-link text-sm"
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Desktop: Vertical card layout */}
-              <div className="hidden lg:block">
-                {pub.image && (
-                  <div className="mb-6">
-                    <img
-                      src={pub.image}
-                      alt={pub.title}
-                      className="w-full h-48 object-cover rounded-lg"
-                    />
-                  </div>
-                )}
-                <div className="space-y-5">
-                  <h3 className="text-lg font-light leading-tight space-grotesk-medium" style={{ fontSize: "1.3rem", lineHeight: "1.4" }}>
-                    {pub.title}
-                  </h3>
-                  <p className="text-sm opacity-80 leading-relaxed space-grotesk-regular" style={{ fontSize: "0.95rem", lineHeight: "1.5" }}>
-                    {pub.authors.includes('Yuwen Lu*') || pub.authors.includes('**Yuwen Lu**') ? (
-                      <>
-                        <strong>{pub.authors.split(',')[0]}</strong>
-                        {pub.authors.substring(pub.authors.indexOf(','))}
-                      </>
-                    ) : (
-                      pub.authors.replace('Yuwen Lu', '**Yuwen Lu**').split('**Yuwen Lu**').map((part, i) => 
-                        i === 1 ? <><strong key={i}>Yuwen Lu</strong>{part}</> : part
-                      )
-                    )}
-                  </p>
-                  <p className="text-[#a1db08] font-medium space-grotesk-medium" style={{ fontSize: "0.95rem" }}>{pub.conference}</p>
-                  {pub.note && (
-                    <p className="text-sm opacity-60 italic space-grotesk-regular">{pub.note}</p>
-                  )}
-                  {pub.links.length > 0 && (
-                    <div className="flex flex-wrap gap-3 pt-1">
-                      {pub.links.map((link, linkIndex) => (
-                        <a
-                          key={linkIndex}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="paper-link text-sm"
-                        >
-                          {link.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+              title={pub.title}
+              authors={pub.authors}
+              conference={pub.conference}
+              note={pub.note}
+              links={pub.links}
+              image={pub.image}
+            />
           ))}
         </div>
       </motion.section>
