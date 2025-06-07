@@ -5,6 +5,17 @@
 @tailwind utilities;
 
 @layer base {
+  /* Custom text selection color */
+  ::selection {
+    background-color: #FFFF00;
+    color: #000000;
+  }
+  
+  ::-moz-selection {
+    background-color: #FFFF00;
+    color: #000000;
+  }
+  
   html {
     scroll-behavior: smooth;
   }

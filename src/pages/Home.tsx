@@ -199,16 +199,16 @@ export const Home = () => {
   ]
 
   return (
-    <div className="w-full mx-auto px-2 sm:px-4 lg:px-8">
+    <div className="w-full mx-auto px-2 sm:px-4 lg:px-12">
       {/* Hero Section - Original Bootstrap layout */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="grid lg:grid-cols-5 gap-8 lg:gap-8 items-center mb-8 lg:mb-48"
+        className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center mb-8 lg:mb-64"
         style={{ marginTop: "1rem" }}
       >
-        <div className="space-y-12 lg:space-y-6 order-2 lg:order-1 lg:col-span-3">
+        <div className="space-y-12 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
           <h1 className="title space-grotesk-medium relative" style={{ fontSize: isDesktop ? "3.5rem" : "2.8rem", letterSpacing: "-0.02em" }}>
             {/* Invisible placeholder to reserve space for full text */}
             <span className="invisible" aria-hidden="true">
@@ -331,17 +331,17 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-16 lg:mb-20 mt-12 lg:mt-24" // Reduced mobile top margin from mt-32 to mt-12
+        className="mb-16 lg:mb-32 mt-12 lg:mt-32" // Increased desktop margins
       >
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-20"> {/* Reduced mobile gap from 12 to 6 */}
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-32"> {/* Increased desktop gap significantly */}
           {/* Current Work Section */}
           <motion.section
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="text-center lg:text-left mb-6 lg:mb-8">
-              <h2 className="text-xl lg:text-2xl mb-6 lg:mb-8 space-grotesk-medium" 
+            <div className="text-center lg:text-left mb-6 lg:mb-12">
+              <h2 className="text-xl lg:text-2xl mb-6 lg:mb-12 space-grotesk-medium"
                   style={{ 
                     fontSize: isDesktop ? "2rem" : "1.6rem", 
                     lineHeight: "1.3",
@@ -350,8 +350,8 @@ export const Home = () => {
                 Currently Working On
               </h2>
             </div>
-            <div className="text-left space-y-6 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.8em" }}>
-              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
+            <div className="text-left space-y-6 lg:space-y-8 space-grotesk-regular" style={{ lineHeight: "1.8em" }}>
+              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "2rem" : "1.5rem" }}>
                 Exploring the UI for AI (maybe{" "}
                 <a
                   href="https://machinelearning.apple.com/research/interactive-prototyping"
@@ -362,7 +362,7 @@ export const Home = () => {
                 </a>
                 ?),
               </div>
-              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
+              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "2rem" : "1.5rem" }}>
                 Using AI to{" "}
                 <a
                   href="https://arxiv.org/abs/2406.16177"
@@ -373,7 +373,7 @@ export const Home = () => {
                 </a>
                 ,
               </div>
-              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "1rem" : "1.5rem" }}>
+              <div style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: isDesktop ? "1.8em" : "1.6em", marginBottom: isDesktop ? "2rem" : "1.5rem" }}>
                 Dealing with{" "}
                 <a
                   href="https://dl.acm.org/doi/10.1145/3637336"
@@ -401,8 +401,8 @@ export const Home = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="text-center lg:text-left mb-6 lg:mb-8">
-              <h2 className="text-xl lg:text-2xl mb-4 lg:mb-6 space-grotesk-medium" 
+            <div className="text-center lg:text-left mb-6 lg:mb-12">
+              <h2 className="text-xl lg:text-2xl mb-4 lg:mb-8 space-grotesk-medium"
                   style={{ 
                     fontSize: isDesktop ? "2rem" : "1.6rem", 
                     lineHeight: "1.3",
@@ -445,10 +445,10 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-12 lg:mb-16"
+        className="mb-12 lg:mb-24"
       >
-        <div className="text-center mb-6 lg:mb-8">
-          <h2 className="text-xl lg:text-2xl mb-6 lg:mb-8 space-grotesk-regular" 
+        <div className="text-center mb-6 lg:mb-16">
+          <h2 className="text-xl lg:text-2xl mb-6 lg:mb-12 space-grotesk-regular"
               style={{ 
                 fontSize: isDesktop ? "2rem" : "1.6rem", 
                 lineHeight: "1.3",
@@ -457,11 +457,11 @@ export const Home = () => {
             Publications
           </h2>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20">
           {publications.map((pub, index) => (
             <div
               key={index}
-              className="flex flex-col gap-6 p-4 lg:p-6 card-hover rounded-lg"
+              className="flex flex-col gap-6 p-4 lg:p-10 card-hover rounded-lg"
             >
               {/* Mobile: Image and basic info in a row */}
               <div className="flex gap-4 items-center lg:hidden">
@@ -519,7 +519,7 @@ export const Home = () => {
               {/* Desktop: Vertical card layout */}
               <div className="hidden lg:block">
                 {pub.image && (
-                  <div className="mb-4">
+                  <div className="mb-6">
                     <img
                       src={pub.image}
                       alt={pub.title}
@@ -527,7 +527,7 @@ export const Home = () => {
                     />
                   </div>
                 )}
-                <div className="space-y-3">
+                <div className="space-y-5">
                   <h3 className="text-lg font-light leading-tight space-grotesk-medium" style={{ fontSize: "1.3rem", lineHeight: "1.4" }}>
                     {pub.title}
                   </h3>

@@ -35,7 +35,7 @@ function App() {
       <GlobalParticleEffect clickEffects={clickEffects} />
       
       <Navigation />
-      <main className="w-full px-1 sm:px-2 lg:px-4 py-4">
+      <main className="w-full px-1 sm:px-2 lg:px-8 py-4 lg:py-8">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cv" element={<CV />} />
