@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Font Import -->
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#1C1E26"/>
+  
+  <!-- Blur effects -->
+  <g filter="url(#blur)">
+    <!-- Purple blur -->
+    <circle cx="200" cy="200" r="250" fill="#A58BF0" fill-opacity="0.4"/>
+    <!-- Pink blur -->
+    <circle cx="1000" cy="400" r="200" fill="#f8b6f2" fill-opacity="0.3"/>
+    <!-- Green blur -->
+    <circle cx="600" cy="500" r="180" fill="#d8f0aa" fill-opacity="0.2"/>
+    <!-- Yellow blur -->
+    <circle cx="900" cy="100" r="150" fill="#FBF2D2" fill-opacity="0.2"/>
+  </g>
+
+  <!-- Animated Particles -->
+  <g>
+    <!-- Particle 1 - Floating up -->
+    <circle r="4" fill="white">
+      <animate attributeName="cx" values="100;120;100" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="600;100;600" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="fill-opacity" values="0.8;0.3;0.8" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="3;5;3" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Particle 2 - Diagonal movement -->
+    <circle r="4" fill="#a1db08">
+      <animate attributeName="cx" values="200;400;200" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="500;200;500" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Particle 3 - Circular motion -->
+    <circle r="5" fill="#A58BF0">
+      <animateMotion dur="15s" repeatCount="indefinite"
+        path="M 0,0 a 100,100 0 1,0 200,0 a 100,100 0 1,0 -200,0"/>
+      <animate attributeName="fill-opacity" values="0.8;0.4;0.8" dur="15s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Particle 4 - Wave motion -->
+    <circle r="4" fill="#f8b6f2">
+      <animate attributeName="cx" values="600;800;600" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="300;350;300" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Particle 5 - Floating -->
+    <circle r="6" fill="#d8f0aa">
+      <animate attributeName="cx" values="900;950;900" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="400;300;400" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="fill-opacity" values="0.8;0.4;0.8" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Additional floating particles -->
+    <g fill="#a1db08">
+      <circle r="3">
+        <animate attributeName="cx" values="150;200;150" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="200;400;200" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="4">
+        <animate attributeName="cx" values="700;750;700" dur="11s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="500;450;500" dur="11s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="0.8;0.4;0.8" dur="11s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <g fill="#A58BF0">
+      <circle r="4">
+        <animate attributeName="cx" values="300;350;300" dur="13s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="350;250;350" dur="13s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="0.7;0.3;0.7" dur="13s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="3">
+        <animate attributeName="cx" values="850;900;850" dur="14s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="150;200;150" dur="14s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="0.8;0.4;0.8" dur="14s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- Decorative grid pattern -->
+  <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" stroke-opacity="0.1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="50" cy="50" r="100" stroke="#a1db08" stroke-width="1" stroke-opacity="0.2" fill="none"/>
+  <circle cx="1150" cy="580" r="120" stroke="#A58BF0" stroke-width="1" stroke-opacity="0.2" fill="none"/>
+  
+  <!-- Profile Picture with circular mask and decorative rings -->
+  <defs>
+    <clipPath id="circleClip">
+      <circle cx="800" cy="315" r="140"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Decorative rings around profile picture -->
+  <circle cx="800" cy="315" r="150" stroke="#a1db08" stroke-width="1" stroke-opacity="0.3" fill="none">
+    <animate attributeName="r" values="140;150;140" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="800" cy="315" r="160" stroke="#A58BF0" stroke-width="1" stroke-opacity="0.2" fill="none">
+    <animate attributeName="r" values="155;165;155" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <image
+    x="660"
+    y="175"
+    width="280"
+    height="280"
+    href="profile.png"
+    clip-path="url(#circleClip)"
+  />
+ 
+  <!-- Main text -->
+  <text x="100" y="280" fill="white" font-family="Space Grotesk" font-weight="500" font-size="72" letter-spacing="-0.02em">
+    yuwen lu
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="100" y="350" fill="white" font-family="Space Grotesk" font-weight="300" font-size="36" letter-spacing="-0.01em">
+    human-ai interaction
+  </text>
+  
+  <!-- Additional descriptors -->
+  <text x="100" y="400" fill="white" font-family="Space Grotesk" font-weight="300" font-size="36" letter-spacing="-0.01em">
+    design · engineering
+  </text>
+  
+  <!-- Accent line with gradient -->
+  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#a1db08"/>
+    <stop offset="100%" style="stop-color:#A58BF0"/>
+  </linearGradient>
+  <line x1="100" y1="450" x2="400" y2="450" stroke="url(#lineGradient)" stroke-width="4"/>
+  
+  <!-- Small decorative elements -->
+  <circle cx="90" cy="280" r="4" fill="#a1db08"/>
+  <circle cx="420" cy="450" r="4" fill="#A58BF0"/>
+  
+  <!-- Filters -->
+  <defs>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="70"/>
+    </filter>
+  </defs>
+</svg> 
