@@ -98,10 +98,12 @@ export const Footer = () => {
       // Determine health status
       if (diffDays <= 7) {
         setHealthStatus('healthy')
-      } else if (diffDays <= 30) {
+      } else if (diffDays <= 60) { // 2 months (~60 days)
         setHealthStatus('stale')
-      } else {
+      } else if (diffDays <= 180) { // 6 months (~180 days)
         setHealthStatus('outdated')
+      } else {
+        setHealthStatus('outdated') // Really outdated after 6 months
       }
     }
 
