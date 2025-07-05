@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { Navigation } from './components/Navigation'
 import { Footer } from './components/Footer'
 import { Home } from './pages/Home'
-import { CV } from './pages/CV'
+import { Resume } from './pages/Resume'
 import { Events } from './pages/Events'
 import { useGlobalParticleEffect, GlobalParticleEffect } from './components/GlobalParticleEffect'
 
@@ -38,7 +38,7 @@ function App() {
       <main className="w-full px-1 sm:px-2 lg:px-8 py-4 lg:py-8">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cv" element={<CV />} />
+          <Route path="/resume" element={<Resume />} />
           <Route path="/events" element={<Events />} />
         </Routes>
       </main>

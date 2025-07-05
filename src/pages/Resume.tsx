@@ -1,7 +1,7 @@
 import { Download } from 'lucide-react'
 import confetti from 'canvas-confetti'
 
-export const CV = () => {
+export const Resume = () => {
   const handleDownloadClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault() // Prevent immediate navigation
     
@@ -40,9 +40,6 @@ export const CV = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-20">
       <div className="text-center mb-12">
         <h1 className="title">Resume</h1>
-        <p className="opacity-80 mb-8">
-          Professional experience in Human-Computer Interaction
-        </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a 
             href="/files/resume-yuwen-lu.png"
@@ -53,9 +50,16 @@ export const CV = () => {
             style={{ borderBottom: "none" }}
           >
             <Download size={20} />
-            Download Resume
+            Resume (1 page)
           </a>
-          <a 
+        </div>
+
+
+        <p className="text-sm opacity-60 mt-20">
+          Want more details? Check out the 3-page CV with complete academic record
+        </p>
+
+        <a 
             href="/files/CV_Yuwen_Lu.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -64,12 +68,8 @@ export const CV = () => {
             style={{ borderBottom: "none" }}
           >
             <Download size={20} />
-            Full CV (3 pages)
+            Download CV (3 pages)
           </a>
-        </div>
-        <p className="text-sm opacity-60 mt-4">
-          Want more details? Check out the 3-page CV with complete academic record
-        </p>
       </div>
     </div>
   )

@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/cv",
+      "destination": "/resume",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
