@@ -80,8 +80,8 @@ src/
 ├── pages/              # Page components
 │   ├── Home.tsx
 │   ├── Projects.tsx
-│   ├── CV.tsx
-│   └── Life.tsx
+│   ├── Resume.tsx
+│   └── Events.tsx
 ├── resources/          # Static assets
 ├── App.tsx             # Main app with routing
 ├── main.tsx            # Entry point
