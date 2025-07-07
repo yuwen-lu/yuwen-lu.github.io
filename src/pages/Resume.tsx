@@ -32,7 +32,7 @@ export const Resume = () => {
 
     // Wait for confetti to be visible, then open the PNG
     setTimeout(() => {
-      window.open('/files/resume-yuwen-lu.png', '_blank', 'noopener,noreferrer')
+      window.open('/files/resume-yuwen-lu.pdf', '_blank', 'noopener,noreferrer')
     }, 800) // 800ms delay to see the confetti
   }
 
@@ -42,7 +42,7 @@ export const Resume = () => {
         <h1 className="title">Resume</h1>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a 
-            href="/files/resume-yuwen-lu.png"
+            href="/files/resume-yuwen-lu.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleResumeDownloadClick}
