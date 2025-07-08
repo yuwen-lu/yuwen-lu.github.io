@@ -56,7 +56,7 @@ export const Resume = () => {
 
 
         <p className="text-sm opacity-60 mt-20">
-          Want more details? Check out the 3-page CV with complete academic record
+          3-page academic CV with more details
         </p>
 
         <a 
@@ -68,7 +68,7 @@ export const Resume = () => {
             style={{ borderBottom: "none" }}
           >
             <Download size={20} />
-            Download CV (3 pages)
+            Curriculum Vitae (3 pages)
           </a>
       </div>
     </div>
