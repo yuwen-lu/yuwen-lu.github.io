@@ -4,6 +4,11 @@
       "source": "/cv",
       "destination": "/resume",
       "permanent": true
+    },
+    {
+      "source": "/crepe",
+      "destination": "https://crepe-website.vercel.app/",
+      "permanent": true
     }
   ],
   "rewrites": [
