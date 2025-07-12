@@ -4,17 +4,14 @@
       "source": "/cv",
       "destination": "/resume",
       "permanent": true
+    },
+    {
+      "source": "/crepe",
+      "destination": "https://crepe-website.vercel.app/",
+      "permanent": true
     }
   ],
   "rewrites": [
-    {
-      "source": "/crepe",
-      "destination": "https://crepe-website.vercel.app/"
-    },
-    {
-      "source": "/crepe/(.*)",
-      "destination": "https://crepe-website.vercel.app/$1"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
