@@ -12,47 +12,14 @@ import { AcrylicDisc } from '../components/AcrylicDisc'
 import { PublicationCard } from '../components/PublicationCard'
 import FlowyPic from '../resources/images/flowy_card.png'
 import CrepePic from '../resources/images/crepe.png'
+import { GooeyText } from '../components/GooeyText'
 
 export const Home = () => {
-  // Typing animation hook
-  const useTypewriter = (text: string, speed: number = 100) => {
-    const [displayText, setDisplayText] = useState('')
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const [isComplete, setIsComplete] = useState(false)
-
-    useEffect(() => {
-      if (currentIndex < text.length) {
-        const timeout = setTimeout(() => {
-          setDisplayText(prev => prev + text[currentIndex])
-          setCurrentIndex(prev => prev + 1)
-        }, speed)
-
-        return () => clearTimeout(timeout)
-      } else {
-        setIsComplete(true)
-      }
-    }, [currentIndex, text, speed])
-
-    return { displayText, isComplete }
-  }
-
-  const { displayText, isComplete } = useTypewriter("I am \/almost\/ graduating", 100)
-
-  // Function to render text with colored underscores
-  const renderTextWithColoredUnderscores = (text: string) => {
-    return text.split(/(\/almost\/)/).map((part, index) => {
-      if (part === '\/almost\/') {
-        return (
-          <span key={index}>
-            <span style={{ color: '#a1db08', fontWeight: '500' }}>/</span>
-            <span style={{ fontWeight: '500' }}>almost</span>
-            <span style={{ color: '#a1db08', fontWeight: '500' }}>/</span>
-          </span>
-        )
-      }
-      return part
-    })
-  }
+  // Gooey text animation
+  const sentences = [
+    "Prototyping interactive AI systems.",
+    "Crafting tomorrow's human-AI interfaces."
+  ]
 
   // Responsiveness
   const isDesktop = useMediaQuery({
@@ -241,33 +208,13 @@ export const Home = () => {
         style={{ marginTop: "1rem" }}
       >
         <div className="space-y-12 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
-          <h1 className="title space-grotesk-medium relative" style={{ fontSize: isDesktop ? "3.5rem" : "2.8rem", letterSpacing: "-0.02em" }}>
-            {/* Invisible placeholder to reserve space for full text */}
-            <span className="invisible" aria-hidden="true">
-              {renderTextWithColoredUnderscores("I am /almost/ graduating")}
-            </span>
-            
-            {/* Actual typing animation positioned absolutely over the placeholder */}
-            <span className="absolute top-0 left-0">
-              {renderTextWithColoredUnderscores(displayText)}
-              <span 
-                className={`typing-cursor ${isComplete ? 'blink' : ''}`}
-                style={{
-                  animation: isComplete ? 'blink 1s infinite' : 'none',
-                  borderBottom: '5px solid #a1db08',
-                  marginLeft: '2px',
-                  display: 'inline-block',
-                  width: '16px',
-                  height: '1em',
-                  verticalAlign: 'baseline',
-                  position: 'relative',
-                  top: '0.1em'
-                }}
-              >
-                &nbsp;
-              </span>
-            </span>
-          </h1>
+          <GooeyText
+            texts={sentences}
+            morphTime={1}
+            cooldownTime={2}
+            className="h-[2.4rem] md:h-[3rem]"
+            textClassName="title space-grotesk-medium !text-[2rem] md:!text-[2.5rem]"
+          />
           <div className="space-y-12 lg:space-y-4">
             <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am Yuwen, a Ph.D. Candidate in Computer Science and Engineering at the
