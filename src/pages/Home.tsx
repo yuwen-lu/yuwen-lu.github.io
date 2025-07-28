@@ -12,14 +12,53 @@ import { AcrylicDisc } from '../components/AcrylicDisc'
 import { PublicationCard } from '../components/PublicationCard'
 import FlowyPic from '../resources/images/flowy_card.png'
 import CrepePic from '../resources/images/crepe.png'
-import { GooeyText } from '../components/GooeyText'
-
 export const Home = () => {
-  // Gooey text animation
+  // Typing animation sentences
   const sentences = [
     "Prototyping interactive AI systems.",
     "Crafting tomorrow's human-AI interfaces."
   ]
+
+  // State for alternating sentences
+  const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0)
+  const [displayText, setDisplayText] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isComplete, setIsComplete] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
+  
+  const currentSentence = sentences[currentSentenceIndex]
+
+  // Typing and deleting effect
+  useEffect(() => {
+    let timeout: NodeJS.Timeout
+
+    if (!isDeleting && currentIndex < currentSentence.length) {
+      // Typing
+      timeout = setTimeout(() => {
+        setDisplayText(prev => prev + currentSentence[currentIndex])
+        setCurrentIndex(prev => prev + 1)
+      }, 50)
+    } else if (!isDeleting && currentIndex === currentSentence.length) {
+      // Completed typing, wait then start deleting
+      setIsComplete(true)
+      timeout = setTimeout(() => {
+        setIsDeleting(true)
+        setIsComplete(false)
+      }, 3000)
+    } else if (isDeleting && displayText.length > 0) {
+      // Deleting
+      timeout = setTimeout(() => {
+        setDisplayText(prev => prev.slice(0, -1))
+      }, 30)
+    } else if (isDeleting && displayText.length === 0) {
+      // Finished deleting, switch to next sentence
+      setIsDeleting(false)
+      setCurrentIndex(0)
+      setCurrentSentenceIndex((prev) => (prev + 1) % sentences.length)
+    }
+
+    return () => clearTimeout(timeout)
+  }, [currentIndex, currentSentence, displayText, isDeleting, sentences.length])
 
   // Responsiveness
   const isDesktop = useMediaQuery({
@@ -207,15 +246,36 @@ export const Home = () => {
         className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center mb-8 lg:mb-64"
         style={{ marginTop: "1rem" }}
       >
-        <div className="space-y-12 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
-          <GooeyText
-            texts={sentences}
-            morphTime={1}
-            cooldownTime={2}
-            className="h-[2.4rem] md:h-[3rem]"
-            textClassName="title space-grotesk-medium !text-[2rem] md:!text-[2.5rem]"
-          />
-          <div className="space-y-12 lg:space-y-4">
+        <div className="space-y-6 md:space-y-10 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
+          <h1 className="title space-grotesk-bold relative mb-8 md:mb-10" 
+              style={{ fontSize: isDesktop ? "2.5rem" : "2rem", letterSpacing: "-0.02em", fontWeight: 600, minHeight: "3.5rem" }}>
+            {/* Invisible placeholder to reserve space */}
+            <span className="invisible" aria-hidden="true">
+              {currentSentence}
+            </span>
+            
+            {/* Actual typing animation positioned absolutely */}
+            <span className="absolute top-0 left-0">
+              {displayText}
+              <span 
+                className={`typing-cursor ${isComplete ? 'blink' : ''}`}
+                style={{
+                  animation: isComplete ? 'blink 1s infinite' : 'none',
+                  borderBottom: '4px solid #a1db08',
+                  marginLeft: '2px',
+                  display: 'inline-block',
+                  width: '12px',
+                  height: '1em',
+                  verticalAlign: 'baseline',
+                  position: 'relative',
+                  top: '0.1em'
+                }}
+              >
+                &nbsp;
+              </span>
+            </span>
+          </h1>
+          <div className="space-y-4 lg:space-y-4">
             <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am Yuwen, a Ph.D. Candidate in Computer Science and Engineering at the
               University of Notre Dame.
@@ -405,7 +465,6 @@ export const Home = () => {
                   className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
                   src="https://www.youtube.com/embed/_At0jvJ_N3A"
                   title="Thesis Proposal - Human-AI Interaction Research"
-                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   style={{
