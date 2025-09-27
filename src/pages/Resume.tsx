@@ -2,7 +2,7 @@ import { Download } from 'lucide-react'
 import confetti from 'canvas-confetti'
 
 export const Resume = () => {
-  const handleDownloadClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleDownloadClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault() // Prevent immediate navigation
     
     // Trigger confetti animation
@@ -19,7 +19,7 @@ export const Resume = () => {
     }, 800) // 800ms delay to see the confetti
   }
 
-  const handleResumeDownloadClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleResumeDownloadClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault() // Prevent immediate navigation
     
     // Trigger confetti animation with slightly different colors
@@ -41,17 +41,16 @@ export const Resume = () => {
       <div className="text-center mb-12">
         <h1 className="title">Resume</h1>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a 
-            href="/files/resume-yuwen-lu.pdf"
+          <button 
+            type="button"
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleResumeDownloadClick}
             className="inline-flex items-center gap-2 bg-[#a1db08] text-black px-6 py-3 rounded-lg hover:bg-[#8bc406] transition-colors no-underline"
-            style={{ borderBottom: "none" }}
           >
             <Download size={20} />
             Resume (1 page)
-          </a>
+          </button>
         </div>
 
 
@@ -59,17 +58,16 @@ export const Resume = () => {
           3-page academic CV with more details
         </p>
 
-        <a 
-            href="/files/CV_Yuwen_Lu.pdf"
+        <button 
+            type="button"
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleDownloadClick}
             className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-colors no-underline border border-white/20"
-            style={{ borderBottom: "none" }}
           >
             <Download size={20} />
             Curriculum Vitae (3 pages)
-          </a>
+          </button>
       </div>
     </div>
   )
