@@ -41,10 +41,8 @@ export const Resume = () => {
       <div className="text-center mb-12">
         <h1 className="title">Resume</h1>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button 
+          <button
             type="button"
-            target="_blank"
-            rel="noopener noreferrer"
             onClick={handleResumeDownloadClick}
             className="inline-flex items-center gap-2 bg-[#a1db08] text-black px-6 py-3 rounded-lg hover:bg-[#8bc406] transition-colors no-underline"
           >
@@ -58,10 +56,8 @@ export const Resume = () => {
           3-page academic CV with more details
         </p>
 
-        <button 
+        <button
             type="button"
-            target="_blank"
-            rel="noopener noreferrer"
             onClick={handleDownloadClick}
             className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-colors no-underline border border-white/20"
           >
