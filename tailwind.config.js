@@ -10,12 +10,28 @@ export default {
         sans: ['Geist', 'system-ui', 'sans-serif'],
       },
       colors: {
-        primary: {
-          50: '#eff6ff',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-        }
+        accent: 'var(--color-accent)',
+        'accent-hover': 'var(--color-accent-hover)',
+        surface: 'var(--color-surface)',
+        'surface-hover': 'var(--color-surface-hover)',
+      },
+      textColor: {
+        primary: 'var(--color-text)',
+        secondary: 'var(--color-text-secondary)',
+        accent: 'var(--color-accent)',
+        nav: 'var(--color-nav)',
+      },
+      backgroundColor: {
+        page: 'var(--color-bg)',
+        surface: 'var(--color-surface)',
+        'surface-hover': 'var(--color-surface-hover)',
+        accent: 'var(--color-accent)',
+        'accent-hover': 'var(--color-accent-hover)',
+        button: 'var(--color-button)',
+        'button-hover': 'var(--color-button-hover)',
+      },
+      borderColor: {
+        rule: 'var(--color-rule)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

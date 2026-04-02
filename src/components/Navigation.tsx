@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLDivElement>(null)
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -13,6 +15,20 @@ export const Navigation = () => {
   ]
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        menuRef.current && !menuRef.current.contains(e.target as Node) &&
+        buttonRef.current && !buttonRef.current.contains(e.target as Node)
+      ) {
+        setIsMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isMenuOpen])
 
   return (
     <nav style={{
@@ -39,10 +55,10 @@ export const Navigation = () => {
       </div>
 
       {/* Mobile menu button */}
-      <div className="md:hidden">
+      <div className="md:hidden" ref={buttonRef}>
         <motion.button
           onClick={toggleMenu}
-          className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-[#a1db08] transition-colors geist-medium"
+          className="inline-flex items-center justify-center p-2 rounded-md text-nav hover:text-accent transition-colors geist-medium"
           aria-expanded={isMenuOpen}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -77,6 +93,7 @@ export const Navigation = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
+            ref={menuRef}
             initial={{ opacity: 0, scale: 0.85, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: -20 }}
@@ -88,56 +105,34 @@ export const Navigation = () => {
             }}
             className="md:hidden absolute top-16 right-4 z-50 geist-regular"
             style={{
-              background: 'rgba(28, 30, 38, 0.5)',
-              border: '1px solid rgba(255, 255, 255, 0.4)',
+              background: 'var(--color-bg)',
+              border: '1px solid var(--color-rule)',
               backdropFilter: 'blur(20px)',
               borderRadius: '12px',
               padding: '1.5rem',
               minWidth: '160px',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)'
             }}
           >
             <div className="space-y-1">
-              {navItems.map((item, index) => (
-                <motion.div
+              {navItems.map((item) => (
+                <NavLink
                   key={item.path}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 + 0.1 }}
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="nav-link block text-center py-3 px-4 rounded-lg transition-all duration-200 hover:bg-surface-hover"
+                  style={{
+                    margin: '0',
+                    fontSize: '1rem',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    border: 'none'
+                  }}
                 >
-                  <NavLink
-                    to={item.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="nav-link block text-center py-3 px-4 rounded-lg transition-all duration-200 hover:bg-white/10 hover:backdrop-blur-sm"
-                    style={{
-                      margin: '0',
-                      fontSize: '1rem',
-                      fontWeight: '500',
-                      textDecoration: 'none',
-                      border: 'none'
-                    }}
-                  >
-                    {item.label}
-                  </NavLink>
-                </motion.div>
+                  {item.label}
+                </NavLink>
               ))}
             </div>
-
-            {/* Decorative elements */}
-            <div
-              className="absolute -top-2 -right-2 w-8 h-8 rounded-full opacity-20"
-              style={{
-                background: 'linear-gradient(45deg, #a1db08, #A58BF0)',
-                filter: 'blur(8px)'
-              }}
-            />
-            <div
-              className="absolute -bottom-3 -left-3 w-6 h-6 rounded-full opacity-15"
-              style={{
-                background: 'linear-gradient(45deg, #A58BF0, #f8b6f2)',
-                filter: 'blur(6px)'
-              }}
-            />
           </motion.div>
         )}
       </AnimatePresence>
