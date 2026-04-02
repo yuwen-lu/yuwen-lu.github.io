@@ -189,7 +189,7 @@ export const Home = () => {
               authors={pub.authors}
               conference={pub.conference}
               award={pub.award}
-              slotLead={'slotLead' in pub ? pub.slotLead : undefined}
+              slotLead={'slotLead' in pub ? (pub.slotLead as string) : undefined}
               note={pub.note}
               links={pub.links}
               image={pub.image}
