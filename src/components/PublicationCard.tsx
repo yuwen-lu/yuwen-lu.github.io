@@ -5,6 +5,8 @@ interface PublicationCardProps {
   authors?: string
   conference?: string
   award?: string
+  /** Shown as the first slot-reveal line (above authors) when set */
+  slotLead?: string
   note?: string
   links: Array<{ label: string; url: string }>
   image?: string
@@ -92,12 +94,13 @@ export const PublicationCard = ({
   authors,
   conference,
   award,
+  slotLead,
   note,
   links,
   image,
   isSystemPaper = false,
 }: PublicationCardProps) => {
-  const hasMeta = Boolean(authors || conference || note)
+  const hasMeta = Boolean(slotLead || authors || conference || note)
 
   return (
     <div
@@ -137,22 +140,29 @@ export const PublicationCard = ({
           >
             <div className="overflow-hidden">
               <div className="flex flex-col gap-1 pb-2">
+                {slotLead && (
+                  <SlotReveal faceHeight={44} delay={180}>
+                    <p className="line-clamp-2 text-sm italic leading-snug text-white/90">
+                      {slotLead}
+                    </p>
+                  </SlotReveal>
+                )}
                 {authors && (
-                  <SlotReveal faceHeight={80} delay={180}>
+                  <SlotReveal faceHeight={80} delay={330}>
                     <p className="line-clamp-4 text-sm font-medium leading-5">
                       {renderAuthors(authors)}
                     </p>
                   </SlotReveal>
                 )}
                 {conference && (
-                  <SlotReveal faceHeight={22} delay={330}>
+                  <SlotReveal faceHeight={22} delay={480}>
                     <p className="line-clamp-1 text-sm font-semibold leading-[22px] text-[#a1db08]">
                       {conference}
                     </p>
                   </SlotReveal>
                 )}
                 {note && (
-                  <SlotReveal faceHeight={22} delay={460}>
+                  <SlotReveal faceHeight={22} delay={630}>
                     <p className="line-clamp-1 text-sm italic leading-[22px] text-white/90">
                       {note}
                     </p>
