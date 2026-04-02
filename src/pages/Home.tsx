@@ -18,6 +18,19 @@ export const Home = () => {
 
   const publications = [
     {
+      title: "Crepe: Mobile Screen Data Collector",
+      authors: "Yuwen Lu, Meng Chen, Qi Zhao, Victor Cox, Yang Yang, Meng Jiang, Jay Brockman, Tamara Kay, Toby Jia-Jun Li",
+      conference: "CHI 2026",
+      award: "🏅 Honorable Mention Award (Top 5%)",
+      slotLead: "Collecting mobile screen data for personalized AI agents",
+      links: [
+        { label: "Paper", url: "https://arxiv.org/abs/2406.16173" },
+        { label: "Website", url: "https://crepe-website.vercel.app" },
+      ],
+      image: CrepePic,
+      isSystemPaper: true
+    },
+    {
       title: "Misty: UI Prototyping Through Interactive Conceptual Blending",
       // authors: "Yuwen Lu, Alan Leung, Amanda Swearngin, Jeffrey Nichols, Titus Barik",
       conference: "CHI 2025",
@@ -55,19 +68,6 @@ export const Home = () => {
       isSystemPaper: true
     },
     {
-      title: "Crepe: Mobile Screen Data Collector",
-      authors: "Yuwen Lu, Meng Chen, Qi Zhao, Victor Cox, Yang Yang, Meng Jiang, Jay Brockman, Tamara Kay, Toby Jia-Jun Li",
-      conference: "CHI 2026",
-      award: "🏅 Honorable Mention Award (Top 5%)",
-      slotLead: "Collecting mobile screen data for personalized AI agents",
-      links: [
-        { label: "Paper", url: "https://arxiv.org/abs/2406.16173" },
-        { label: "Website", url: "https://crepe-website.vercel.app" },
-      ],
-      image: CrepePic,
-      isSystemPaper: true
-    },
-    {
       title: "Using AI Agents To Empower Gig Workers against AI Inequality",
       authors: "Toby Jia-Jun Li, Yuwen Lu, Jaylexia Clark, Meng Chen, Victor Cox, Meng Jiang, Yang Yang, Tamara Kay, Danielle Wood, Jay Brockman",
       conference: "CHIWORK '22",
@@ -79,7 +79,7 @@ export const Home = () => {
       image: CHIWORK2022Pic
     },
     {
-      title: "Computational Approaches for User Interfaces",
+      title: "Workshop: Computational Approaches for User Interfaces",
       authors: "Yue Jiang*, Yuwen Lu*, Jeffrey Nichols, Wolfgang Stuerzlinger, Chun Yu, Christof Lutteroth, Yang Li, Ranjitha Kumar, Toby Jia-Jun Li (* equal contribution)",
       conference: "CHI '22 Workshop",
       note: "",
