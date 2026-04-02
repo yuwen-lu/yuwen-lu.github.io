@@ -340,7 +340,7 @@ export const Footer = () => {
   }
 
   return (
-    <div className="text-center mt-12 px-4 sm:px-6 lg:px-8 space-grotesk-regular mb-20">
+    <div className="text-center mt-12 px-4 sm:px-6 lg:px-8 geist-regular mb-20">
       {/* Message Popup Modal */}
       <AnimatePresence>
         {showMessagePopup && (
@@ -362,7 +362,7 @@ export const Footer = () => {
                 onClick={(e: React.MouseEvent) => e.stopPropagation()}
               >
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-medium text-white space-grotesk-medium">
+                  <h3 className="text-lg font-medium text-white geist-medium">
                     {healthStatus === 'healthy' ? 'Yo! What do you want to tell me?' : 'Nudge Yuwen For Update'}
                   </h3>
                   <button
@@ -480,7 +480,7 @@ export const Footer = () => {
               scale: 0.9,
               transition: { duration: 0.2 }
             }}
-            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-[#a1db08] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 space-grotesk-medium"
+            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-[#a1db08] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 geist-medium"
           >
             <motion.div
               animate={{ 
@@ -523,7 +523,7 @@ export const Footer = () => {
               scale: 0.9,
               transition: { duration: 0.2 }
             }}
-            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 space-grotesk-medium"
+            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 geist-medium"
           >
             <motion.div
               animate={{ 
@@ -542,7 +542,7 @@ export const Footer = () => {
         )}
       </AnimatePresence>
       
-      <p className="mb-6 text-lg space-grotesk-medium">Contact</p>
+      <p className="mb-6 text-lg geist-medium">Contact</p>
       <div className="footer-icons mb-8 flex justify-center items-center gap-2 sm:gap-4">
         <motion.button 
           onClick={copyEmailToClipboard}
@@ -602,9 +602,9 @@ export const Footer = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-center gap-2 text-base opacity-80">
           {isLoadingCommitDate ? (
-            <span className="space-grotesk-regular">Loading last update...</span>
+            <span className="geist-regular">Loading last update...</span>
           ) : (
-            <span className="space-grotesk-regular font-mono text-sm">
+            <span className="geist-regular font-mono text-sm">
               <span className="text-[#a1db08] font-medium">Last updated</span> {lastUpdated}
             </span>
           )}
@@ -614,12 +614,12 @@ export const Footer = () => {
           <div className="flex items-center justify-center gap-4">
             <div className={`flex items-center gap-2 ${getHealthColor()}`}>
               {getHealthIcon()}
-              <span className="text-sm space-grotesk-regular">{getHealthText()}</span>
+              <span className="text-sm geist-regular">{getHealthText()}</span>
             </div>
             
             <motion.button
               onClick={() => setShowMessagePopup(true)}
-              className={`${getButtonColor()} px-4 py-2 rounded-full text-sm space-grotesk-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#a1db08] focus:ring-offset-2 focus:ring-offset-gray-900`}
+              className={`${getButtonColor()} px-4 py-2 rounded-full text-sm geist-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#a1db08] focus:ring-offset-2 focus:ring-offset-gray-900`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label={`${getButtonText()} - Send a message to Yuwen`}

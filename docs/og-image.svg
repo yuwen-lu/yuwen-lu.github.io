@@ -3,7 +3,7 @@
   <!-- Font Import -->
   <defs>
     <style type="text/css">
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap');
     </style>
   </defs>
 
@@ -123,17 +123,17 @@
   />
  
   <!-- Main text -->
-  <text x="100" y="280" fill="white" font-family="Space Grotesk" font-weight="500" font-size="72" letter-spacing="-0.02em">
+  <text x="100" y="280" fill="white" font-family="Geist" font-weight="500" font-size="72" letter-spacing="-0.02em">
     yuwen lu
   </text>
   
   <!-- Subtitle -->
-  <text x="100" y="350" fill="white" font-family="Space Grotesk" font-weight="300" font-size="36" letter-spacing="-0.01em">
+  <text x="100" y="350" fill="white" font-family="Geist" font-weight="300" font-size="36" letter-spacing="-0.01em">
     human-ai interaction
   </text>
   
   <!-- Additional descriptors -->
-  <text x="100" y="400" fill="white" font-family="Space Grotesk" font-weight="300" font-size="36" letter-spacing="-0.01em">
+  <text x="100" y="400" fill="white" font-family="Geist" font-weight="300" font-size="36" letter-spacing="-0.01em">
     design · engineering
   </text>
   

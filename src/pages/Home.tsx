@@ -241,7 +241,7 @@ export const Home = () => {
         style={{ marginTop: "1rem" }}
       >
         <div className="space-y-12 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
-          <h1 className="title space-grotesk-medium relative" style={{ fontSize: isDesktop ? "3.5rem" : "2.8rem", letterSpacing: "-0.02em" }}>
+          <h1 className="title geist-medium relative" style={{ fontSize: isDesktop ? "3.5rem" : "2.8rem", letterSpacing: "-0.02em" }}>
             {/* Invisible placeholder to reserve space for full text */}
             <span className="invisible" aria-hidden="true">
               {renderTextWithColoredUnderscores("I am /almost/ graduating")}
@@ -269,11 +269,11 @@ export const Home = () => {
             </span>
           </h1>
           <div className="space-y-12 lg:space-y-4">
-            <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am Yuwen, a Ph.D. Candidate in Computer Science and Engineering at the
               University of Notre Dame.
             </p>
-            <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               This summer, I will be a visiting researcher at{" "}
               <a 
                 href="https://mj-storytelling.github.io" 
@@ -285,7 +285,7 @@ export const Home = () => {
               {" "}in San Francisco.
             </p>
             
-            <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
               <a href="https://toby.li/">Toby Li</a>.
             </p>
@@ -373,7 +373,7 @@ export const Home = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="text-center lg:text-left mb-4 lg:mb-6">
-              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 space-grotesk-medium"
+              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium"
                   style={{ 
                     fontSize: isDesktop ? "1.8rem" : "1.4rem", 
                     lineHeight: "1.3",
@@ -382,7 +382,7 @@ export const Home = () => {
                 Currently Working On
               </h2>
             </div>
-            <div className="text-left space-y-3 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.6em" }}>
+            <div className="text-left space-y-3 lg:space-y-4 geist-regular" style={{ lineHeight: "1.6em" }}>
               <div style={{ fontSize: isDesktop ? "1.1rem" : "1rem", lineHeight: isDesktop ? "1.6em" : "1.5em", marginBottom: isDesktop ? "1rem" : "0.8rem" }}>
                 Exploring the UI for AI (maybe{" "}
                 <a
@@ -434,7 +434,7 @@ export const Home = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="text-center lg:text-left mb-4 lg:mb-6">
-              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 space-grotesk-medium"
+              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium"
                   style={{ 
                     fontSize: isDesktop ? "1.8rem" : "1.4rem", 
                     lineHeight: "1.3",
@@ -442,7 +442,7 @@ export const Home = () => {
                   }}>
                 Watch My Thesis Proposal
               </h2>
-              <p className="space-grotesk-regular" 
+              <p className="geist-regular" 
                  style={{ 
                    fontSize: isDesktop ? "1rem" : "0.9rem", 
                    lineHeight: "1.6", 
@@ -480,7 +480,7 @@ export const Home = () => {
         className="mb-8 lg:mb-16"
       >
         <div className="text-center mb-4 lg:mb-8">
-          <h2 className="text-xl lg:text-2xl mb-4 lg:mb-6 space-grotesk-regular"
+          <h2 className="text-xl lg:text-2xl mb-4 lg:mb-6 geist-regular"
               style={{ 
                 fontSize: isDesktop ? "2rem" : "1.6rem", 
                 lineHeight: "1.3",

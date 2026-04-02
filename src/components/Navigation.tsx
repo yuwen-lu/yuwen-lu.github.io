@@ -26,7 +26,7 @@ export const Navigation = () => {
       width: "100%"
     }}>
       {/* Desktop Navigation */}
-      <div className="hidden md:flex space-grotesk-medium" style={{ position: "relative", zIndex: 100 }}>
+      <div className="hidden md:flex geist-medium" style={{ position: "relative", zIndex: 100 }}>
         {navItems.map((item) => (
           <NavLink
             key={item.path}
@@ -42,7 +42,7 @@ export const Navigation = () => {
       <div className="md:hidden">
         <motion.button
           onClick={toggleMenu}
-          className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-[#a1db08] transition-colors space-grotesk-medium"
+          className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-[#a1db08] transition-colors geist-medium"
           aria-expanded={isMenuOpen}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -86,7 +86,7 @@ export const Navigation = () => {
               damping: 30,
               duration: 0.3
             }}
-            className="md:hidden absolute top-16 right-4 z-50 space-grotesk-regular"
+            className="md:hidden absolute top-16 right-4 z-50 geist-regular"
             style={{
               background: 'rgba(28, 30, 38, 0.5)',
               border: '1px solid rgba(255, 255, 255, 0.4)',

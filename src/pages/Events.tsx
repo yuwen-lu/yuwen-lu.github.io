@@ -324,7 +324,7 @@ export const Events = () => {
               >
                 {event.showLocation && !event.spacer && (
                   <div 
-                    className="flex items-center text-right space-grotesk-regular"
+                    className="flex items-center text-right geist-regular"
                     style={{
                       paddingRight: "2rem",
                       position: "relative",
@@ -361,7 +361,7 @@ export const Events = () => {
                       }}
                     >
                       <p 
-                        className="space-grotesk-medium"
+                        className="geist-medium"
                         style={{
                           fontSize: isNotPhone ? "1rem" : "0.9rem",
                           margin: "0",
@@ -382,7 +382,7 @@ export const Events = () => {
                   {/* Content */}
                   {event.content && (
                     <div 
-                      className={`text-lg leading-relaxed space-grotesk-regular ${isNotPhone ? 'inline-block' : 'block'}`}
+                      className={`text-lg leading-relaxed geist-regular ${isNotPhone ? 'inline-block' : 'block'}`}
                       style={isNotPhone ? { 
                         margin: "0 0 0 1rem",
                         lineHeight: "2em",
