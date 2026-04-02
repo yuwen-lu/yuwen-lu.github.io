@@ -120,8 +120,8 @@ export const PublicationCard = ({
 
       {/* Always-visible bottom gradient for text readability */}
       <div
-        className="absolute inset-x-0 bottom-0 z-[1] h-3/5"
-        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 50%, transparent 100%)' }}
+        className="absolute inset-x-0 bottom-0 z-[1] h-[70%]"
+        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 70%, transparent 100%)' }}
       />
 
       {/* Full-card dark overlay on hover */}
