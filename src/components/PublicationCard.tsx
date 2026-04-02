@@ -16,6 +16,10 @@ interface PublicationCardProps {
 const HOVER_EASE = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 const SLOT_EASE = 'cubic-bezier(0.16, 1, 0.3, 1)'
 
+function openExternalUrl(url: string) {
+  window.open(url, '_blank', 'noopener,noreferrer')
+}
+
 interface SlotRevealProps {
   children: ReactNode
   faceHeight: number
@@ -178,17 +182,16 @@ export const PublicationCard = ({
         <h3 className="text-xl font-bold leading-tight">{title}</h3>
 
         {links.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="relative z-20 mt-3 flex flex-wrap gap-2">
             {links.map((link, index) => (
-              <a
+              <button
                 key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/25"
+                type="button"
+                onClick={() => openExternalUrl(link.url)}
+                className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/25 active:scale-[0.96] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </div>
         )}
