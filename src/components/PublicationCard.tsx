@@ -15,6 +15,8 @@ interface PublicationCardProps {
 
 const HOVER_EASE = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 const SLOT_EASE = 'cubic-bezier(0.16, 1, 0.3, 1)'
+/** Extra delay for authors/conference/note when slotLead occupies the first reveal slot (180ms). */
+const SLOT_LEAD_STAGGER_MS = 150
 
 function openExternalUrl(url: string) {
   window.open(url, '_blank', 'noopener,noreferrer')
@@ -105,6 +107,7 @@ export const PublicationCard = ({
   isSystemPaper = false,
 }: PublicationCardProps) => {
   const hasMeta = Boolean(slotLead || authors || conference || note)
+  const metaStagger = slotLead ? SLOT_LEAD_STAGGER_MS : 0
 
   return (
     <div
@@ -152,21 +155,21 @@ export const PublicationCard = ({
                   </SlotReveal>
                 )}
                 {authors && (
-                  <SlotReveal faceHeight={80} delay={330}>
+                  <SlotReveal faceHeight={80} delay={180 + metaStagger}>
                     <p className="line-clamp-4 text-sm font-medium leading-5">
                       {renderAuthors(authors)}
                     </p>
                   </SlotReveal>
                 )}
                 {conference && (
-                  <SlotReveal faceHeight={22} delay={480}>
+                  <SlotReveal faceHeight={22} delay={330 + metaStagger}>
                     <p className="line-clamp-1 text-sm font-semibold leading-[22px] text-[#a1db08]">
                       {conference}
                     </p>
                   </SlotReveal>
                 )}
                 {note && (
-                  <SlotReveal faceHeight={22} delay={630}>
+                  <SlotReveal faceHeight={22} delay={480 + metaStagger}>
                     <p className="line-clamp-1 text-sm italic leading-[22px] text-white/90">
                       {note}
                     </p>
