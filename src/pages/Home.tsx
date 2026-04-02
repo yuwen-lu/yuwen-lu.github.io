@@ -10,7 +10,6 @@ import { ProfileInteractive } from '../components/ProfileInteractive'
 import { PublicationCard } from '../components/PublicationCard'
 import FlowyPic from '../resources/images/flowy_card.png'
 import CrepePic from '../resources/images/crepe.png'
-
 export const Home = () => {
   // Responsiveness
   const isDesktop = useMediaQuery({
@@ -241,7 +240,6 @@ export const Home = () => {
                   className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
                   src="https://www.youtube.com/embed/_At0jvJ_N3A"
                   title="Thesis Proposal - Human-AI Interaction Research"
-                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   style={{
