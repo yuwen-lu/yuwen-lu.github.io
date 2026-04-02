@@ -82,7 +82,7 @@ function renderAuthors(authors: string) {
       return (
         <span key={i}>
           {i > 0 && ', '}
-          <span className="font-bold text-[#a1db08]">{trimmed}</span>
+          <span className="font-bold" style={{ color: 'var(--color-accent)' }}>{trimmed}</span>
         </span>
       )
     }
@@ -133,7 +133,7 @@ export const PublicationCard = ({
       {isSystemPaper && (
         <div className="absolute right-3 top-3 z-20">
           <div className="flex items-center rounded-full border border-white/10 bg-black/85 px-4 py-1">
-            <span className="text-xs font-medium tracking-wider text-[#a1db08]">SYSTEM</span>
+            <span className="text-xs font-medium tracking-wider" style={{ color: 'var(--color-accent)' }}>SYSTEM</span>
           </div>
         </div>
       )}
@@ -163,7 +163,7 @@ export const PublicationCard = ({
                 )}
                 {conference && (
                   <SlotReveal faceHeight={22} delay={330 + metaStagger}>
-                    <p className="line-clamp-1 text-sm font-semibold leading-[22px] text-[#a1db08]">
+                    <p className="line-clamp-1 text-sm font-semibold leading-[22px]" style={{ color: 'var(--color-accent)' }}>
                       {conference}
                     </p>
                   </SlotReveal>
@@ -180,7 +180,7 @@ export const PublicationCard = ({
           </div>
         )}
 
-        {award && <p className="mb-1 text-sm font-semibold text-[#a1db08]">{award}</p>}
+        {award && <p className="mb-1 text-sm font-semibold" style={{ color: 'var(--color-accent)' }}>{award}</p>}
 
         <h3 className="text-xl font-bold leading-tight">{title}</h3>
 

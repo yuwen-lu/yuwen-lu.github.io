@@ -151,7 +151,7 @@ export const Footer = () => {
   const getButtonColor = () => {
     switch (healthStatus) {
       case 'healthy':
-        return "bg-[#a1db08] hover:bg-[#8bc406] text-black"
+        return "bg-button hover:bg-button-hover text-white"
       case 'stale':
         return "bg-orange-500 hover:bg-orange-600 text-white"
       case 'outdated':
@@ -176,7 +176,7 @@ export const Footer = () => {
       // Create embed based on health status
       const getEmbedColor = () => {
         switch (healthStatus) {
-          case 'healthy': return 0xa1db08  // Green
+          case 'healthy': return 0x7C6C2B
           case 'stale': return 0xf59e0b    // Orange  
           case 'outdated': return 0xef4444 // Red
         }
@@ -257,7 +257,6 @@ export const Footer = () => {
         throw new Error(`Discord webhook failed: ${response.status}`)
       }
       
-      // Trigger confetti based on message type
       const colors = healthStatus === 'healthy' 
         ? ['#3b82f6', '#10b981'] 
         : healthStatus === 'stale' 
@@ -295,14 +294,13 @@ export const Footer = () => {
     try {
       await navigator.clipboard.writeText('ylu23@nd.edu')
       
-      // Trigger smaller confetti! 🎉
       confetti({
         particleCount: 30,
         spread: 45,
-        origin: { y: 0.9 }, // Launch from bottom area
-        colors: ['#a1db08', '#A58BF0']
+        origin: { y: 0.9 },
+        colors: ['#7C6C2B', '#A89545']
       })
-      
+
       setShowCopiedBanner(true)
       setTimeout(() => {
         setShowCopiedBanner(false)
@@ -331,7 +329,7 @@ export const Footer = () => {
   const getHealthColor = () => {
     switch (healthStatus) {
       case 'healthy':
-        return 'text-[#a1db08]'
+        return 'text-accent'
       case 'stale':
         return 'text-yellow-400'
       case 'outdated':
@@ -358,16 +356,17 @@ export const Footer = () => {
                 initial={{ opacity: 0, scale: 0.8, y: 50 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.8, y: 50 }}
-                className="bg-gray-900 p-6 rounded-lg shadow-2xl z-50 w-full max-w-md"
+                className="p-6 rounded-lg shadow-2xl z-50 w-full max-w-md"
+                style={{ backgroundColor: 'var(--color-bg)', border: '1px solid var(--color-rule)' }}
                 onClick={(e: React.MouseEvent) => e.stopPropagation()}
               >
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-medium text-white geist-medium">
+                  <h3 className="text-lg font-medium text-primary geist-medium">
                     {healthStatus === 'healthy' ? 'Yo! What do you want to tell me?' : 'Nudge Yuwen For Update'}
                   </h3>
                   <button
                     onClick={() => setShowMessagePopup(false)}
-                    className="text-gray-400 hover:text-white"
+                    className="text-secondary hover:text-primary"
                   >
                     <X size={20} />
                   </button>
@@ -385,7 +384,7 @@ export const Footer = () => {
                         onClick={() => setSelectedPreset(preset)}
                         className={`w-full text-left p-2 rounded text-sm transition-colors ${
                           selectedPreset === preset
-                            ? 'bg-[#a1db08] text-black'
+                            ? 'bg-button text-white'
                             : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                         }`}
                       >
@@ -404,7 +403,7 @@ export const Footer = () => {
                     value={customMessage}
                     onChange={(e) => setCustomMessage(e.target.value)}
                     placeholder={selectedPreset.includes("🐞 report") ? "bugggs help me zap them" : "Add a custom message here..."}
-                    className="w-full p-3 bg-gray-800 text-white text-sm rounded border border-gray-700 focus:border-[#a1db08] focus:outline-none resize-none"
+                    className="w-full p-3 bg-surface text-primary text-sm rounded border border-rule focus:border-accent focus:outline-none resize-none"
                     rows={3}
                   />
                 </div>
@@ -419,7 +418,7 @@ export const Footer = () => {
                     value={contactInfo}
                     onChange={(e) => setContactInfo(e.target.value)}
                     placeholder="email, twitter, etc..."
-                    className="w-full p-3 bg-gray-800 text-white text-sm rounded border border-gray-700 focus:border-[#a1db08] focus:outline-none"
+                    className="w-full p-3 bg-surface text-primary text-sm rounded border border-rule focus:border-accent focus:outline-none"
                   />
                 </div>
 
@@ -429,7 +428,7 @@ export const Footer = () => {
                   disabled={(!customMessage.trim() && !selectedPreset) || isSendingMessage}
                   className={`w-full py-2 px-4 rounded font-medium flex items-center justify-center gap-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 ${
                     (customMessage.trim() || selectedPreset) && !isSendingMessage
-                      ? getButtonColor() + ' focus:ring-[#a1db08]'
+                      ? getButtonColor() + ' focus:ring-accent'
                       : 'bg-gray-700 text-gray-400 cursor-not-allowed focus:ring-gray-500'
                   }`}
                 >
@@ -480,7 +479,7 @@ export const Footer = () => {
               scale: 0.9,
               transition: { duration: 0.2 }
             }}
-            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-[#a1db08] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 geist-medium"
+            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-button text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 geist-medium"
           >
             <motion.div
               animate={{ 
@@ -554,7 +553,7 @@ export const Footer = () => {
         >
           <Mail 
             size={isDesktop ? 28 : 24} 
-            className="text-white hover:text-[#a1db08] transition-colors"
+            className="text-primary hover:text-accent transition-colors"
           />
         </motion.button>
         <motion.button 
@@ -567,7 +566,7 @@ export const Footer = () => {
         >
           <Twitter 
             size={isDesktop ? 28 : 24} 
-            className="text-white hover:text-[#a1db08] transition-colors"
+            className="text-primary hover:text-accent transition-colors"
           />
         </motion.button>
         <motion.button 
@@ -580,7 +579,7 @@ export const Footer = () => {
         >
           <Github 
             size={isDesktop ? 28 : 24} 
-            className="text-white hover:text-[#a1db08] transition-colors"
+            className="text-primary hover:text-accent transition-colors"
           />
         </motion.button>
         <motion.button 
@@ -593,7 +592,7 @@ export const Footer = () => {
         >
           <Linkedin 
             size={isDesktop ? 28 : 24} 
-            className="text-white hover:text-[#a1db08] transition-colors"
+            className="text-primary hover:text-accent transition-colors"
           />
         </motion.button>
       </div>
@@ -605,7 +604,7 @@ export const Footer = () => {
             <span className="geist-regular">Loading last update...</span>
           ) : (
             <span className="geist-regular font-mono text-sm">
-              <span className="text-[#a1db08] font-medium">Last updated</span> {lastUpdated}
+              <span className="text-accent font-medium">Last updated</span> {lastUpdated}
             </span>
           )}
         </div>
@@ -619,9 +618,7 @@ export const Footer = () => {
             
             <motion.button
               onClick={() => setShowMessagePopup(true)}
-              className={`${getButtonColor()} px-4 py-2 rounded-full text-sm geist-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#a1db08] focus:ring-offset-2 focus:ring-offset-gray-900`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className={`${getButtonColor()} px-4 py-2 rounded-full text-sm geist-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2`}
               aria-label={`${getButtonText()} - Send a message to Yuwen`}
             >
               {getButtonText()}

@@ -3,37 +3,33 @@ import confetti from 'canvas-confetti'
 
 export const Resume = () => {
   const handleDownloadClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault() // Prevent immediate navigation
-    
-    // Trigger confetti animation
+    e.preventDefault()
+
     confetti({
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#a1db08', '#8bc406', '#6ba104', '#ffffff', '#ffd700']
+      colors: ['#7C6C2B', '#A89545', '#655723', '#E8E2D8', '#D4C98A']
     })
 
-    // Wait for confetti to be visible, then open the PDF
     setTimeout(() => {
       window.open('/files/CV_Yuwen_Lu.pdf', '_blank', 'noopener,noreferrer')
-    }, 800) // 800ms delay to see the confetti
+    }, 800)
   }
 
   const handleResumeDownloadClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault() // Prevent immediate navigation
-    
-    // Trigger confetti animation with slightly different colors
+    e.preventDefault()
+
     confetti({
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#8bc406', '#a1db08', '#6ba104', '#ffffff', '#ffd700']
+      colors: ['#A89545', '#7C6C2B', '#655723', '#E8E2D8', '#D4C98A']
     })
 
-    // Wait for confetti to be visible, then open the PNG
     setTimeout(() => {
       window.open('/files/resume-yuwen-lu.pdf', '_blank', 'noopener,noreferrer')
-    }, 800) // 800ms delay to see the confetti
+    }, 800)
   }
 
   return (
@@ -44,7 +40,7 @@ export const Resume = () => {
           <button
             type="button"
             onClick={handleResumeDownloadClick}
-            className="inline-flex items-center gap-2 bg-[#a1db08] text-black px-6 py-3 rounded-lg hover:bg-[#8bc406] transition-colors no-underline"
+            className="inline-flex items-center gap-2 bg-button text-white px-6 py-3 rounded-lg hover:bg-button-hover transition-colors no-underline"
           >
             <Download size={20} />
             Resume (1 page)
@@ -59,7 +55,7 @@ export const Resume = () => {
         <button
             type="button"
             onClick={handleDownloadClick}
-            className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-colors no-underline border border-white/20"
+            className="inline-flex items-center gap-2 bg-surface text-primary px-6 py-3 rounded-lg hover:bg-surface-hover transition-colors no-underline border border-rule"
           >
             <Download size={20} />
             Curriculum Vitae (3 pages)

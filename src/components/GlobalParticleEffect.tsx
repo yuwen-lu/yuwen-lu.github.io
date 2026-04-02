@@ -21,10 +21,10 @@ interface ClickEffect {
 
 // Background blur block colors from the site
 const PARTICLE_COLORS = [
-  '#A58BF0', // purple
-  '#f8b6f2', // pink  
-  '#d8f0aa', // green
-  '#FBF2D2'  // yellow
+  '#C8BFD6', // muted purple
+  '#D6C5C8', // muted rose  
+  '#C8D6C0', // muted sage
+  '#D8D4C4'  // warm stone
 ]
 
 const getRandomColor = () => PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)]
@@ -72,6 +72,9 @@ export const useGlobalParticleEffect = () => {
   }, [isDesktop])
 
   const handleGlobalClick = useCallback((event: MouseEvent | TouchEvent) => {
+    const target = event.target as HTMLElement
+    if (target.closest('button, a, [role="button"], input, select, textarea')) return
+
     let clientX: number, clientY: number
 
     if ('touches' in event && event.touches.length > 0) {

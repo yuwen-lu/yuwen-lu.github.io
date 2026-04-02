@@ -1,27 +1,65 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,100italic,300italic");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  /* Custom text selection color */
+  :root {
+    --color-bg: #F5F0EB;
+    --color-text: #2C2824;
+    --color-text-secondary: rgba(44, 40, 36, 0.6);
+    --color-accent: #B89410;
+    --color-accent-hover: #9A7C0D;
+    --color-button: #B89410;
+    --color-button-hover: #9A7C0D;
+    --color-rule: rgba(44, 40, 36, 0.10);
+    --color-surface: rgba(44, 40, 36, 0.04);
+    --color-surface-hover: rgba(44, 40, 36, 0.07);
+    --color-selection-bg: #B89410;
+    --color-selection-text: #F5F0EB;
+    --color-nav: #2C2824;
+    --color-blur-1: #C8BFD6;
+    --color-blur-2: #D6C5C8;
+    --color-blur-3: #C8D6C0;
+    --color-blur-4: #D8D4C4;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #151515;
+      --color-text: #E8E2D8;
+      --color-text-secondary: rgba(232, 226, 216, 0.6);
+      --color-accent: #8B9BB5;
+      --color-accent-hover: #A0AEC4;
+      --color-button: #3C7DC9;
+      --color-button-hover: #3470B5;
+      --color-rule: rgba(232, 226, 216, 0.10);
+      --color-surface: rgba(232, 226, 216, 0.05);
+      --color-surface-hover: rgba(232, 226, 216, 0.08);
+      --color-selection-bg: #8B9BB5;
+      --color-selection-text: #151515;
+      --color-nav: #E8E2D8;
+      --color-blur-1: #3D3554;
+      --color-blur-2: #4A3538;
+      --color-blur-3: #354A30;
+      --color-blur-4: #4A4636;
+    }
+  }
+
   ::selection {
-    background-color: #FFFF00;
-    color: #000000;
+    background-color: var(--color-selection-bg);
+    color: var(--color-selection-text);
   }
   
   ::-moz-selection {
-    background-color: #FFFF00;
-    color: #000000;
+    background-color: var(--color-selection-bg);
+    color: var(--color-selection-text);
   }
-  
-  /* Avoid scroll-behavior: smooth — it makes wheel/trackpad scrolling feel laggy on long pages. */
   
   body {
     @apply font-light antialiased;
     margin: 0;
-    background-color: #1C1E26;
-    color: rgba(255, 255, 255, 1);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: "Geist", sans-serif;
     font-optical-sizing: auto;
     font-size: 15pt;
@@ -159,9 +197,8 @@
     min-height: 100vh;
   }
   
-  /* Original link styling */
   a {
-    color: #a1db08;
+    color: var(--color-accent);
     text-decoration: none;
     position: relative;
     transition: color 0.2s ease-in-out;
@@ -169,25 +206,10 @@
   }
 
   a:hover {
-    color: #a1db08;
+    color: var(--color-accent-hover);
     text-decoration: none;
   }
 
-  a::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    border-bottom: dotted 1px #a1db08;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-  }
-
-  a:hover::after {
-    opacity: 1;
-  }
   
   p {
     margin-bottom: 2rem;
@@ -205,7 +227,7 @@
   /* Original blur blocks */
   .blur-block {
     position: fixed;
-    opacity: 0.45;
+    opacity: 0.35;
     filter: blur(70px);
     -webkit-filter: blur(70px);
     z-index: -1;
@@ -230,7 +252,7 @@
   }
   
   #blur-purple {
-    background-color: #A58BF0;
+    background-color: var(--color-blur-1);
     border-radius: 50% 30% 50% 30%;
     top: -8vh;
     left: -18vw;
@@ -239,7 +261,7 @@
   }
   
   #blur-pink {
-    background-color: #f8b6f2;
+    background-color: var(--color-blur-2);
     border-radius: 50% 60% 50% 60%;
     filter: blur(90px);
     -webkit-filter: blur(90px);
@@ -250,7 +272,7 @@
   }
   
   #blur-green {
-    background-color: #d8f0aa;
+    background-color: var(--color-blur-3);
     border-radius: 50% 60% 50% 60%;
     filter: blur(90px);
     -webkit-filter: blur(90px);
@@ -261,7 +283,7 @@
   }
   
   #blur-yellow {
-    background-color: #FBF2D2;
+    background-color: var(--color-blur-4);
     border-radius: 50% 60% 50% 60%;
     filter: blur(90px);
     -webkit-filter: blur(90px);
@@ -351,7 +373,7 @@
   
   /* Navigation link styling */
   .nav-link {
-    color: #fff;
+    color: var(--color-nav);
     text-decoration: none;
     border: none;
     margin: 1.8rem;
@@ -378,7 +400,7 @@
   
   /* Original paper link styling */
   .paper-link {
-    color: #a1db08 !important;
+    color: var(--color-accent) !important;
     text-decoration: none;
     border-bottom: dotted 1px;
     font-family: "Geist", sans-serif;
@@ -394,17 +416,16 @@
   /* Card styling for publications and other content */
   .card-hover {
     @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-rule);
     backdrop-filter: blur(10px);
   }
   
-  /* Better mobile card styling */
   @media screen and (max-width: 768px) {
     .card-hover {
       margin-bottom: 1rem;
       padding: 1rem !important;
-      background-color: rgba(255, 255, 255, 0.03);
+      background-color: var(--color-surface);
     }
     
     .card-hover:hover {
