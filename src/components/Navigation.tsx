@@ -42,7 +42,7 @@ export const Navigation = () => {
       width: "100%"
     }}>
       {/* Desktop Navigation */}
-      <div className="hidden md:flex geist-medium" style={{ position: "relative", zIndex: 100 }}>
+      <div className="hidden md:flex geist-regular" style={{ position: "relative", zIndex: 100 }}>
         {navItems.map((item) => (
           <NavLink
             key={item.path}

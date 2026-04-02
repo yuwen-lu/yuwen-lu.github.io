@@ -379,14 +379,14 @@
     margin: 1.8rem;
     font-family: "Geist", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 500;
+    font-weight: 400;
     transition: color 0.2s ease-in-out;
   }
   
   @media screen and (max-width: 768px) {
     .nav-link {
       margin: 1rem;
-      font-weight: 500;
+      font-weight: 400;
     }
   }
   
@@ -394,7 +394,7 @@
     .nav-link {
       padding: 0;
       margin: 0.5rem;
-      font-weight: 500;
+      font-weight: 400;
     }
   }
   

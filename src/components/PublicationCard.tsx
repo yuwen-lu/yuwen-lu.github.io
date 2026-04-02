@@ -182,7 +182,7 @@ export const PublicationCard = ({
 
         {award && <p className="mb-1 text-sm font-semibold" style={{ color: 'var(--color-accent)' }}>{award}</p>}
 
-        <h3 className="text-xl font-bold leading-tight">{title}</h3>
+        <h3 className="text-xl font-medium leading-tight">{title}</h3>
 
         {links.length > 0 && (
           <div className="relative z-20 mt-3 flex flex-wrap gap-2">

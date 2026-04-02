@@ -111,7 +111,7 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="max-lg:pt-1 pb-8 md:pb-20 lg:pb-24"
+        className="pt-8 md:pt-16 lg:pt-20 pb-12 md:pb-24 lg:pb-28"
       >
         <div className="grid lg:grid-cols-5 gap-4 lg:gap-16 items-center lg:mt-0">
           <div className="space-y-6 lg:space-y-6 order-2 lg:order-1 lg:col-span-3">
