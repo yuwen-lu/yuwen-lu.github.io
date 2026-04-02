@@ -9,6 +9,8 @@ import { AcrylicDisc } from './AcrylicDisc'
  */
 export const ProfileInteractive = () => {
   const isDesktop = useMediaQuery({ query: '(min-width: 769px)' })
+  /** Touch / coarse-pointer devices: skip tilt + drag (no mouse parallax). */
+  const disablePerspective = useMediaQuery({ query: '(pointer: coarse)' })
   const [perspectiveRotation, setPerspectiveRotation] = useState({ x: 0, y: 0 })
   const [dragRotation, setDragRotation] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
@@ -18,6 +20,12 @@ export const ProfileInteractive = () => {
   const pendingPerspective = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
+    if (disablePerspective) {
+      setPerspectiveRotation({ x: 0, y: 0 })
+      setDragRotation({ x: 0, y: 0 })
+      return
+    }
+
     const handleGlobalMouseMove = (event: MouseEvent) => {
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
@@ -39,16 +47,17 @@ export const ProfileInteractive = () => {
       document.removeEventListener('mousemove', handleGlobalMouseMove)
       if (rafRef.current != null) cancelAnimationFrame(rafRef.current)
     }
-  }, [])
+  }, [disablePerspective])
 
   const handleMouseDown = (event: React.MouseEvent) => {
+    if (disablePerspective) return
     setIsDragging(true)
     setDragStart({ x: event.clientX, y: event.clientY })
     event.preventDefault()
   }
 
   const handleMouseMove = (event: React.MouseEvent) => {
-    if (!isDragging) return
+    if (disablePerspective || !isDragging) return
 
     const deltaX = event.clientX - dragStart.x
     const deltaY = event.clientY - dragStart.y
@@ -72,25 +81,31 @@ export const ProfileInteractive = () => {
     return () => document.removeEventListener('mouseup', handleGlobalMouseUp)
   }, [])
 
-  const combinedRotation = {
-    x: perspectiveRotation.x + dragRotation.x,
-    y: perspectiveRotation.y + dragRotation.y,
-  }
+  const combinedRotation = disablePerspective
+    ? { x: 0, y: 0 }
+    : {
+        x: perspectiveRotation.x + dragRotation.x,
+        y: perspectiveRotation.y + dragRotation.y,
+      }
+
+  const mobileSize = isDesktop ? 600 : 252
 
   return (
-    <div className="flex justify-center order-1 lg:order-2 lg:col-span-2">
+    <div className="flex justify-center order-1 lg:order-2 lg:col-span-2 max-lg:-my-1">
       <div
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        className={`group relative ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} flex items-center justify-center`}
+        className={`group relative ${
+          disablePerspective ? 'cursor-default' : isDragging ? 'cursor-grabbing' : 'cursor-grab'
+        } flex items-center justify-center`}
         style={{
           perspective: '1000px',
           transformStyle: 'preserve-3d',
           zIndex: 0,
           userSelect: 'none',
-          width: isDesktop ? '600px' : '320px',
-          height: isDesktop ? '600px' : '320px',
+          width: `${mobileSize}px`,
+          height: `${mobileSize}px`,
         }}
       >
         <div
@@ -102,7 +117,7 @@ export const ProfileInteractive = () => {
           <img
             src={ProfilePic}
             alt="Yuwen Lu"
-            className="w-48 h-48 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-72 lg:h-72 object-cover rounded-full shadow-lg transition-shadow duration-300 group-hover:shadow-2xl pointer-events-none select-none"
+            className="w-40 h-40 sm:w-44 sm:h-44 md:w-60 md:h-60 lg:w-72 lg:h-72 object-cover rounded-full shadow-lg transition-shadow duration-300 group-hover:shadow-2xl pointer-events-none select-none"
             style={{
               filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
               transformStyle: 'preserve-3d',
@@ -112,7 +127,7 @@ export const ProfileInteractive = () => {
           <AcrylicDisc
             rotation={combinedRotation}
             totalRotation={0}
-            size={isDesktop ? 288 : 240}
+            size={isDesktop ? 288 : 200}
           />
         </div>
       </div>

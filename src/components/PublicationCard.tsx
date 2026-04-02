@@ -5,6 +5,8 @@ interface PublicationCardProps {
   authors?: string
   conference?: string
   award?: string
+  /** Shown as the first slot-reveal line (above authors) when set */
+  slotLead?: string
   note?: string
   links: Array<{ label: string; url: string }>
   image?: string
@@ -13,6 +15,12 @@ interface PublicationCardProps {
 
 const HOVER_EASE = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 const SLOT_EASE = 'cubic-bezier(0.16, 1, 0.3, 1)'
+/** Extra delay for authors/conference/note when slotLead occupies the first reveal slot (180ms). */
+const SLOT_LEAD_STAGGER_MS = 150
+
+function openExternalUrl(url: string) {
+  window.open(url, '_blank', 'noopener,noreferrer')
+}
 
 interface SlotRevealProps {
   children: ReactNode
@@ -92,12 +100,14 @@ export const PublicationCard = ({
   authors,
   conference,
   award,
+  slotLead,
   note,
   links,
   image,
   isSystemPaper = false,
 }: PublicationCardProps) => {
-  const hasMeta = Boolean(authors || conference || note)
+  const hasMeta = Boolean(slotLead || authors || conference || note)
+  const metaStagger = slotLead ? SLOT_LEAD_STAGGER_MS : 0
 
   return (
     <div
@@ -110,8 +120,8 @@ export const PublicationCard = ({
 
       {/* Always-visible bottom gradient for text readability */}
       <div
-        className="absolute inset-x-0 bottom-0 z-[1] h-3/5"
-        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 50%, transparent 100%)' }}
+        className="absolute inset-x-0 bottom-0 z-[1] h-[70%]"
+        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 70%, transparent 100%)' }}
       />
 
       {/* Full-card dark overlay on hover */}
@@ -137,22 +147,29 @@ export const PublicationCard = ({
           >
             <div className="overflow-hidden">
               <div className="flex flex-col gap-1 pb-2">
+                {slotLead && (
+                  <SlotReveal faceHeight={44} delay={180}>
+                    <p className="line-clamp-2 text-sm italic leading-snug text-white/90">
+                      {slotLead}
+                    </p>
+                  </SlotReveal>
+                )}
                 {authors && (
-                  <SlotReveal faceHeight={80} delay={180}>
+                  <SlotReveal faceHeight={80} delay={180 + metaStagger}>
                     <p className="line-clamp-4 text-sm font-medium leading-5">
                       {renderAuthors(authors)}
                     </p>
                   </SlotReveal>
                 )}
                 {conference && (
-                  <SlotReveal faceHeight={22} delay={330}>
+                  <SlotReveal faceHeight={22} delay={330 + metaStagger}>
                     <p className="line-clamp-1 text-sm font-semibold leading-[22px] text-[#a1db08]">
                       {conference}
                     </p>
                   </SlotReveal>
                 )}
                 {note && (
-                  <SlotReveal faceHeight={22} delay={460}>
+                  <SlotReveal faceHeight={22} delay={480 + metaStagger}>
                     <p className="line-clamp-1 text-sm italic leading-[22px] text-white/90">
                       {note}
                     </p>
@@ -168,17 +185,16 @@ export const PublicationCard = ({
         <h3 className="text-xl font-bold leading-tight">{title}</h3>
 
         {links.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="relative z-20 mt-3 flex flex-wrap gap-2">
             {links.map((link, index) => (
-              <a
+              <button
                 key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/25"
+                type="button"
+                onClick={() => openExternalUrl(link.url)}
+                className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/25 active:scale-[0.96] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </div>
         )}
