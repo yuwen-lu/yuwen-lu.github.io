@@ -88,7 +88,7 @@ export const ProfileInteractive = () => {
         y: perspectiveRotation.y + dragRotation.y,
       }
 
-  const mobileSize = isDesktop ? 600 : 252
+  const mobileSize = isDesktop ? 400 : 252
 
   return (
     <div className="flex justify-center order-1 lg:order-2 lg:col-span-2 max-lg:-my-1">

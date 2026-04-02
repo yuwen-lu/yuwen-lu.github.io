@@ -105,74 +105,107 @@ export const Home = () => {
 
   return (
     <div className="w-full mx-auto px-4 sm:px-6 lg:px-16 xl:px-20">
-      {/* Hero Section - Original Bootstrap layout */}
-      <motion.div
+      {/* Hero */}
+      <motion.section
+        id="hero"
+        aria-label="Introduction"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="grid lg:grid-cols-5 gap-4 lg:gap-16 items-center mb-4 lg:mb-64 max-lg:pt-1"
-        style={{ marginTop: isDesktop ? "1rem" : 0 }}
+        className="max-lg:pt-1 pb-8 md:pb-20 lg:pb-24"
       >
-        <div className="space-y-6 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
-          <div className="space-y-5 lg:space-y-4">
-            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
-              I am Yuwen, a CS PhD candidate at{" "}
-              <a href="https://www.nd.edu/" target="_blank" rel="noopener noreferrer">
-                Notre Dame
-              </a>
-              . I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
-              <a href="https://toby.li/">Toby Li</a>.
-            </p>
-            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
-              I explore user interfaces for AI. I build tools that{' '}
-              <a
-                href="https://machinelearning.apple.com/research/interactive-prototyping"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                go beyond prompting {' '}
-              </a>
-              for UI prototyping, AI that{' '}
-              <a href="https://arxiv.org/abs/2406.16177" target="_blank" rel="noopener noreferrer">
-                helps with design decision making
-              </a>
-              , and{' '}
-              <a href="https://dl.acm.org/doi/10.1145/3637336" target="_blank" rel="noopener noreferrer">
-                a browser extension
-              </a>{' '}
-              that supports users against dark patterns.
-            </p>
-            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
-              Worked at{" "}
-              <a href="https://www.krea.ai" target="_blank" rel="noopener noreferrer">
-                Krea
-              </a>{" "}
-              (Design Engineer),{" "}
-              <a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer">
-                Midjourney
-              </a>{" "}
-              (Visiting Researcher),{" "}
-              <a href="https://machinelearning.apple.com/research/interactive-prototyping" target="_blank" rel="noopener noreferrer">
-                Apple
-              </a>{" "}
-              (AIML Research Intern), and{" "}
-              <a href="https://m3.material.io" target="_blank" rel="noopener noreferrer">
-                Google
-              </a>{" "}
-              (Student Researcher).
-            </p>
+        <div className="grid lg:grid-cols-5 gap-4 lg:gap-16 items-center lg:mt-0">
+          <div className="space-y-6 lg:space-y-6 order-2 lg:order-1 lg:col-span-3">
+            <div className="space-y-5 lg:space-y-3">
+              <p className="geist-regular" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+                I am Yuwen, a CS Ph.D. candidate at{" "}
+                <a href="https://www.nd.edu/" target="_blank" rel="noopener noreferrer">
+                  Notre Dame
+                </a>
+                . I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
+                <a href="https://toby.li/">Toby Li</a>.
+              </p>
+              <div className="space-y-2">
+                <p className="geist-regular mb-0" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+                  I explore user interfaces for AI. I build tools that:
+                </p>
+                <ul
+                  className="geist-regular list-disc pl-5 sm:pl-6 space-y-2 mb-0"
+                  style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}
+                >
+                  <li>
+                    <a
+                      href="https://machinelearning.apple.com/research/interactive-prototyping"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      go beyond prompting
+                    </a>
+                    {" "}for UI prototyping
+                  </li>
+                  <li>
+                    AI that{" "}
+                    <a href="https://arxiv.org/abs/2406.16177" target="_blank" rel="noopener noreferrer">
+                      helps with design decision making
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://dl.acm.org/doi/10.1145/3637336" target="_blank" rel="noopener noreferrer">
+                      a browser extension
+                    </a>{" "}
+                    that supports users against dark patterns
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
+
+          <ProfileInteractive />
+        </div>
+      </motion.section>
+
+      {/* Publications Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="mb-8 lg:mb-16"
+      >
+        <div className="text-center mb-8 lg:mb-12">
+          <h2 className="text-xl lg:text-2xl mb-0 geist-regular"
+              style={{ 
+                fontSize: isDesktop ? "2rem" : "1.6rem", 
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em"
+              }}>
+            Publications
+          </h2>
         </div>
 
-        <ProfileInteractive />
-      </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 lg:px-8">
+          {publications.map((pub, index) => (
+            <PublicationCard
+              key={index}
+              title={pub.title}
+              authors={pub.authors}
+              conference={pub.conference}
+              award={pub.award}
+              slotLead={'slotLead' in pub ? pub.slotLead : undefined}
+              note={pub.note}
+              links={pub.links}
+              image={pub.image}
+              isSystemPaper={pub.isSystemPaper}
+            />
+          ))}
+        </div>
+      </motion.section>
 
       {/* Thesis proposal */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-8 lg:mb-16 mt-6 lg:mt-16"
+        className="mb-8 lg:mb-16 mt-10 lg:mt-14"
       >
         <div className="max-w-4xl mx-auto">
           <motion.section
@@ -217,42 +250,6 @@ export const Home = () => {
           </motion.section>
         </div>
       </motion.div>
-
-      {/* Publications Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="mb-8 lg:mb-16"
-      >
-        <div className="text-center mb-4 lg:mb-8">
-          <h2 className="text-xl lg:text-2xl mb-4 lg:mb-6 geist-regular"
-              style={{ 
-                fontSize: isDesktop ? "2rem" : "1.6rem", 
-                lineHeight: "1.3",
-                letterSpacing: "-0.01em"
-              }}>
-            Publications
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 lg:px-8">
-          {publications.map((pub, index) => (
-            <PublicationCard
-              key={index}
-              title={pub.title}
-              authors={pub.authors}
-              conference={pub.conference}
-              award={pub.award}
-              slotLead={'slotLead' in pub ? pub.slotLead : undefined}
-              note={pub.note}
-              links={pub.links}
-              image={pub.image}
-              isSystemPaper={pub.isSystemPaper}
-            />
-          ))}
-        </div>
-      </motion.section>
     </div>
   )
 } 
