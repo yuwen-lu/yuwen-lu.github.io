@@ -47,7 +47,7 @@ export const Home = () => {
     {
       title: "Flowy: Supporting UX Design Decisions With AI",
       authors: "Yuwen Lu, Ziang Tong, Qinyi Zhao, Yewon Oh, Bryan Wang, Toby Jia-Jun Li",
-      note: "Use AI to meaningfully support UI/UX design decisions",
+      note: "Use AI to meaningfully support design decisions",
       links: [
         { label: "Preprint", url: "https://arxiv.org/abs/2406.16177" },
         { label: "Demo", url: "https://flowy.design" },

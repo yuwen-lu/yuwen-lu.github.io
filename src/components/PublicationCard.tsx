@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 interface PublicationCardProps {
   title: string
   authors?: string
@@ -10,6 +12,60 @@ interface PublicationCardProps {
 }
 
 const HOVER_EASE = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+const SLOT_EASE = 'cubic-bezier(0.16, 1, 0.3, 1)'
+
+interface SlotRevealProps {
+  children: ReactNode
+  faceHeight: number
+  delay?: number
+}
+
+function SlotReveal({ children, faceHeight, delay = 0 }: SlotRevealProps) {
+  const radius = faceHeight / 2
+  const P = 500
+  const shrink = (P - radius) / P
+  return (
+    <div
+      style={{
+        height: faceHeight,
+        perspective: `${P}px`,
+        overflow: 'hidden',
+        width: '100%',
+        flexShrink: 0,
+      }}
+    >
+      <div
+        className="[transform:rotateX(0deg)] group-hover:[transform:rotateX(90deg)]"
+        style={{
+          width: '100%',
+          height: faceHeight,
+          position: 'relative',
+          transformStyle: 'preserve-3d',
+          transition: `transform 520ms ${SLOT_EASE} ${delay}ms`,
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backfaceVisibility: 'hidden',
+            transform: `rotateX(0deg) translateZ(${radius}px)`,
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backfaceVisibility: 'hidden',
+            transform: `rotateX(-90deg) translateZ(${radius}px) scale(${shrink})`,
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 function renderAuthors(authors: string) {
   return authors.split(/,\s*/).map((author, i) => {
@@ -52,6 +108,12 @@ export const PublicationCard = ({
         <img src={image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
       )}
 
+      {/* Always-visible bottom gradient for text readability */}
+      <div
+        className="absolute inset-x-0 bottom-0 z-[1] h-3/5"
+        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 50%, transparent 100%)' }}
+      />
+
       {/* Full-card dark overlay on hover */}
       <div
         className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100"
@@ -70,18 +132,32 @@ export const PublicationCard = ({
       <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 text-white">
         {hasMeta && (
           <div
-            className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100"
-            style={{ transition: `grid-template-rows 400ms ${HOVER_EASE}, opacity 300ms ${HOVER_EASE}` }}
+            className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr]"
+            style={{ transition: `grid-template-rows 200ms ${HOVER_EASE}` }}
           >
             <div className="overflow-hidden">
               <div className="flex flex-col gap-1 pb-2">
                 {authors && (
-                  <p className="line-clamp-3 text-sm font-medium">{renderAuthors(authors)}</p>
+                  <SlotReveal faceHeight={80} delay={180}>
+                    <p className="line-clamp-4 text-sm font-medium leading-5">
+                      {renderAuthors(authors)}
+                    </p>
+                  </SlotReveal>
                 )}
                 {conference && (
-                  <p className="line-clamp-2 text-sm font-semibold text-[#a1db08]">{conference}</p>
+                  <SlotReveal faceHeight={22} delay={330}>
+                    <p className="line-clamp-1 text-sm font-semibold leading-[22px] text-[#a1db08]">
+                      {conference}
+                    </p>
+                  </SlotReveal>
                 )}
-                {note && <p className="line-clamp-2 text-sm italic text-white/90">{note}</p>}
+                {note && (
+                  <SlotReveal faceHeight={22} delay={460}>
+                    <p className="line-clamp-1 text-sm italic leading-[22px] text-white/90">
+                      {note}
+                    </p>
+                  </SlotReveal>
+                )}
               </div>
             </div>
           </div>
@@ -110,3 +186,4 @@ export const PublicationCard = ({
     </div>
   )
 }
+
