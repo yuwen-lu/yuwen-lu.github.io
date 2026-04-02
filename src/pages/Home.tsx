@@ -22,7 +22,6 @@ export const Home = () => {
       authors: "Yuwen Lu, Meng Chen, Qi Zhao, Victor Cox, Yang Yang, Meng Jiang, Jay Brockman, Tamara Kay, Toby Jia-Jun Li",
       conference: "CHI 2026",
       award: "🏅 Honorable Mention Award (Top 5%)",
-      slotLead: "Collecting mobile screen data for personalized AI agents",
       links: [
         { label: "Paper", url: "https://arxiv.org/abs/2406.16173" },
         { label: "Website", url: "https://crepe-website.vercel.app" },
