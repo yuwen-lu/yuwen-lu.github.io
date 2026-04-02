@@ -15,9 +15,7 @@
     color: #000000;
   }
   
-  html {
-    scroll-behavior: smooth;
-  }
+  /* Avoid scroll-behavior: smooth — it makes wheel/trackpad scrolling feel laggy on long pages. */
   
   body {
     @apply font-light antialiased;
@@ -194,6 +192,8 @@
     filter: blur(70px);
     -webkit-filter: blur(70px);
     z-index: -1;
+    transform: translateZ(0);
+    will-change: transform;
   }
   
   /* Simple fade-in animation for publication cards */
@@ -252,6 +252,20 @@
     bottom: -25vh;
     width: 40vw;
     height: 30vh;
+  }
+
+  @media screen and (max-width: 768px) {
+    .blur-block {
+      filter: blur(48px);
+      -webkit-filter: blur(48px);
+    }
+
+    #blur-pink,
+    #blur-green,
+    #blur-yellow {
+      filter: blur(56px);
+      -webkit-filter: blur(56px);
+    }
   }
   
   /* Title styling */

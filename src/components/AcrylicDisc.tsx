@@ -32,7 +32,7 @@ const DiscMesh = ({ rotation, totalRotation, size }: AcrylicDiscProps) => {
           ior={1.5} // Lower IOR for more realistic glass
           roughness={0.01} // Even smoother surface for more reflection
           chromaticAberration={0.15} // More chromatic aberration for glass effect
-          samples={16} // Higher samples for better quality
+          samples={8}
           transparent
           distortion={0.02} // Reduced distortion
           distortionScale={0.05}
@@ -71,7 +71,8 @@ export const AcrylicDisc = ({ rotation, totalRotation, size }: AcrylicDiscProps)
       }}
     >
       <Canvas
-        camera={{ position: [0, 0, 5], fov: 35 }} // Slightly elevated camera to catch more sky
+        camera={{ position: [0, 0, 5], fov: 35 }}
+        dpr={[1, 1.75]}
         style={{ width: '100%', height: '100%' }}
       >
         <ambientLight intensity={0.4} />
