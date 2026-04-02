@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,100italic,300italic");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,48 +15,59 @@
     color: #000000;
   }
   
-  html {
-    scroll-behavior: smooth;
-  }
+  /* Avoid scroll-behavior: smooth — it makes wheel/trackpad scrolling feel laggy on long pages. */
   
   body {
     @apply font-light antialiased;
     margin: 0;
     background-color: #1C1E26;
     color: rgba(255, 255, 255, 1);
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
     font-size: 15pt;
     font-weight: 400;
     line-height: 2em;
     min-height: 100vh;
   }
   
-  .space-grotesk {
-    font-family: "Space Grotesk", sans-serif;
+  .geist {
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
   }
-  
-  .space-grotesk-light {
-    font-family: "Space Grotesk", sans-serif;
+
+  .geist-light {
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-weight: 300;
   }
-  
-  .space-grotesk-regular {
-    font-family: "Space Grotesk", sans-serif;
+
+  .geist-regular {
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-weight: 400;
   }
-  
-  .space-grotesk-medium {
-    font-family: "Space Grotesk", sans-serif;
+
+  .geist-medium {
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-weight: 500;
   }
-  
-  .space-grotesk-semibold {
-    font-family: "Space Grotesk", sans-serif;
+
+  .geist-semibold {
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-weight: 600;
   }
-  
-  .space-grotesk-bold {
-    font-family: "Space Grotesk", sans-serif;
+
+  .geist-bold {
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-weight: 700;
   }
   
@@ -199,6 +209,8 @@
     filter: blur(70px);
     -webkit-filter: blur(70px);
     z-index: -1;
+    transform: translateZ(0);
+    will-change: transform;
   }
   
   /* Simple fade-in animation for publication cards */
@@ -257,6 +269,20 @@
     bottom: -25vh;
     width: 40vw;
     height: 30vh;
+  }
+
+  @media screen and (max-width: 768px) {
+    .blur-block {
+      filter: blur(48px);
+      -webkit-filter: blur(48px);
+    }
+
+    #blur-pink,
+    #blur-green,
+    #blur-yellow {
+      filter: blur(56px);
+      -webkit-filter: blur(56px);
+    }
   }
   
   /* Title styling */
@@ -329,7 +355,8 @@
     text-decoration: none;
     border: none;
     margin: 1.8rem;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
     font-weight: 500;
     transition: color 0.2s ease-in-out;
   }
@@ -354,7 +381,8 @@
     color: #a1db08 !important;
     text-decoration: none;
     border-bottom: dotted 1px;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
     font-weight: 500;
     transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
@@ -393,20 +421,6 @@
     cursor: pointer !important;
   }
 
-  /* Typing cursor animation */
-  @keyframes blink {
-    0%, 50% {
-      opacity: 1;
-    }
-    51%, 100% {
-      opacity: 0;
-    }
-  }
-  
-  .typing-cursor {
-    display: inline-block;
-  }
-  
   /* Improved mobile container spacing */
   @media screen and (max-width: 768px) {
     .container {

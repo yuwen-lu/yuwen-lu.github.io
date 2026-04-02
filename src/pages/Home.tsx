@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect, useRef } from 'react'
-import ProfilePic from '../resources/images/me.png'
 import MistyPic from '../resources/images/misty.png'
 import DarkPitaPic from '../resources/images/dark_pita_dalle.png'
 import CHIWORK2022Pic from '../resources/images/CHIWORK22_approach.png'
@@ -8,149 +6,15 @@ import CHI2022WorkshopPic from '../resources/images/user-interface-workshop.jpeg
 import Lbw2022Pic from '../resources/images/chi-lbw-2022.png'
 import Chi2022LbwPoster from '../resources/files/LBW CHI2022/Poster_YuwenLu_LBWCHI2022.pdf'
 import { useMediaQuery } from 'react-responsive'
-import { AcrylicDisc } from '../components/AcrylicDisc'
+import { ProfileInteractive } from '../components/ProfileInteractive'
 import { PublicationCard } from '../components/PublicationCard'
 import FlowyPic from '../resources/images/flowy_card.png'
 import CrepePic from '../resources/images/crepe.png'
 export const Home = () => {
-  // Typing animation sentences
-  const sentences = [
-    "Prototyping interactive AI systems.",
-    "Crafting tomorrow's human-AI interfaces."
-  ]
-
-  // State for alternating sentences
-  const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0)
-  const [displayText, setDisplayText] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isComplete, setIsComplete] = useState(false)
-  const [isDeleting, setIsDeleting] = useState(false)
-  
-  const currentSentence = sentences[currentSentenceIndex]
-
-  // Typing and deleting effect
-  useEffect(() => {
-    let timeout: NodeJS.Timeout
-
-    if (!isDeleting && currentIndex < currentSentence.length) {
-      // Typing
-      timeout = setTimeout(() => {
-        setDisplayText(prev => prev + currentSentence[currentIndex])
-        setCurrentIndex(prev => prev + 1)
-      }, 50)
-    } else if (!isDeleting && currentIndex === currentSentence.length) {
-      // Completed typing, wait then start deleting
-      setIsComplete(true)
-      timeout = setTimeout(() => {
-        setIsDeleting(true)
-        setIsComplete(false)
-      }, 3000)
-    } else if (isDeleting && displayText.length > 0) {
-      // Deleting
-      timeout = setTimeout(() => {
-        setDisplayText(prev => prev.slice(0, -1))
-      }, 30)
-    } else if (isDeleting && displayText.length === 0) {
-      // Finished deleting, switch to next sentence
-      setIsDeleting(false)
-      setCurrentIndex(0)
-      setCurrentSentenceIndex((prev) => (prev + 1) % sentences.length)
-    }
-
-    return () => clearTimeout(timeout)
-  }, [currentIndex, currentSentence, displayText, isDeleting, sentences.length])
-
   // Responsiveness
   const isDesktop = useMediaQuery({
     query: "(min-width: 769px)",
   })
-
-  // 3D rotation effect for profile picture
-  const profileImageRef = useRef<HTMLDivElement>(null)
-  const [perspectiveRotation, setPerspectiveRotation] = useState({ x: 0, y: 0 }) // Global mouse perspective
-  const [dragRotation, setDragRotation] = useState({ x: 0, y: 0 }) // User drag rotation
-  const [totalRotation, setTotalRotation] = useState(0) // Click flip rotation
-  const [isDragging, setIsDragging] = useState(false)
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
-  const [hasDragged, setHasDragged] = useState(false) // Track if actual dragging occurred
-
-  useEffect(() => {
-    const handleGlobalMouseMove = (event: MouseEvent) => {
-      // Enhanced perspective effect based on global mouse position
-      const centerX = window.innerWidth / 2
-      const centerY = window.innerHeight / 2
-
-      const mouseX = event.clientX - centerX
-      const mouseY = event.clientY - centerY
-
-      // More pronounced rotation for better visual feedback (max 20 degrees)
-      const rotateY = (mouseX / (window.innerWidth / 2)) * 20
-      const rotateX = -(mouseY / (window.innerHeight / 2)) * 20
-
-      setPerspectiveRotation({ x: rotateX, y: rotateY })
-    }
-
-    document.addEventListener('mousemove', handleGlobalMouseMove)
-    return () => document.removeEventListener('mousemove', handleGlobalMouseMove)
-  }, [])
-
-  const handleMouseDown = (event: React.MouseEvent) => {
-    setIsDragging(true)
-    setHasDragged(false) // Reset drag flag
-    setDragStart({ x: event.clientX, y: event.clientY })
-    event.preventDefault() // Prevent text selection while dragging
-  }
-
-  const handleMouseMove = (event: React.MouseEvent) => {
-    if (!isDragging) return
-
-    const deltaX = event.clientX - dragStart.x
-    const deltaY = event.clientY - dragStart.y
-
-    // Consider it dragging if moved more than 5 pixels
-    if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
-      setHasDragged(true)
-    }
-
-    const newRotateX = dragRotation.x - deltaY * 0.6 
-    const newRotateY = dragRotation.y + deltaX * 0.6 
-
-    // Limit rotation ranges to prevent extreme positions
-    const clampedRotateX = Math.max(-75, Math.min(75, newRotateX)) // Limit vertical tilt
-    const clampedRotateY = Math.max(-90, Math.min(90, newRotateY)) // Limit horizontal spin
-
-    setDragRotation({ x: clampedRotateX, y: clampedRotateY })
-    setDragStart({ x: event.clientX, y: event.clientY })
-  }
-
-  const handleMouseUp = () => {
-    setIsDragging(false)
-  }
-
-  const handleImageClick = () => {
-    // Only flip if there was no dragging
-    if (!hasDragged) {
-      // Do the flashy 540° animation (360° spin + 180° flip)
-      setTotalRotation(prev => prev + 540)
-      // Reset drag rotation for clean viewing position
-      setDragRotation({ x: 0, y: 0 })
-    }
-    // Reset drag flag for next interaction
-    setHasDragged(false)
-  }
-
-  // Global mouse up listener to handle drag end even outside component
-  useEffect(() => {
-    const handleGlobalMouseUp = () => setIsDragging(false)
-    document.addEventListener('mouseup', handleGlobalMouseUp)
-    return () => document.removeEventListener('mouseup', handleGlobalMouseUp)
-  }, [])
-
-  // Combine all rotations
-  const combinedRotation = {
-    x: perspectiveRotation.x + dragRotation.x,
-    y: perspectiveRotation.y + dragRotation.y + totalRotation
-  }
 
   const publications = [
     {
@@ -182,7 +46,7 @@ export const Home = () => {
     {
       title: "Flowy: Supporting UX Design Decisions With AI",
       authors: "Yuwen Lu, Ziang Tong, Qinyi Zhao, Yewon Oh, Bryan Wang, Toby Jia-Jun Li",
-      note: "Use AI to meaningfully support UI/UX design decisions",
+      note: "Use AI to meaningfully support design decisions",
       links: [
         { label: "Preprint", url: "https://arxiv.org/abs/2406.16177" },
         { label: "Demo", url: "https://flowy.design" },
@@ -193,9 +57,12 @@ export const Home = () => {
     {
       title: "Crepe: Mobile Screen Data Collector",
       authors: "Yuwen Lu, Meng Chen, Qi Zhao, Victor Cox, Yang Yang, Meng Jiang, Jay Brockman, Tamara Kay, Toby Jia-Jun Li",
+      conference: "CHI 2026",
+      award: "🏅 Honorable Mention Award (Top 5%)",
       note: "Collecting mobile screen data for personalized AI agents",
       links: [
         { label: "Paper", url: "https://arxiv.org/abs/2406.16173" },
+        { label: "Website", url: "https://crepe-website.vercel.app" },
       ],
       image: CrepePic,
       isSystemPaper: true
@@ -246,53 +113,13 @@ export const Home = () => {
         className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center mb-8 lg:mb-64"
         style={{ marginTop: "1rem" }}
       >
-        <div className="space-y-6 md:space-y-10 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
-          <h1 className="title space-grotesk-bold relative mb-8 md:mb-10" 
-              style={{ fontSize: isDesktop ? "2.5rem" : "2rem", letterSpacing: "-0.02em", fontWeight: 600, minHeight: "3.5rem" }}>
-            {/* Invisible placeholder to reserve space */}
-            <span className="invisible" aria-hidden="true">
-              {currentSentence}
-            </span>
-            
-            {/* Actual typing animation positioned absolutely */}
-            <span className="absolute top-0 left-0">
-              {displayText}
-              <span 
-                className={`typing-cursor ${isComplete ? 'blink' : ''}`}
-                style={{
-                  animation: isComplete ? 'blink 1s infinite' : 'none',
-                  borderBottom: '4px solid #a1db08',
-                  marginLeft: '2px',
-                  display: 'inline-block',
-                  width: '12px',
-                  height: '1em',
-                  verticalAlign: 'baseline',
-                  position: 'relative',
-                  top: '0.1em'
-                }}
-              >
-                &nbsp;
-              </span>
-            </span>
-          </h1>
-          <div className="space-y-4 lg:space-y-4">
-            <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+        <div className="space-y-12 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
+          <div className="space-y-12 lg:space-y-4">
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am Yuwen, a Ph.D. Candidate in Computer Science and Engineering at the
               University of Notre Dame.
             </p>
-            <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
-              This summer, I will be a visiting researcher at{" "}
-              <a 
-                href="https://mj-storytelling.github.io" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-               Midjourney Storytelling Lab
-              </a>
-              {" "}in San Francisco.
-            </p>
-            
-            <p className="space-grotesk-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
               <a href="https://toby.li/">Toby Li</a>.
             </p>
@@ -310,59 +137,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <div className="flex justify-center order-1 lg:order-2 lg:col-span-2">
-          <div
-            ref={profileImageRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onClick={handleImageClick}
-            className={`relative ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} flex items-center justify-center`} // Added centering classes
-            style={{
-              perspective: '1000px',
-              transformStyle: 'preserve-3d',
-              zIndex: 0,
-              userSelect: 'none', // Prevent text selection while dragging
-              width: isDesktop ? '600px' : '320px', // Reduced mobile from 450px to 320px
-              height: isDesktop ? '600px' : '320px', // Reduced mobile from 450px to 320px
-            }}
-          >
-            <motion.div
-              animate={{
-                rotateX: combinedRotation.x,
-                rotateY: combinedRotation.y,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 80,
-                damping: 20,
-                mass: 1.2,
-                duration: 1.5
-              }}
-              style={{
-                transformStyle: 'preserve-3d',
-                transform: `rotateX(${combinedRotation.x}deg) rotateY(${combinedRotation.y}deg)`,
-              }}
-            >
-              <img
-                src={ProfilePic}
-                alt="Yuwen Lu"
-                className="w-48 h-48 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-72 lg:h-72 object-cover rounded-full shadow-lg transition-shadow duration-300 hover:shadow-2xl cursor-pointer"
-                style={{ 
-                  filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
-                  transformStyle: 'preserve-3d',
-                  backfaceVisibility: 'hidden'
-                }}
-              />
-              {/* 3D Glass disc instead of CSS effect */}
-              <AcrylicDisc 
-                rotation={combinedRotation}
-                totalRotation={0} // Rotation now handled in combinedRotation
-                size={isDesktop ? 288 : 240} // Increased mobile size from 192 to 240
-              />
-            </motion.div>
-          </div>
-        </div>
+        <ProfileInteractive />
       </motion.div>
 
       {/* Thesis Proposal & Current Work - Two Column Layout */}
@@ -380,7 +155,7 @@ export const Home = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="text-center lg:text-left mb-4 lg:mb-6">
-              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 space-grotesk-medium"
+              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium"
                   style={{ 
                     fontSize: isDesktop ? "1.8rem" : "1.4rem", 
                     lineHeight: "1.3",
@@ -389,7 +164,7 @@ export const Home = () => {
                 Currently Working On
               </h2>
             </div>
-            <div className="text-left space-y-3 lg:space-y-4 space-grotesk-regular" style={{ lineHeight: "1.6em" }}>
+            <div className="text-left space-y-3 lg:space-y-4 geist-regular" style={{ lineHeight: "1.6em" }}>
               <div style={{ fontSize: isDesktop ? "1.1rem" : "1rem", lineHeight: isDesktop ? "1.6em" : "1.5em", marginBottom: isDesktop ? "1rem" : "0.8rem" }}>
                 Exploring the UI for AI (maybe{" "}
                 <a
@@ -441,7 +216,7 @@ export const Home = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="text-center lg:text-left mb-4 lg:mb-6">
-              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 space-grotesk-medium"
+              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium"
                   style={{ 
                     fontSize: isDesktop ? "1.8rem" : "1.4rem", 
                     lineHeight: "1.3",
@@ -449,7 +224,7 @@ export const Home = () => {
                   }}>
                 Watch My Thesis Proposal
               </h2>
-              <p className="space-grotesk-regular" 
+              <p className="geist-regular" 
                  style={{ 
                    fontSize: isDesktop ? "1rem" : "0.9rem", 
                    lineHeight: "1.6", 
@@ -486,7 +261,7 @@ export const Home = () => {
         className="mb-8 lg:mb-16"
       >
         <div className="text-center mb-4 lg:mb-8">
-          <h2 className="text-xl lg:text-2xl mb-4 lg:mb-6 space-grotesk-regular"
+          <h2 className="text-xl lg:text-2xl mb-4 lg:mb-6 geist-regular"
               style={{ 
                 fontSize: isDesktop ? "2rem" : "1.6rem", 
                 lineHeight: "1.3",
