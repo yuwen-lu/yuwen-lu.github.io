@@ -410,20 +410,6 @@
     cursor: pointer !important;
   }
 
-  /* Typing cursor animation */
-  @keyframes blink {
-    0%, 50% {
-      opacity: 1;
-    }
-    51%, 100% {
-      opacity: 0;
-    }
-  }
-  
-  .typing-cursor {
-    display: inline-block;
-  }
-  
   /* Improved mobile container spacing */
   @media screen and (max-width: 768px) {
     .container {
