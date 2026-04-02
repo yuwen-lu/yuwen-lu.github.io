@@ -115,12 +115,15 @@ export const Home = () => {
       >
         <div className="space-y-6 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
           <div className="space-y-5 lg:space-y-4">
-            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
-              I am Yuwen, a Ph.D. Candidate in Computer Science and Engineering at the University of Notre Dame.
-              I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+              I am Yuwen, a CS PhD candidate at{" "}
+              <a href="https://www.nd.edu/" target="_blank" rel="noopener noreferrer">
+                Notre Dame
+              </a>
+              . I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
               <a href="https://toby.li/">Toby Li</a>.
             </p>
-            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               I explore user interfaces for AI. I build tools that{' '}
               <a
                 href="https://machinelearning.apple.com/research/interactive-prototyping"
@@ -131,7 +134,7 @@ export const Home = () => {
               </a>
               for UI prototyping, AI that{' '}
               <a href="https://arxiv.org/abs/2406.16177" target="_blank" rel="noopener noreferrer">
-                supports design decision making
+                helps with design decision making
               </a>
               , and{' '}
               <a href="https://dl.acm.org/doi/10.1145/3637336" target="_blank" rel="noopener noreferrer">
@@ -139,7 +142,7 @@ export const Home = () => {
               </a>{' '}
               that supports users against dark patterns.
             </p>
-            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
               Worked at{" "}
               <a href="https://www.krea.ai" target="_blank" rel="noopener noreferrer">
                 Krea
