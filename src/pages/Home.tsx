@@ -110,110 +110,72 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center mb-8 lg:mb-64"
-        style={{ marginTop: "1rem" }}
+        className="grid lg:grid-cols-5 gap-4 lg:gap-16 items-center mb-4 lg:mb-64 max-lg:pt-1"
+        style={{ marginTop: isDesktop ? "1rem" : 0 }}
       >
-        <div className="space-y-12 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
-          <div className="space-y-12 lg:space-y-4">
+        <div className="space-y-6 lg:space-y-10 order-2 lg:order-1 lg:col-span-3">
+          <div className="space-y-5 lg:space-y-4">
             <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
-              I am Yuwen, a Ph.D. Candidate in Computer Science and Engineering at the
-              University of Notre Dame.
-            </p>
-            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+              I am Yuwen, a Ph.D. Candidate in Computer Science and Engineering at the University of Notre Dame.
               I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
               <a href="https://toby.li/">Toby Li</a>.
             </p>
-            {/* <p>
-              Previously, I graduated with a{" "}
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+              I explore user interfaces for AI. I build tools that{' '}
               <a
-                href="https://www.hcii.cmu.edu/academics/mhci"
+                href="https://machinelearning.apple.com/research/interactive-prototyping"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Master of Human Computer Interaction
+                go beyond prompting {' '}
+              </a>
+              for UI prototyping, AI that{' '}
+              <a href="https://arxiv.org/abs/2406.16177" target="_blank" rel="noopener noreferrer">
+                supports design decision making
+              </a>
+              , and{' '}
+              <a href="https://dl.acm.org/doi/10.1145/3637336" target="_blank" rel="noopener noreferrer">
+                a browser extension
+              </a>{' '}
+              that supports users against dark patterns.
+            </p>
+            <p className="geist-regular" style={{ fontSize: isDesktop ? "1.4rem" : "1.2rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+              Worked at{" "}
+              <a href="https://www.krea.ai" target="_blank" rel="noopener noreferrer">
+                Krea
               </a>{" "}
-              from Carnegie Mellon University. I have a background in Computer Science and UX design & research.
-            </p> */}
+              (Design Engineer),{" "}
+              <a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer">
+                Midjourney
+              </a>{" "}
+              (Visiting Researcher),{" "}
+              <a href="https://machinelearning.apple.com/research/interactive-prototyping" target="_blank" rel="noopener noreferrer">
+                Apple
+              </a>{" "}
+              (AIML Research Intern), and{" "}
+              <a href="https://m3.material.io" target="_blank" rel="noopener noreferrer">
+                Google
+              </a>{" "}
+              (Student Researcher).
+            </p>
           </div>
         </div>
 
         <ProfileInteractive />
       </motion.div>
 
-      {/* Thesis Proposal & Current Work - Two Column Layout */}
+      {/* Thesis proposal */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-8 lg:mb-16 mt-8 lg:mt-16"
+        className="mb-8 lg:mb-16 mt-6 lg:mt-16"
       >
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12">
-          {/* Current Work Section */}
-          <motion.section
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <div className="text-center lg:text-left mb-4 lg:mb-6">
-              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium"
-                  style={{ 
-                    fontSize: isDesktop ? "1.8rem" : "1.4rem", 
-                    lineHeight: "1.3",
-                    letterSpacing: "-0.01em"
-                  }}>
-                Currently Working On
-              </h2>
-            </div>
-            <div className="text-left space-y-3 lg:space-y-4 geist-regular" style={{ lineHeight: "1.6em" }}>
-              <div style={{ fontSize: isDesktop ? "1.1rem" : "1rem", lineHeight: isDesktop ? "1.6em" : "1.5em", marginBottom: isDesktop ? "1rem" : "0.8rem" }}>
-                Exploring the UI for AI (maybe{" "}
-                <a
-                  href="https://machinelearning.apple.com/research/interactive-prototyping"
-                  target="_blank"
-                  rel="noopener noreferrer" 
-                >
-                  more direct manipulation
-                </a>
-                ?),
-              </div>
-              <div style={{ fontSize: isDesktop ? "1.1rem" : "1rem", lineHeight: isDesktop ? "1.6em" : "1.5em", marginBottom: isDesktop ? "1rem" : "0.8rem" }}>
-                Using AI to{" "}
-                <a
-                  href="https://arxiv.org/abs/2406.16177"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  support design
-                </a>
-                ,
-              </div>
-              <div style={{ fontSize: isDesktop ? "1.1rem" : "1rem", lineHeight: isDesktop ? "1.6em" : "1.5em", marginBottom: isDesktop ? "1rem" : "0.8rem" }}>
-                Dealing with{" "}
-                <a
-                  href="https://dl.acm.org/doi/10.1145/3637336"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  dark patterns
-                </a>
-                {" "}and{" "}
-                <a
-                  href="https://arxiv.org/abs/2406.16177"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  support end users
-                </a>
-                .
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Thesis Proposal Section */}
+        <div className="max-w-4xl mx-auto">
           <motion.section
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="text-center lg:text-left mb-4 lg:mb-6">
               <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium"
