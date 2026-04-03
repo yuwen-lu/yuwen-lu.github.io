@@ -68,6 +68,11 @@
     min-height: 100vh;
   }
   
+  .geo {
+    font-family: "Cedarville Cursive", cursive;
+    font-style: normal;
+  }
+
   .geist {
     font-family: "Geist", sans-serif;
     font-optical-sizing: auto;

@@ -20,8 +20,8 @@ const NAME_SCRAMBLE_OPTS = {
   charStaggerMs: 56,
 } as const
 
-const heroTitleClass =
-  'text-3xl sm:text-4xl md:text-[2.5rem] leading-[1.15] tracking-tight geist-mono text-[var(--color-text)]'
+const heroNameClass =
+  'text-4xl sm:text-5xl md:text-[3.2rem] leading-[1.15] tracking-tight text-[var(--color-text)] lowercase'
 
 const heroBodyClass =
   'geist-regular text-[1.1rem] sm:text-[1.15rem] md:text-[1.25rem] leading-[1.5] tracking-[-0.01em] text-[var(--color-text)]'
@@ -144,11 +144,11 @@ export const Home = () => {
               <div className="space-y-4">
                 <ScrambleIn
                   ref={nameScrambleRef}
-                  text="Yuwen Lu"
+                  text="yuwen lu"
                   {...NAME_SCRAMBLE_OPTS}
                   autoStart={false}
                   block
-                  className={heroTitleClass}
+                  className={`${heroNameClass} geo`}
                 />
                 <p className={`${heroBodyClass} mb-0`}>
                   CS Ph.D. candidate at{" "}
@@ -213,13 +213,13 @@ export const Home = () => {
         className="mb-8 lg:mb-16"
       >
         <div className="text-center mb-8 lg:mb-12">
-          <h2 className="text-xl lg:text-2xl mb-0 geist-regular"
+          <h2 className="text-xl lg:text-2xl mb-0 geist-regular lowercase"
               style={{ 
                 fontSize: isDesktop ? "2rem" : "1.6rem", 
                 lineHeight: "1.3",
                 letterSpacing: "-0.01em"
               }}>
-            Publications
+            publications
           </h2>
         </div>
 
@@ -255,13 +255,13 @@ export const Home = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="text-center lg:text-left mb-4 lg:mb-6">
-              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium"
+              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium lowercase"
                   style={{ 
                     fontSize: isDesktop ? "1.8rem" : "1.4rem", 
                     lineHeight: "1.3",
                     letterSpacing: "-0.01em"
                   }}>
-                Watch My Thesis Proposal
+                watch my thesis proposal
               </h2>
               <p className="geist-regular" 
                  style={{ 

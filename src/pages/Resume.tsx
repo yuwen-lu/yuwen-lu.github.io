@@ -35,7 +35,7 @@ export const Resume = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-20">
       <div className="text-center mb-12">
-        <h1 className="title">Resume</h1>
+        <h1 className="title lowercase">resume</h1>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             type="button"
