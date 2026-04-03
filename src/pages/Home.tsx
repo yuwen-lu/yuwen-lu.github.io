@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import MistyPic from '../resources/images/misty.png'
 import DarkPitaPic from '../resources/images/dark_pita_dalle.png'
@@ -10,11 +11,35 @@ import { ProfileInteractive } from '../components/ProfileInteractive'
 import { PublicationCard } from '../components/PublicationCard'
 import FlowyPic from '../resources/images/flowy_card.png'
 import CrepePic from '../resources/images/crepe.png'
+import ScrambleIn, { type ScrambleInHandle } from '@/components/fancy/text/scramble-in'
+
+/** Tune name scramble only: higher `scrambleSpeed` / `charStaggerMs` = slower animation. */
+const NAME_SCRAMBLE_OPTS = {
+  scrambleSpeed: 78,
+  scrambledLetterCount: 2,
+  charStaggerMs: 56,
+} as const
+
+const heroTitleClass =
+  'text-3xl sm:text-4xl md:text-[2.5rem] leading-[1.15] tracking-tight geist-mono text-[var(--color-text)]'
+
+const heroBodyClass =
+  'geist-regular text-[1.1rem] sm:text-[1.15rem] md:text-[1.25rem] leading-[1.5] tracking-[-0.01em] text-[var(--color-text)]'
+
 export const Home = () => {
   // Responsiveness
   const isDesktop = useMediaQuery({
     query: "(min-width: 769px)",
   })
+
+  const nameScrambleRef = useRef<ScrambleInHandle | null>(null)
+
+  useEffect(() => {
+    const id = window.setTimeout(() => {
+      nameScrambleRef.current?.start()
+    }, 80)
+    return () => clearTimeout(id)
+  }, [])
 
   const publications = [
     {
@@ -115,19 +140,36 @@ export const Home = () => {
       >
         <div className="grid lg:grid-cols-5 gap-4 lg:gap-16 items-center lg:mt-0">
           <div className="space-y-6 lg:space-y-6 order-2 lg:order-1 lg:col-span-3">
-            <div className="space-y-5 lg:space-y-3">
-              <p className="geist-regular" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
-                I am Yuwen, a CS Ph.D. candidate at{" "}
-                <a href="https://www.nd.edu/" target="_blank" rel="noopener noreferrer">
-                  Notre Dame
-                </a>
-                . I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
-                <a href="https://toby.li/">Toby Li</a>.
-              </p>
-              <div className="space-y-2">
-                <p className="geist-regular mb-0" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+            <div className="space-y-5 lg:space-y-4">
+              <div className="space-y-4">
+                <ScrambleIn
+                  ref={nameScrambleRef}
+                  text="Yuwen Lu"
+                  {...NAME_SCRAMBLE_OPTS}
+                  autoStart={false}
+                  block
+                  className={heroTitleClass}
+                />
+                <p className={`${heroBodyClass} mb-0`}>
+                  CS Ph.D. candidate at{" "}
+                  <a
+                    href="https://www.nd.edu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Notre Dame
+                  </a>
+                  , advised by{" "}
+                  <a href="https://toby.li/" target="_blank" rel="noopener noreferrer">
+                    Toby Li
+                  </a>
+                  . I research human–AI interaction and build tools as a design engineer.
+                </p>
+                <p className={`${heroBodyClass} mb-0`}>
                   I explore user interfaces for AI. I build tools that:
                 </p>
+              </div>
+              <div className="space-y-2">
                 <ul
                   className="geist-regular list-disc pl-5 sm:pl-6 space-y-2 mb-0"
                   style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}
