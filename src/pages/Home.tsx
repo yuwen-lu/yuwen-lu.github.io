@@ -146,7 +146,7 @@ export const Home = () => {
               </div>
               <div className="space-y-2">
                 <ul
-                  className="geist-regular list-disc pl-5 sm:pl-6 space-y-2 mb-0"
+                  className="geist-regular list-bullet-square space-y-2 mb-0"
                   style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}
                 >
                   <li>

@@ -263,6 +263,28 @@
       transform: translateY(0);
     }
   }
+
+  .list-bullet-square {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .list-bullet-square > li {
+    position: relative;
+    padding-left: 1em;
+  }
+
+  .list-bullet-square > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    transform: translateY(-50%);
+    width: 0.26em;
+    height: 0.26em;
+    background-color: var(--color-text);
+  }
   
   #blur-purple {
     background-color: var(--color-blur-1);
