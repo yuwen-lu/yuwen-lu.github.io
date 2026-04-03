@@ -5,7 +5,7 @@ interface PublicationCardProps {
   authors?: string
   conference?: string
   award?: string
-  /** Shown as the first slot-reveal line (above authors) when set */
+  /** Optional line after authors (e.g. context) when set */
   slotLead?: string
   note?: string
   links: Array<{ label: string; url: string }>
@@ -15,62 +15,26 @@ interface PublicationCardProps {
 
 const HOVER_EASE = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 const SLOT_EASE = 'cubic-bezier(0.16, 1, 0.3, 1)'
-/** Extra delay for authors/conference/note when slotLead occupies the first reveal slot (180ms). */
-const SLOT_LEAD_STAGGER_MS = 150
+/** First metadata row delay; each following row adds {@link META_ROW_STAGGER_MS}. */
+const META_FIRST_ROW_DELAY_MS = 180
+const META_ROW_STAGGER_MS = 150
 
 function openExternalUrl(url: string) {
   window.open(url, '_blank', 'noopener,noreferrer')
 }
 
-interface SlotRevealProps {
-  children: ReactNode
-  faceHeight: number
-  delay?: number
-}
-
-function SlotReveal({ children, faceHeight, delay = 0 }: SlotRevealProps) {
-  const radius = faceHeight / 2
-  const P = 500
-  const shrink = (P - radius) / P
+function MetaRow({ children, delayMs }: { children: ReactNode; delayMs: number }) {
   return (
     <div
+      className="opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0"
       style={{
-        height: faceHeight,
-        perspective: `${P}px`,
-        overflow: 'hidden',
-        width: '100%',
-        flexShrink: 0,
+        transitionProperty: 'opacity, transform',
+        transitionDuration: '420ms',
+        transitionTimingFunction: SLOT_EASE,
+        transitionDelay: `${delayMs}ms`,
       }}
     >
-      <div
-        className="[transform:rotateX(0deg)] group-hover:[transform:rotateX(90deg)]"
-        style={{
-          width: '100%',
-          height: faceHeight,
-          position: 'relative',
-          transformStyle: 'preserve-3d',
-          transition: `transform 520ms ${SLOT_EASE} ${delay}ms`,
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backfaceVisibility: 'hidden',
-            transform: `rotateX(0deg) translateZ(${radius}px)`,
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backfaceVisibility: 'hidden',
-            transform: `rotateX(-90deg) translateZ(${radius}px) scale(${shrink})`,
-          }}
-        >
-          {children}
-        </div>
-      </div>
+      {children}
     </div>
   )
 }
@@ -106,8 +70,40 @@ export const PublicationCard = ({
   image,
   isSystemPaper = false,
 }: PublicationCardProps) => {
-  const hasMeta = Boolean(slotLead || authors || conference || note)
-  const metaStagger = slotLead ? SLOT_LEAD_STAGGER_MS : 0
+  /** Fixed order: venue first, then authors, optional lead line, then note */
+  const metaRows: Array<{ key: string; node: ReactNode }> = []
+  if (conference) {
+    metaRows.push({
+      key: 'conference',
+      node: (
+        <p className="m-0 line-clamp-2 text-sm font-semibold leading-snug" style={{ color: 'var(--color-accent)' }}>
+          {conference}
+        </p>
+      ),
+    })
+  }
+  if (authors) {
+    metaRows.push({
+      key: 'authors',
+      node: (
+        <p className="m-0 line-clamp-4 text-sm font-medium leading-snug">{renderAuthors(authors)}</p>
+      ),
+    })
+  }
+  if (slotLead) {
+    metaRows.push({
+      key: 'slotLead',
+      node: <p className="m-0 line-clamp-2 text-sm italic leading-snug text-white/90">{slotLead}</p>,
+    })
+  }
+  if (note) {
+    metaRows.push({
+      key: 'note',
+      node: <p className="m-0 line-clamp-2 text-sm italic leading-snug text-white/90">{note}</p>,
+    })
+  }
+
+  const hasMeta = metaRows.length > 0
 
   return (
     <div
@@ -142,39 +138,16 @@ export const PublicationCard = ({
       <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 text-white">
         {hasMeta && (
           <div
-            className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr]"
+            className="mb-0 grid grid-rows-[0fr] group-hover:mb-3 group-hover:grid-rows-[1fr]"
             style={{ transition: `grid-template-rows 200ms ${HOVER_EASE}` }}
           >
             <div className="overflow-hidden">
-              <div className="flex flex-col gap-1 pb-2">
-                {slotLead && (
-                  <SlotReveal faceHeight={44} delay={180}>
-                    <p className="line-clamp-2 text-sm italic leading-snug text-white/90">
-                      {slotLead}
-                    </p>
-                  </SlotReveal>
-                )}
-                {authors && (
-                  <SlotReveal faceHeight={80} delay={180 + metaStagger}>
-                    <p className="line-clamp-4 text-sm font-medium leading-5">
-                      {renderAuthors(authors)}
-                    </p>
-                  </SlotReveal>
-                )}
-                {conference && (
-                  <SlotReveal faceHeight={22} delay={330 + metaStagger}>
-                    <p className="line-clamp-1 text-sm font-semibold leading-[22px]" style={{ color: 'var(--color-accent)' }}>
-                      {conference}
-                    </p>
-                  </SlotReveal>
-                )}
-                {note && (
-                  <SlotReveal faceHeight={22} delay={480 + metaStagger}>
-                    <p className="line-clamp-1 text-sm italic leading-[22px] text-white/90">
-                      {note}
-                    </p>
-                  </SlotReveal>
-                )}
+              <div className="flex flex-col gap-1 pb-1">
+                {metaRows.map((row, index) => (
+                  <MetaRow key={row.key} delayMs={META_FIRST_ROW_DELAY_MS + index * META_ROW_STAGGER_MS}>
+                    {row.node}
+                  </MetaRow>
+                ))}
               </div>
             </div>
           </div>

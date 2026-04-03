@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 import MistyPic from '../resources/images/misty.png'
 import DarkPitaPic from '../resources/images/dark_pita_dalle.png'
-import CHIWORK2022Pic from '../resources/images/CHIWORK22_approach.png'
-import CHI2022WorkshopPic from '../resources/images/user-interface-workshop.jpeg'
-import Lbw2022Pic from '../resources/images/chi-lbw-2022.png'
-import Chi2022LbwPoster from '../resources/files/LBW CHI2022/Poster_YuwenLu_LBWCHI2022.pdf'
+// import CHIWORK2022Pic from '../resources/images/CHIWORK22_approach.png'
+// import CHI2022WorkshopPic from '../resources/images/user-interface-workshop.jpeg'
+// import Lbw2022Pic from '../resources/images/chi-lbw-2022.png'
+// import Chi2022LbwPoster from '../resources/files/LBW CHI2022/Poster_YuwenLu_LBWCHI2022.pdf'
 import { useMediaQuery } from 'react-responsive'
 import { ProfileInteractive } from '../components/ProfileInteractive'
 import { PublicationCard } from '../components/PublicationCard'
@@ -73,6 +73,7 @@ export const Home = () => {
       image: FlowyPic,
       isSystemPaper: true
     },
+    /*
     {
       title: "Using AI Agents To Empower Gig Workers against AI Inequality",
       authors: "Toby Jia-Jun Li, Yuwen Lu, Jaylexia Clark, Meng Chen, Victor Cox, Meng Jiang, Yang Yang, Tamara Kay, Danielle Wood, Jay Brockman",
@@ -107,6 +108,7 @@ export const Home = () => {
       ],
       image: Lbw2022Pic
     }
+    */
   ]
 
   return (
