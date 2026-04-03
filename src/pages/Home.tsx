@@ -223,7 +223,7 @@ export const Home = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
           {publications.map((pub, index) => (
             <PublicationCard
               key={index}
@@ -248,27 +248,31 @@ export const Home = () => {
         transition={{ duration: 0.6 }}
         className="mb-8 lg:mb-16 mt-10 lg:mt-14"
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="w-full max-w-3xl mx-auto">
           <motion.section
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="text-center lg:text-left mb-4 lg:mb-6">
-              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium lowercase"
-                  style={{ 
-                    fontSize: isDesktop ? "1.8rem" : "1.4rem", 
-                    lineHeight: "1.3",
-                    letterSpacing: "-0.01em"
-                  }}>
+            <div className="text-center mb-4 lg:mb-6">
+              <h2
+                className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium lowercase"
+                style={{
+                  fontSize: isDesktop ? "1.8rem" : "1.4rem",
+                  lineHeight: "1.3",
+                  letterSpacing: "-0.01em",
+                }}
+              >
                 watch my thesis proposal
               </h2>
-              <p className="geist-regular" 
-                 style={{ 
-                   fontSize: isDesktop ? "1rem" : "0.9rem", 
-                   lineHeight: "1.6", 
-                   opacity: 0.8
-                 }}>
+              <p
+                className="geist-regular"
+                style={{
+                  fontSize: isDesktop ? "1rem" : "0.9rem",
+                  lineHeight: "1.6",
+                  opacity: 0.8,
+                }}
+              >
                 April 2025. A summary of my previous research in user interfaces and human-AI interaction.
               </p>
             </div>
