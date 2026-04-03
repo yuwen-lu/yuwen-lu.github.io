@@ -541,7 +541,7 @@ export const Footer = () => {
         )}
       </AnimatePresence>
       
-      <p className="mb-6 text-lg geist-medium">Contact</p>
+      <p className="mb-6 text-lg geist-medium lowercase">contact</p>
       <div className="footer-icons mb-8 flex justify-center items-center gap-2 sm:gap-4">
         <motion.button 
           onClick={copyEmailToClipboard}

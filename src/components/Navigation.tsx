@@ -9,9 +9,9 @@ export const Navigation = () => {
   const buttonRef = useRef<HTMLDivElement>(null)
 
   const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/resume', label: 'Resume' },
-    { path: '/events', label: 'Events' },
+    { path: '/', label: 'home' },
+    { path: '/resume', label: 'resume' },
+    { path: '/events', label: 'events' },
   ]
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
@@ -42,7 +42,7 @@ export const Navigation = () => {
       width: "100%"
     }}>
       {/* Desktop Navigation */}
-      <div className="hidden md:flex geist-regular" style={{ position: "relative", zIndex: 100 }}>
+      <div className="hidden md:flex geist-regular lowercase" style={{ position: "relative", zIndex: 100 }}>
         {navItems.map((item) => (
           <NavLink
             key={item.path}
@@ -103,7 +103,7 @@ export const Navigation = () => {
               damping: 30,
               duration: 0.3
             }}
-            className="md:hidden absolute top-16 right-4 z-50 geist-regular"
+            className="md:hidden absolute top-16 right-4 z-50 geist-regular lowercase"
             style={{
               background: 'var(--color-bg)',
               border: '1px solid var(--color-rule)',
