@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import MistyPic from '../resources/images/misty.png'
 import DarkPitaPic from '../resources/images/dark_pita_dalle.png'
@@ -11,14 +10,6 @@ import { ProfileInteractive } from '../components/ProfileInteractive'
 import { PublicationCard } from '../components/PublicationCard'
 import FlowyPic from '../resources/images/flowy_card.png'
 import CrepePic from '../resources/images/crepe.png'
-import ScrambleIn, { type ScrambleInHandle } from '@/components/fancy/text/scramble-in'
-
-/** Tune name scramble only: higher `scrambleSpeed` / `charStaggerMs` = slower animation. */
-const NAME_SCRAMBLE_OPTS = {
-  scrambleSpeed: 78,
-  scrambledLetterCount: 2,
-  charStaggerMs: 56,
-} as const
 
 const heroNameClass =
   'text-4xl sm:text-5xl md:text-[3.2rem] leading-[1.15] tracking-tight text-[var(--color-text)] lowercase'
@@ -31,15 +22,6 @@ export const Home = () => {
   const isDesktop = useMediaQuery({
     query: "(min-width: 769px)",
   })
-
-  const nameScrambleRef = useRef<ScrambleInHandle | null>(null)
-
-  useEffect(() => {
-    const id = window.setTimeout(() => {
-      nameScrambleRef.current?.start()
-    }, 80)
-    return () => clearTimeout(id)
-  }, [])
 
   const publications = [
     {
@@ -142,14 +124,7 @@ export const Home = () => {
           <div className="space-y-6 lg:space-y-6 order-2 lg:order-1 lg:col-span-3">
             <div className="space-y-5 lg:space-y-4">
               <div className="space-y-4">
-                <ScrambleIn
-                  ref={nameScrambleRef}
-                  text="yuwen lu"
-                  {...NAME_SCRAMBLE_OPTS}
-                  autoStart={false}
-                  block
-                  className={`${heroNameClass} geo`}
-                />
+                <h1 className={`${heroNameClass} geo`}>yuwen lu</h1>
                 <p className={`${heroBodyClass} mb-0`}>
                   CS Ph.D. candidate at{" "}
                   <a
