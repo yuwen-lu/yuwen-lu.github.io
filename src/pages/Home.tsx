@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import MistyPic from '../resources/images/misty.png'
 import DarkPitaPic from '../resources/images/dark_pita_dalle.png'
@@ -10,11 +11,35 @@ import { ProfileInteractive } from '../components/ProfileInteractive'
 import { PublicationCard } from '../components/PublicationCard'
 import FlowyPic from '../resources/images/flowy_card.png'
 import CrepePic from '../resources/images/crepe.png'
+import ScrambleIn, { type ScrambleInHandle } from '@/components/fancy/text/scramble-in'
+
+/** Tune name scramble only: higher `scrambleSpeed` / `charStaggerMs` = slower animation. */
+const NAME_SCRAMBLE_OPTS = {
+  scrambleSpeed: 78,
+  scrambledLetterCount: 2,
+  charStaggerMs: 56,
+} as const
+
+const heroNameClass =
+  'text-4xl sm:text-5xl md:text-[3.2rem] leading-[1.15] tracking-tight text-[var(--color-text)] lowercase'
+
+const heroBodyClass =
+  'geist-regular text-[1.1rem] sm:text-[1.15rem] md:text-[1.25rem] leading-[1.5] tracking-[-0.01em] text-[var(--color-text)]'
+
 export const Home = () => {
   // Responsiveness
   const isDesktop = useMediaQuery({
     query: "(min-width: 769px)",
   })
+
+  const nameScrambleRef = useRef<ScrambleInHandle | null>(null)
+
+  useEffect(() => {
+    const id = window.setTimeout(() => {
+      nameScrambleRef.current?.start()
+    }, 80)
+    return () => clearTimeout(id)
+  }, [])
 
   const publications = [
     {
@@ -111,23 +136,40 @@ export const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="max-lg:pt-1 pb-8 md:pb-20 lg:pb-24"
+        className="pt-8 md:pt-16 lg:pt-20 pb-12 md:pb-24 lg:pb-28"
       >
         <div className="grid lg:grid-cols-5 gap-4 lg:gap-16 items-center lg:mt-0">
           <div className="space-y-6 lg:space-y-6 order-2 lg:order-1 lg:col-span-3">
-            <div className="space-y-5 lg:space-y-3">
-              <p className="geist-regular" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
-                I am Yuwen, a CS Ph.D. candidate at{" "}
-                <a href="https://www.nd.edu/" target="_blank" rel="noopener noreferrer">
-                  Notre Dame
-                </a>
-                . I am a design engineer doing research in Human-AI Interaction. My advisor is{" "}
-                <a href="https://toby.li/">Toby Li</a>.
-              </p>
-              <div className="space-y-2">
-                <p className="geist-regular mb-0" style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}>
+            <div className="space-y-5 lg:space-y-4">
+              <div className="space-y-4">
+                <ScrambleIn
+                  ref={nameScrambleRef}
+                  text="yuwen lu"
+                  {...NAME_SCRAMBLE_OPTS}
+                  autoStart={false}
+                  block
+                  className={`${heroNameClass} geo`}
+                />
+                <p className={`${heroBodyClass} mb-0`}>
+                  CS Ph.D. candidate at{" "}
+                  <a
+                    href="https://www.nd.edu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Notre Dame
+                  </a>
+                  , advised by{" "}
+                  <a href="https://toby.li/" target="_blank" rel="noopener noreferrer">
+                    Toby Li
+                  </a>
+                  . I research human–AI interaction and build tools as a design engineer.
+                </p>
+                <p className={`${heroBodyClass} mb-0`}>
                   I explore user interfaces for AI. I build tools that:
                 </p>
+              </div>
+              <div className="space-y-2">
                 <ul
                   className="geist-regular list-disc pl-5 sm:pl-6 space-y-2 mb-0"
                   style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}
@@ -171,13 +213,13 @@ export const Home = () => {
         className="mb-8 lg:mb-16"
       >
         <div className="text-center mb-8 lg:mb-12">
-          <h2 className="text-xl lg:text-2xl mb-0 geist-regular"
+          <h2 className="text-xl lg:text-2xl mb-0 geist-regular lowercase"
               style={{ 
                 fontSize: isDesktop ? "2rem" : "1.6rem", 
                 lineHeight: "1.3",
                 letterSpacing: "-0.01em"
               }}>
-            Publications
+            publications
           </h2>
         </div>
 
@@ -213,13 +255,13 @@ export const Home = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="text-center lg:text-left mb-4 lg:mb-6">
-              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium"
+              <h2 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium lowercase"
                   style={{ 
                     fontSize: isDesktop ? "1.8rem" : "1.4rem", 
                     lineHeight: "1.3",
                     letterSpacing: "-0.01em"
                   }}>
-                Watch My Thesis Proposal
+                watch my thesis proposal
               </h2>
               <p className="geist-regular" 
                  style={{ 
