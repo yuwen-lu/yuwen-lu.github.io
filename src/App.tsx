@@ -1,35 +1,48 @@
-import { Routes, Route } from 'react-router-dom'
-// import { useEffect } from 'react'
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { Navigation } from './components/Navigation'
 import { Footer } from './components/Footer'
 import { Home } from './pages/Home'
 import { Resume } from './pages/Resume'
 import { Events } from './pages/Events'
-import { DotGridBackground } from './components/DotGridBackground'
-// import { useGlobalParticleEffect, GlobalParticleEffect } from './components/GlobalParticleEffect'
+import { GrainOverlay } from './components/GrainOverlay'
+
+const ROUTE_META: Record<string, { title: string; description: string }> = {
+  '/': {
+    title: 'yuwen lu · human-ai interaction & design',
+    description:
+      'yuwen lu — creative ai research at contra labs. cs phd from notre dame. previously krea, midjourney, apple, and google.',
+  },
+  '/resume': {
+    title: 'resume · yuwen lu',
+    description: "yuwen lu's resume and academic cv.",
+  },
+  '/events': {
+    title: 'events · yuwen lu',
+    description: 'talks, conferences, milestones, and moves — a life timeline.',
+  },
+}
+
+function usePageMeta() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    const meta = ROUTE_META[pathname] ?? ROUTE_META['/']
+    document.title = meta.title
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', meta.description)
+  }, [pathname])
+}
 
 function App() {
-  // const { clickEffects, handleGlobalClick } = useGlobalParticleEffect()
-
-  // useEffect(() => {
-  //   const handleClick = (event: MouseEvent) => handleGlobalClick(event)
-  //   const handleTouch = (event: TouchEvent) => handleGlobalClick(event)
-
-  //   document.addEventListener('click', handleClick)
-  //   document.addEventListener('touchend', handleTouch)
-
-  //   return () => {
-  //     document.removeEventListener('click', handleClick)
-  //     document.removeEventListener('touchend', handleTouch)
-  //   }
-  // }, [handleGlobalClick])
+  usePageMeta()
 
   return (
     <div className="min-h-screen">
-      
-      <DotGridBackground />
-      {/* <GlobalParticleEffect clickEffects={clickEffects} /> */}
-      
+
+      <GrainOverlay />
+
       <Navigation />
       <main className="w-full px-1 sm:px-2 lg:px-8 py-4 lg:py-8">
         <Routes>
@@ -39,8 +52,9 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <Analytics />
     </div>
   )
 }
 
-export default App 
+export default App
