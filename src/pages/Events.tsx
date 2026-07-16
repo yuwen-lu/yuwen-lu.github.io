@@ -7,7 +7,13 @@ import 'aos/dist/aos.css'
 export const Events = () => {
   // Initialize AOS animations
   useEffect(() => {
-    AOS.init()
+    AOS.init({
+      duration: 300,
+      once: true,
+      offset: 120,
+      easing: 'ease-out',
+      disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    })
   }, [])
 
   // Responsiveness - hide left column if on phone
@@ -17,12 +23,56 @@ export const Events = () => {
 
   const lifeEvents = [
     {
+      date: "June 2026",
+      location: "San Francisco, CA",
+      showLocation: true,
+      content: (
+        <>
+          Joined Contra Labs as Head of Research, working on creative AI research and evaluation
+        </>
+      )
+    },
+    {
+      date: "May 2026",
+      location: "Notre Dame, IN",
+      showLocation: true,
+      content: (
+        <>
+          Graduated with a PhD in Computer Science from Notre Dame 🎓
+        </>
+      )
+    },
+    {
+      date: "",
+      location: "",
+      showLocation: false,
+      content: null,
+      spacer: true
+    },
+    {
+      date: "Oct 2025",
+      location: "San Francisco, CA",
+      showLocation: true,
+      content: (
+        <>
+          Joined Krea, building creative AI tools (through May 2026)
+        </>
+      )
+    },
+    {
+      date: "",
+      location: "",
+      showLocation: false,
+      content: null,
+      spacer: true
+    },
+    {
       date: "May 2025",
       location: "San Francisco, CA",
       showLocation: true,
       content: (
         <>
-          Started internship at Midjourney, working on AI-powered storytelling
+          Moved to San Francisco and started internship at Midjourney, working on AI-powered storytelling (through Sep 2025)
         </>
       )
     },
@@ -33,7 +83,7 @@ export const Events = () => {
       showLocation: true,
       content: (
         <>
-          Attended CHI 2024 in Yokohama, presented the <a className='paper-link' target="_blank" href="https://machinelearning.apple.com/research/interactive-prototyping" rel="noopener noreferrer">Misty paper</a> and hosted a workshop on computational user interfaces
+          Attended CHI 2025 in Yokohama, presented the <a className='paper-link' target="_blank" href="https://machinelearning.apple.com/research/interactive-prototyping" rel="noopener noreferrer">Misty paper</a> and hosted a workshop on computational user interfaces
         </>
       )
     },
@@ -306,9 +356,6 @@ export const Events = () => {
             key={index}
             className={`grid grid-cols-12 ${event.spacer ? 'h-40' : ''}`}
             data-aos="fade-up"
-            data-aos-offset="200"
-            data-aos-duration="1000"
-            data-aos-easing="ease-in-out"
             style={{ minHeight: event.spacer ? '10rem' : isNotPhone ? '6rem' : '5rem' }}
           >
             {/* Left column: location icon and text with connecting line */}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, Check, Twitter, Github, Linkedin, X, Send } from 'lucide-react'
+import { Mail, Check, Twitter, Github, Linkedin, GraduationCap, X, Send } from 'lucide-react'
 import confetti from 'canvas-confetti'
 
 export const Footer = () => {
@@ -10,7 +10,7 @@ export const Footer = () => {
   const [lastUpdated, setLastUpdated] = useState<string>('')
   const [healthStatus, setHealthStatus] = useState<'healthy' | 'stale' | 'outdated'>('healthy')
   const [isLoadingCommitDate, setIsLoadingCommitDate] = useState(true)
-  const [lastCommitDate, setLastCommitDate] = useState<Date | null>(null)
+  const [showErrorBanner, setShowErrorBanner] = useState(false)
   const [showMessagePopup, setShowMessagePopup] = useState(false)
   const [customMessage, setCustomMessage] = useState('')
   const [selectedPreset, setSelectedPreset] = useState('')
@@ -22,39 +22,19 @@ export const Footer = () => {
     query: '(min-width: 769px)'
   })
 
-  // Calculate detailed time difference with rolling seconds
+  // Calculate detailed time difference in months/days
   const calculateDetailedTime = (commitDate: Date) => {
     const now = new Date()
-    const diffTime = Math.abs(now.getTime() - commitDate.getTime())
-    
-    const seconds = Math.floor(diffTime / 1000) % 60
-    const minutes = Math.floor(diffTime / (1000 * 60)) % 60
-    const hours = Math.floor(diffTime / (1000 * 60 * 60)) % 24
-    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24)) % 30
-    const months = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30))
-
+    const diffMs = Math.abs(now.getTime() - commitDate.getTime())
+    const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+    if (totalDays === 0) return 'today'
+    const months = Math.floor(totalDays / 30)
+    const days = totalDays % 30
     const parts = []
     if (months > 0) parts.push(`${months} month${months !== 1 ? 's' : ''}`)
     if (days > 0) parts.push(`${days} day${days !== 1 ? 's' : ''}`)
-    if (hours > 0) parts.push(`${hours} hour${hours !== 1 ? 's' : ''}`)
-    if (minutes > 0) parts.push(`${minutes} minute${minutes !== 1 ? 's' : ''}`)
-    parts.push(`${seconds} second${seconds !== 1 ? 's' : ''}`)
-
-    const timeString = parts.join(', ') + ' ago'
-    return timeString
+    return parts.join(', ') + ' ago'
   }
-
-  // Real-time update every second
-  useEffect(() => {
-    if (!lastCommitDate) return
-
-    const interval = setInterval(() => {
-      const detailedTime = calculateDetailedTime(lastCommitDate)
-      setLastUpdated(detailedTime)
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [lastCommitDate])
 
   // Fetch last commit date from GitHub API and calculate health status
   useEffect(() => {
@@ -71,19 +51,19 @@ export const Footer = () => {
         
         if (commits && commits.length > 0) {
           const commitDate = new Date(commits[0].commit.committer.date)
-          setLastCommitDate(commitDate)
+          setLastUpdated(calculateDetailedTime(commitDate))
           calculateHealthStatus(commitDate)
         } else {
           // Fallback to current date if no commits found
           const fallbackDate = new Date()
-          setLastCommitDate(fallbackDate)
+          setLastUpdated(calculateDetailedTime(fallbackDate))
           calculateHealthStatus(fallbackDate)
         }
       } catch (error) {
         console.error('Failed to fetch last commit date:', error)
         // Fallback to current date if API fails
         const fallbackDate = new Date()
-        setLastCommitDate(fallbackDate)
+        setLastUpdated(calculateDetailedTime(fallbackDate))
         calculateHealthStatus(fallbackDate)
       } finally {
         setIsLoadingCommitDate(false)
@@ -284,7 +264,8 @@ export const Footer = () => {
 
     } catch (error) {
       console.error('Failed to send message:', error)
-      // You might want to show an error banner here
+      setShowErrorBanner(true)
+      setTimeout(() => setShowErrorBanner(false), 4000)
     } finally {
       setIsSendingMessage(false)
     }
@@ -540,61 +521,119 @@ export const Footer = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
+      {/* Send failed banner */}
+      <AnimatePresence>
+        {showErrorBanner && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 50,
+              scale: 0.8
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              transition: {
+                type: "spring",
+                stiffness: 300,
+                damping: 30
+              }
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+              scale: 0.9,
+              transition: { duration: 0.2 }
+            }}
+            className="fixed bottom-6 left-0 right-0 mx-auto w-fit z-50 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 geist-medium"
+          >
+            <Mail size={16} />
+            <span className="text-sm font-medium">Couldn't send — email me instead: ylu23@nd.edu</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <p className="mb-6 text-lg geist-medium lowercase">contact</p>
       <div className="footer-icons mb-8 flex justify-center items-center gap-2 sm:gap-4">
-        <motion.button 
-          onClick={copyEmailToClipboard}
-          className="inline-block cursor-pointer bg-transparent border-none p-2"
+        <motion.a
+          href="mailto:ylu23@nd.edu"
+          onClick={(e: React.MouseEvent) => {
+            e.preventDefault()
+            copyEmailToClipboard()
+          }}
+          className="inline-block p-2"
           title="Copy email to clipboard"
+          aria-label="Email"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          style={{ cursor: "pointer" }}
         >
-          <Mail 
-            size={isDesktop ? 28 : 24} 
+          <Mail
+            size={isDesktop ? 28 : 24}
             className="text-primary hover:text-accent transition-colors"
           />
-        </motion.button>
-        <motion.button 
-          onClick={() => window.open("https://twitter.com/yuwen_lu_", "_blank", "noopener,noreferrer")}
-          className="inline-block cursor-pointer bg-transparent border-none p-2"
-          title="Visit Twitter profile"
+        </motion.a>
+        <motion.a
+          href="https://twitter.com/yuwen_lu_"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block p-2"
+          title="Twitter / X profile"
+          aria-label="Twitter/X"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          style={{ cursor: "pointer" }}
         >
-          <Twitter 
-            size={isDesktop ? 28 : 24} 
+          <Twitter
+            size={isDesktop ? 28 : 24}
             className="text-primary hover:text-accent transition-colors"
           />
-        </motion.button>
-        <motion.button 
-          onClick={() => window.open("https://github.com/yuwen-lu/", "_blank", "noopener,noreferrer")}
-          className="inline-block cursor-pointer bg-transparent border-none p-2"
-          title="Visit GitHub profile"
+        </motion.a>
+        <motion.a
+          href="https://github.com/yuwen-lu/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block p-2"
+          title="GitHub profile"
+          aria-label="GitHub"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          style={{ cursor: "pointer" }}
         >
-          <Github 
-            size={isDesktop ? 28 : 24} 
+          <Github
+            size={isDesktop ? 28 : 24}
             className="text-primary hover:text-accent transition-colors"
           />
-        </motion.button>
-        <motion.button 
-          onClick={() => window.open("https://www.linkedin.com/in/yuwen-lu/", "_blank", "noopener,noreferrer")}
-          className="inline-block cursor-pointer bg-transparent border-none p-2"
-          title="Visit LinkedIn profile"
+        </motion.a>
+        <motion.a
+          href="https://www.linkedin.com/in/yuwen-lu/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block p-2"
+          title="LinkedIn profile"
+          aria-label="LinkedIn"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          style={{ cursor: "pointer" }}
         >
-          <Linkedin 
-            size={isDesktop ? 28 : 24} 
+          <Linkedin
+            size={isDesktop ? 28 : 24}
             className="text-primary hover:text-accent transition-colors"
           />
-        </motion.button>
+        </motion.a>
+        <motion.a
+          href="https://scholar.google.com/citations?user=wNVw1XQAAAAJ"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block p-2"
+          title="Google Scholar profile"
+          aria-label="Google Scholar"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <GraduationCap
+            size={isDesktop ? 28 : 24}
+            className="text-primary hover:text-accent transition-colors"
+          />
+        </motion.a>
       </div>
       
       {/* Updated footer with health status and detailed time */}

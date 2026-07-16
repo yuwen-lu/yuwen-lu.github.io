@@ -36,6 +36,9 @@ export const Resume = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-20">
       <div className="text-center mb-12">
         <h1 className="title lowercase">resume</h1>
+        <p className="text-sm opacity-70 mb-6 lowercase">
+          head of research at contra labs · cs phd, notre dame '26
+        </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             type="button"
@@ -48,7 +51,7 @@ export const Resume = () => {
         </div>
 
 
-        <p className="text-sm opacity-60 mt-20">
+        <p className="text-sm opacity-70 mt-20">
           3-page academic CV with more details
         </p>
 

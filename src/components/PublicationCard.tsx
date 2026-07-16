@@ -180,7 +180,16 @@ export const PublicationCard = ({
           </div>
         )}
 
-        {award && <p className="mb-1 text-sm font-semibold" style={{ color: 'var(--color-accent)' }}>{award}</p>}
+        {award && (
+          <div className="mb-2">
+            <span
+              className="inline-flex items-center rounded-full border border-white/10 bg-black/85 px-3 py-1 text-xs font-medium tracking-wide"
+              style={{ color: 'var(--color-accent)' }}
+            >
+              {award}
+            </span>
+          </div>
+        )}
 
         <h3 className="text-lg font-medium leading-snug">{title}</h3>
 

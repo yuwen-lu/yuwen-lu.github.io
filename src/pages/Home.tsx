@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import MistyPic from '../resources/images/misty.png'
 import DarkPitaPic from '../resources/images/dark_pita_dalle.png'
 import CHIWORK2022Pic from '../resources/images/CHIWORK22_approach.png'
@@ -18,6 +18,8 @@ const heroBodyClass =
   'geist-regular text-[1.1rem] sm:text-[1.15rem] md:text-[1.25rem] leading-[1.5] tracking-[-0.01em] text-[var(--color-text)]'
 
 export const Home = () => {
+  const shouldReduceMotion = useReducedMotion()
+
   // Responsiveness
   const isDesktop = useMediaQuery({
     query: "(min-width: 769px)",
@@ -28,7 +30,7 @@ export const Home = () => {
       title: "Crepe: Mobile Screen Data Collector",
       authors: "Yuwen Lu, Meng Chen, Qi Zhao, Victor Cox, Yang Yang, Meng Jiang, Jay Brockman, Tamara Kay, Toby Jia-Jun Li",
       conference: "CHI 2026",
-      award: "🏅 Honorable Mention Award (Top 5%)",
+      award: "Honorable Mention · Top 5%",
       links: [
         { label: "Paper", url: "https://arxiv.org/abs/2406.16173" },
         { label: "Website", url: "https://crepe-website.vercel.app" },
@@ -38,7 +40,7 @@ export const Home = () => {
     },
     {
       title: "Misty: UI Prototyping Through Interactive Conceptual Blending",
-      // authors: "Yuwen Lu, Alan Leung, Amanda Swearngin, Jeffrey Nichols, Titus Barik",
+      authors: "Yuwen Lu, Alan Leung, Amanda Swearngin, Jeffrey Nichols, Titus Barik",
       conference: "CHI 2025",
       note: "Work done during internship at Apple AIML",
       links: [
@@ -51,10 +53,9 @@ export const Home = () => {
     },
     {
       title: "Dark Pita: Exploring End-User Interventions for Dark Patterns in UX",
-      // authors: "Yuwen Lu*, Chao Zhang*, Yuewen Yang, Yaxing Yao, Toby Jia-Jun Li (* equal contribution)",
+      authors: "Yuwen Lu*, Chao Zhang*, Yuewen Yang, Yaxing Yao, Toby Jia-Jun Li (* equal contribution)",
       conference: "CSCW 2024",
-      award: "🏆 Best Paper Award (Top 1%)",
-      note: "Image generated with DALL-E 2",
+      award: "Best Paper · Top 1%",
       links: [
         { label: "Paper", url: "https://dl.acm.org/doi/10.1145/3637336" },
         { label: "Code", url: "https://github.com/yuwen-lu/dark-pita" },
@@ -65,6 +66,7 @@ export const Home = () => {
     {
       title: "Flowy: Supporting UX Design Decisions With AI",
       authors: "Yuwen Lu, Ziang Tong, Qinyi Zhao, Yewon Oh, Bryan Wang, Toby Jia-Jun Li",
+      conference: "arXiv preprint",
       note: "Use AI to meaningfully support design decisions",
       links: [
         { label: "Preprint", url: "https://arxiv.org/abs/2406.16177" },
@@ -115,9 +117,9 @@ export const Home = () => {
       <motion.section
         id="hero"
         aria-label="Introduction"
-        initial={{ opacity: 0 }}
+        initial={shouldReduceMotion ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 0.3 }}
         className="pt-8 md:pt-16 lg:pt-20 pb-12 md:pb-24 lg:pb-28"
       >
         <div className="grid lg:grid-cols-5 gap-4 lg:gap-16 items-center lg:mt-0">
@@ -126,7 +128,9 @@ export const Home = () => {
               <div className="space-y-4">
                 <h1 className={`${heroNameClass} geo`}>yuwen lu</h1>
                 <p className={`${heroBodyClass} mb-0`}>
-                  CS Ph.D. candidate at{" "}
+                  I lead research at Contra Labs, working on creative AI and how to
+                  evaluate it — most recently a video-editor annotation study and an
+                  accompanying dataset on Hugging Face. I earned my CS Ph.D. from{" "}
                   <a
                     href="https://www.nd.edu/"
                     target="_blank"
@@ -138,7 +142,7 @@ export const Home = () => {
                   <a href="https://toby.li/" target="_blank" rel="noopener noreferrer">
                     Toby Li
                   </a>
-                  . I research human–AI interaction and build tools as a design engineer.
+                  . Previously I worked at Krea, Midjourney, Apple, and Google.
                 </p>
                 <p className={`${heroBodyClass} mb-0`}>
                   I explore user interfaces for AI. I build tools that:
@@ -160,16 +164,16 @@ export const Home = () => {
                     {" "}for UI prototyping
                   </li>
                   <li>
-                    AI that{" "}
+                    use AI to{" "}
                     <a href="https://arxiv.org/abs/2406.16177" target="_blank" rel="noopener noreferrer">
-                      helps with design decision making
+                      support design decision making
                     </a>
                   </li>
                   <li>
+                    help users resist dark patterns through{" "}
                     <a href="https://dl.acm.org/doi/10.1145/3637336" target="_blank" rel="noopener noreferrer">
                       a browser extension
-                    </a>{" "}
-                    that supports users against dark patterns
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -182,9 +186,10 @@ export const Home = () => {
 
       {/* Publications Section */}
       <motion.section
-        initial={{ opacity: 0 }}
+        initial={shouldReduceMotion ? false : { opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.3 }}
         className="mb-8 lg:mb-16"
       >
         <div className="text-center mb-8 lg:mb-12">
@@ -218,17 +223,14 @@ export const Home = () => {
 
       {/* Thesis proposal */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={shouldReduceMotion ? false : { opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.3 }}
         className="mb-8 lg:mb-16 mt-10 lg:mt-14"
       >
         <div className="w-full max-w-3xl mx-auto">
-          <motion.section
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+          <section>
             <div className="text-center mb-4 lg:mb-6">
               <h2
                 className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium lowercase"
@@ -267,9 +269,9 @@ export const Home = () => {
                 />
               </div>
             </div>
-          </motion.section>
+          </section>
         </div>
       </motion.div>
     </div>
   )
-} 
+}
