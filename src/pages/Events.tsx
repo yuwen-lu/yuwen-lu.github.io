@@ -17,6 +17,43 @@ export const Events = () => {
 
   const lifeEvents = [
     {
+      date: "June 2026",
+      location: "San Francisco, CA",
+      showLocation: true,
+      content: (
+        <>
+          Joined <a className='paper-link' target="_blank" href="https://contralabs.com/" rel="noopener noreferrer">Contra Labs</a> as Head of Research, leading work on human data and evaluation for creative AI
+        </>
+      )
+    },
+    {
+      date: "May 2026",
+      location: "Notre Dame, IN",
+      showLocation: true,
+      content: (
+        <>
+          Graduated from Notre Dame with a Ph.D.
+        </>
+      )
+    },
+    {
+      date: "Mar 2026",
+      location: "Notre Dame, IN",
+      showLocation: true,
+      content: (
+        <>
+          Defended my Ph.D. Thesis!
+        </>
+      )
+    },
+    {
+      date: "",
+      location: "",
+      showLocation: false,
+      content: null,
+      spacer: true
+    },
+    {
       date: "May 2025",
       location: "San Francisco, CA",
       showLocation: true,

@@ -125,23 +125,29 @@ export const Home = () => {
             <div className="space-y-5 lg:space-y-4">
               <div className="space-y-4">
                 <h1 className={`${heroNameClass} geo`}>yuwen lu</h1>
+                <br />
                 <p className={`${heroBodyClass} mb-0`}>
-                  CS Ph.D. candidate at{" "}
+                  Head of Research at{" "}
                   <a
-                    href="https://www.nd.edu/"
+                    href="https://contralabs.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Notre Dame
+                    Contra Labs
                   </a>
-                  , advised by{" "}
-                  <a href="https://toby.li/" target="_blank" rel="noopener noreferrer">
-                    Toby Li
-                  </a>
-                  . I research human–AI interaction and build tools as a design engineer.
+                  <br />
+                  Human data and evaluation for creative AI
+                  <br />
+                  <br />
                 </p>
                 <p className={`${heroBodyClass} mb-0`}>
-                  I explore user interfaces for AI. I build tools that:
+                  I am a design engineer doing research in human-AI interaction.
+                  I recently
+                  completed my Ph.D. in Computer Science at{" "}
+                  <a href="https://www.nd.edu/" target="_blank" rel="noopener noreferrer">
+                    Notre Dame
+                  </a>. My
+                  PhD work focused on:
                 </p>
               </div>
               <div className="space-y-2">
@@ -168,8 +174,8 @@ export const Home = () => {
                   <li>
                     <a href="https://dl.acm.org/doi/10.1145/3637336" target="_blank" rel="noopener noreferrer">
                       a browser extension
-                    </a>{" "}
-                    that supports users against dark patterns
+                    </a>
+                    {" "}that supports users against dark patterns
                   </li>
                 </ul>
               </div>
@@ -189,11 +195,11 @@ export const Home = () => {
       >
         <div className="text-center mb-8 lg:mb-12">
           <h2 className="text-xl lg:text-2xl mb-0 geist-regular lowercase"
-              style={{ 
-                fontSize: isDesktop ? "2rem" : "1.6rem", 
-                lineHeight: "1.3",
-                letterSpacing: "-0.01em"
-              }}>
+            style={{
+              fontSize: isDesktop ? "2rem" : "1.6rem",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em"
+            }}>
             publications
           </h2>
         </div>
@@ -251,7 +257,7 @@ export const Home = () => {
                 April 2025. A summary of my previous research in user interfaces and human-AI interaction.
               </p>
             </div>
-            
+
             <div className="w-full">
               <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                 <iframe
@@ -272,4 +278,4 @@ export const Home = () => {
       </motion.div>
     </div>
   )
-} 
+}

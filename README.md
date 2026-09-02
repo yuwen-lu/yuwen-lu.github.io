@@ -127,6 +127,6 @@ MIT License
 
 ## Contact
 
-- Email: ylu5@nd.edu
+- Email: yuwen.lu@contra.com
 - Website: yuwen.io
-- GitHub: yuwen-lu 
+- GitHub: yuwen-lu

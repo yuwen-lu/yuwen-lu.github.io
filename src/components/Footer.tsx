@@ -292,7 +292,7 @@ export const Footer = () => {
 
   const copyEmailToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText('ylu23@nd.edu')
+      await navigator.clipboard.writeText('yuwen.lu@contra.com')
       
       confetti({
         particleCount: 30,
@@ -546,7 +546,8 @@ export const Footer = () => {
         <motion.button 
           onClick={copyEmailToClipboard}
           className="inline-block cursor-pointer bg-transparent border-none p-2"
-          title="Copy email to clipboard"
+          title="Copy yuwen.lu@contra.com"
+          aria-label="Copy yuwen.lu@contra.com to clipboard"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           style={{ cursor: "pointer" }}
@@ -628,4 +629,4 @@ export const Footer = () => {
       </div>
     </div>
   )
-} 
+}
