@@ -5,7 +5,6 @@ import CHIWORK2022Pic from '../resources/images/CHIWORK22_approach.png'
 import CHI2022WorkshopPic from '../resources/images/user-interface-workshop.jpeg'
 import Lbw2022Pic from '../resources/images/chi-lbw-2022.png'
 import Chi2022LbwPoster from '../resources/files/LBW CHI2022/Poster_YuwenLu_LBWCHI2022.pdf'
-import { useMediaQuery } from 'react-responsive'
 import { ProfileInteractive } from '../components/ProfileInteractive'
 import { PublicationCard } from '../components/PublicationCard'
 import FlowyPic from '../resources/images/flowy_card.png'
@@ -17,13 +16,7 @@ const heroNameClass =
 const heroBodyClass =
   'geist-regular text-[1.1rem] sm:text-[1.15rem] md:text-[1.25rem] leading-[1.5] tracking-[-0.01em] text-[var(--color-text)]'
 
-export const Home = () => {
-  // Responsiveness
-  const isDesktop = useMediaQuery({
-    query: "(min-width: 769px)",
-  })
-
-  const publications = [
+const publications = [
     {
       title: "Crepe: Mobile Screen Data Collector",
       authors: "Yuwen Lu, Meng Chen, Qi Zhao, Victor Cox, Yang Yang, Meng Jiang, Jay Brockman, Tamara Kay, Toby Jia-Jun Li",
@@ -38,7 +31,6 @@ export const Home = () => {
     },
     {
       title: "Misty: UI Prototyping Through Interactive Conceptual Blending",
-      // authors: "Yuwen Lu, Alan Leung, Amanda Swearngin, Jeffrey Nichols, Titus Barik",
       conference: "CHI 2025",
       note: "Work done during internship at Apple AIML",
       links: [
@@ -51,7 +43,6 @@ export const Home = () => {
     },
     {
       title: "Dark Pita: Exploring End-User Interventions for Dark Patterns in UX",
-      // authors: "Yuwen Lu*, Chao Zhang*, Yuewen Yang, Yaxing Yao, Toby Jia-Jun Li (* equal contribution)",
       conference: "CSCW 2024",
       award: "🏆 Best Paper Award (Top 1%)",
       note: "Image generated with DALL-E 2",
@@ -107,8 +98,9 @@ export const Home = () => {
       ],
       image: Lbw2022Pic
     }
-  ]
+]
 
+export const Home = () => {
   return (
     <div className="w-full mx-auto px-4 sm:px-6 lg:px-16 xl:px-20">
       {/* Hero */}
@@ -152,8 +144,7 @@ export const Home = () => {
               </div>
               <div className="space-y-2">
                 <ul
-                  className="geist-regular list-disc pl-5 sm:pl-6 space-y-2 mb-0"
-                  style={{ fontSize: isDesktop ? "1.25rem" : "1.1rem", lineHeight: "1.5", letterSpacing: "-0.01em" }}
+                  className="geist-regular mb-0 list-disc space-y-2 pl-5 text-[1.1rem] leading-[1.5] tracking-[-0.01em] sm:pl-6 md:text-[1.25rem]"
                 >
                   <li>
                     <a
@@ -194,20 +185,15 @@ export const Home = () => {
         className="mb-8 lg:mb-16"
       >
         <div className="text-center mb-8 lg:mb-12">
-          <h2 className="text-xl lg:text-2xl mb-0 geist-regular lowercase"
-            style={{
-              fontSize: isDesktop ? "2rem" : "1.6rem",
-              lineHeight: "1.3",
-              letterSpacing: "-0.01em"
-            }}>
+          <h2 className="geist-regular mb-0 text-[1.6rem] leading-[1.3] tracking-[-0.01em] lowercase md:text-[2rem]">
             publications
           </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
-          {publications.map((pub, index) => (
+          {publications.map((pub) => (
             <PublicationCard
-              key={index}
+              key={pub.title}
               title={pub.title}
               authors={pub.authors}
               conference={pub.conference}
@@ -237,39 +223,25 @@ export const Home = () => {
           >
             <div className="text-center mb-4 lg:mb-6">
               <h2
-                className="text-xl lg:text-2xl mb-2 lg:mb-4 geist-medium lowercase"
-                style={{
-                  fontSize: isDesktop ? "1.8rem" : "1.4rem",
-                  lineHeight: "1.3",
-                  letterSpacing: "-0.01em",
-                }}
+                className="geist-medium mb-2 text-[1.4rem] leading-[1.3] tracking-[-0.01em] lowercase md:text-[1.8rem] lg:mb-4"
               >
                 watch my thesis proposal
               </h2>
               <p
-                className="geist-regular"
-                style={{
-                  fontSize: isDesktop ? "1rem" : "0.9rem",
-                  lineHeight: "1.6",
-                  opacity: 0.8,
-                }}
+                className="geist-regular text-[0.9rem] leading-[1.6] opacity-80 md:text-[1rem]"
               >
                 April 2025. A summary of my previous research in user interfaces and human-AI interaction.
               </p>
             </div>
 
             <div className="w-full">
-              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <div className="relative aspect-video w-full">
                 <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
                   src="https://www.youtube.com/embed/_At0jvJ_N3A"
                   title="Thesis Proposal - Human-AI Interaction Research"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                  style={{
-                    border: 'none',
-                    borderRadius: '12px'
-                  }}
                 />
               </div>
             </div>

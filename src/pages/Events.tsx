@@ -1,21 +1,7 @@
-import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { MapPin } from 'lucide-react'
-import { useMediaQuery } from 'react-responsive'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 
-export const Events = () => {
-  // Initialize AOS animations
-  useEffect(() => {
-    AOS.init()
-  }, [])
-
-  // Responsiveness - hide left column if on phone
-  const isNotPhone = useMediaQuery({
-    query: '(min-width: 576px)'
-  })
-
-  const lifeEvents = [
+const lifeEvents = [
     {
       date: "June 2026",
       location: "San Francisco, CA",
@@ -324,8 +310,9 @@ export const Events = () => {
       content: null,
       spacer: true
     }
-  ]
+]
 
+export const Events = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-20">
       {/* Title with original styling */}
@@ -337,108 +324,54 @@ export const Events = () => {
 
       {/* Timeline using original Bootstrap-style layout */}
       <div>
-        {/* Events with original AOS animations and connecting lines */}
+        {/* Events with scroll animations and connecting lines */}
         {lifeEvents.map((event, index) => (
-          <div
+          <motion.div
             key={index}
-            className={`grid grid-cols-12 ${event.spacer ? 'h-40' : ''}`}
-            data-aos="fade-up"
-            data-aos-offset="200"
-            data-aos-duration="1000"
-            data-aos-easing="ease-in-out"
-            style={{ minHeight: event.spacer ? '10rem' : isNotPhone ? '6rem' : '5rem' }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className={`grid grid-cols-12 ${event.spacer ? 'h-40 min-h-40' : 'min-h-20 sm:min-h-24'}`}
           >
             {/* Left column: location icon and text with connecting line */}
-            {isNotPhone && (
-              <div 
-                className="col-span-3 flex items-center justify-end"
-                style={{ 
-                  borderRight: "var(--color-accent) 4px solid",
-                  margin: "0",
-                  padding: "0",
-                  height: "100%"
-                }}
-              >
-                {event.showLocation && !event.spacer && (
-                  <div 
-                    className="flex items-center text-right geist-regular"
-                    style={{
-                      paddingRight: "2rem",
-                      position: "relative",
-                      bottom: "1rem"
-                    }}
-                  >
-                    <div className="mr-2">
-                      <MapPin size={20} className="text-accent" style={{ position: "relative", bottom: "4px" }} />
-                    </div>
-                    <span className="opacity-80" style={{ fontSize: "1rem" }}>{event.location}</span>
+            <div className="col-span-3 hidden h-full items-center justify-end border-r-4 border-accent sm:flex">
+              {event.showLocation && !event.spacer && (
+                <div className="geist-regular relative -top-4 flex items-center pr-8 text-right">
+                  <div className="mr-2">
+                    <MapPin size={20} className="relative -top-1 text-accent" />
                   </div>
-                )}
-              </div>
-            )}
+                  <span className="text-base opacity-80">{event.location}</span>
+                </div>
+              )}
+            </div>
             
             {/* Right column: date and content */}
-            <div className={`${isNotPhone ? 'col-span-9' : 'col-span-12'} ${!event.spacer ? 'flex items-center' : ''}`} style={{ margin: "0", padding: "0", height: "100%" }}>
+            <div className={`col-span-12 h-full sm:col-span-9 ${!event.spacer ? 'flex items-center' : ''}`}>
               {!event.spacer && (
-                <div className={`${isNotPhone ? 'flex items-center' : 'block'} w-full`}>
+                <div className="block w-full sm:flex sm:items-center">
                   {/* Date with bottom border line that connects to vertical line */}
                   {event.date && (
-                    <div 
-                      className={`${isNotPhone ? 'inline-block' : 'block mb-3'}`}
-                      style={isNotPhone ? {
-                        width: "10rem",
-                        paddingLeft: "1rem",
-                        borderBottom: "var(--color-accent) 4px solid",
-                        position: "relative",
-                        bottom: "1rem"
-                      } : {
-                        paddingLeft: "1rem",
-                        borderLeft: "var(--color-accent) 3px solid",
-                        paddingBottom: "0.5rem"
-                      }}
-                    >
-                      <p 
-                        className="geist-medium"
-                        style={{
-                          fontSize: isNotPhone ? "1rem" : "0.9rem",
-                          margin: "0",
-                          fontWeight: isNotPhone ? "500" : "500",
-                          color: isNotPhone ? "inherit" : "var(--color-accent)"
-                        }}
-                      >
+                    <div className="mb-3 block border-l-[3px] border-accent pb-2 pl-4 sm:relative sm:-top-4 sm:mb-0 sm:inline-block sm:w-40 sm:border-b-4 sm:border-l-0 sm:pb-0">
+                      <p className="geist-medium m-0 text-[0.9rem] font-medium text-accent sm:text-base sm:text-[inherit]">
                         {event.date}
                       </p>
                     </div>
                   )}
                   
                   {/* Empty date space for events without dates but still need layout - only on desktop */}
-                  {!event.date && isNotPhone && (
-                    <div style={{ width: "10rem" }}></div>
-                  )}
+                  {!event.date && <div className="hidden w-40 sm:block" />}
                   
                   {/* Content */}
                   {event.content && (
-                    <div 
-                      className={`text-lg leading-relaxed geist-regular ${isNotPhone ? 'inline-block' : 'block'}`}
-                      style={isNotPhone ? { 
-                        margin: "0 0 0 1rem",
-                        lineHeight: "2em",
-                        position: "relative",
-                        fontSize: "1.1rem"
-                      } : {
-                        margin: "0",
-                        lineHeight: "1.6em",
-                        paddingLeft: "1rem",
-                        fontSize: "1rem"
-                      }}
-                    >
+                    <div className="geist-regular block pl-4 text-base leading-[1.6] sm:ml-4 sm:inline-block sm:p-0 sm:text-[1.1rem] sm:leading-[2]">
                       {event.content}
                     </div>
                   )}
                 </div>
               )}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

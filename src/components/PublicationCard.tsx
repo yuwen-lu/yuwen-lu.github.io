@@ -80,14 +80,14 @@ function renderAuthors(authors: string) {
     const trimmed = author.trim()
     if (trimmed.includes('Yuwen Lu')) {
       return (
-        <span key={i}>
+        <span key={`${trimmed}-${i}`}>
           {i > 0 && ', '}
           <span className="font-bold" style={{ color: 'var(--color-accent)' }}>{trimmed}</span>
         </span>
       )
     }
     return (
-      <span key={i}>
+      <span key={`${trimmed}-${i}`}>
         {i > 0 && ', '}
         {trimmed}
       </span>
@@ -115,7 +115,13 @@ export const PublicationCard = ({
       style={{ aspectRatio: '4/4' }}
     >
       {image && (
-        <img src={image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
       )}
 
       {/* Always-visible bottom gradient for text readability */}
@@ -186,9 +192,9 @@ export const PublicationCard = ({
 
         {links.length > 0 && (
           <div className="relative z-20 mt-3 flex flex-wrap gap-2">
-            {links.map((link, index) => (
+            {links.map((link) => (
               <button
-                key={index}
+                key={link.url}
                 type="button"
                 onClick={() => openExternalUrl(link.url)}
                 className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-white/25 bg-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/25 active:scale-[0.96] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
@@ -202,4 +208,3 @@ export const PublicationCard = ({
     </div>
   )
 }
-

@@ -3,18 +3,18 @@ import { NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+const navItems = [
+  { path: '/', label: 'home' },
+  { path: '/resume', label: 'resume' },
+  { path: '/events', label: 'events' },
+]
+
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLDivElement>(null)
 
-  const navItems = [
-    { path: '/', label: 'home' },
-    { path: '/resume', label: 'resume' },
-    { path: '/events', label: 'events' },
-  ]
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+  const toggleMenu = () => setIsMenuOpen((isOpen) => !isOpen)
 
   useEffect(() => {
     if (!isMenuOpen) return
@@ -59,6 +59,7 @@ export const Navigation = () => {
         <motion.button
           onClick={toggleMenu}
           className="inline-flex items-center justify-center p-2 rounded-md text-nav hover:text-accent transition-colors geist-medium"
+          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={isMenuOpen}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -138,4 +139,4 @@ export const Navigation = () => {
       </AnimatePresence>
     </nav>
   )
-} 
+}

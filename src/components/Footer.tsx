@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useMediaQuery } from 'react-responsive'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, Check, Twitter, Github, Linkedin, X, Send } from 'lucide-react'
+import { Check, Mail, Send, X } from 'lucide-react'
+import { FaGithub, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
 import confetti from 'canvas-confetti'
 
 export const Footer = () => {
@@ -16,11 +16,6 @@ export const Footer = () => {
   const [selectedPreset, setSelectedPreset] = useState('')
   const [contactInfo, setContactInfo] = useState('')
   const [isSendingMessage, setIsSendingMessage] = useState(false)
-
-  // Responsiveness, break point at tablet --> desktop
-  const isDesktop = useMediaQuery({
-    query: '(min-width: 769px)'
-  })
 
   // Calculate detailed time difference with rolling seconds
   const calculateDetailedTime = (commitDate: Date) => {
@@ -310,11 +305,6 @@ export const Footer = () => {
     }
   }
 
-  const getHealthIcon = () => {
-    // Icons removed to match debug section
-    return null
-  }
-
   const getHealthText = () => {
     switch (healthStatus) {
       case 'healthy':
@@ -359,14 +349,18 @@ export const Footer = () => {
                 className="p-6 rounded-lg shadow-2xl z-50 w-full max-w-md"
                 style={{ backgroundColor: 'var(--color-bg)', border: '1px solid var(--color-rule)' }}
                 onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="contact-dialog-title"
               >
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-medium text-primary geist-medium">
+                  <h3 id="contact-dialog-title" className="text-lg font-medium text-primary geist-medium">
                     {healthStatus === 'healthy' ? 'Yo! What do you want to tell me?' : 'Nudge Yuwen For Update'}
                   </h3>
                   <button
                     onClick={() => setShowMessagePopup(false)}
                     className="text-secondary hover:text-primary"
+                    aria-label="Close message dialog"
                   >
                     <X size={20} />
                   </button>
@@ -378,9 +372,9 @@ export const Footer = () => {
                     Pick One
                   </label>
                   <div className="space-y-2">
-                    {getPresetMessages().map((preset, index) => (
+                    {getPresetMessages().map((preset) => (
                       <button
-                        key={index}
+                        key={preset}
                         onClick={() => setSelectedPreset(preset)}
                         className={`w-full text-left p-2 rounded text-sm transition-colors ${
                           selectedPreset === preset
@@ -542,7 +536,7 @@ export const Footer = () => {
       </AnimatePresence>
       
       <p className="mb-6 text-lg geist-medium lowercase">contact</p>
-      <div className="footer-icons mb-8 flex justify-center items-center gap-2 sm:gap-4">
+      <div className="mb-8 flex items-center justify-center gap-2 sm:gap-4">
         <motion.button 
           onClick={copyEmailToClipboard}
           className="inline-block cursor-pointer bg-transparent border-none p-2"
@@ -553,47 +547,50 @@ export const Footer = () => {
           style={{ cursor: "pointer" }}
         >
           <Mail 
-            size={isDesktop ? 28 : 24} 
-            className="text-primary hover:text-accent transition-colors"
+            size={24}
+            className="h-6 w-6 text-primary transition-colors hover:text-accent md:h-7 md:w-7"
           />
         </motion.button>
         <motion.button 
           onClick={() => window.open("https://twitter.com/yuwen_lu_", "_blank", "noopener,noreferrer")}
           className="inline-block cursor-pointer bg-transparent border-none p-2"
           title="Visit Twitter profile"
+          aria-label="Visit Twitter profile"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           style={{ cursor: "pointer" }}
         >
-          <Twitter 
-            size={isDesktop ? 28 : 24} 
-            className="text-primary hover:text-accent transition-colors"
+          <FaXTwitter
+            size={24}
+            className="h-6 w-6 text-primary transition-colors hover:text-accent md:h-7 md:w-7"
           />
         </motion.button>
         <motion.button 
           onClick={() => window.open("https://github.com/yuwen-lu/", "_blank", "noopener,noreferrer")}
           className="inline-block cursor-pointer bg-transparent border-none p-2"
           title="Visit GitHub profile"
+          aria-label="Visit GitHub profile"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           style={{ cursor: "pointer" }}
         >
-          <Github 
-            size={isDesktop ? 28 : 24} 
-            className="text-primary hover:text-accent transition-colors"
+          <FaGithub
+            size={24}
+            className="h-6 w-6 text-primary transition-colors hover:text-accent md:h-7 md:w-7"
           />
         </motion.button>
         <motion.button 
           onClick={() => window.open("https://www.linkedin.com/in/yuwen-lu/", "_blank", "noopener,noreferrer")}
           className="inline-block cursor-pointer bg-transparent border-none p-2"
           title="Visit LinkedIn profile"
+          aria-label="Visit LinkedIn profile"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           style={{ cursor: "pointer" }}
         >
-          <Linkedin 
-            size={isDesktop ? 28 : 24} 
-            className="text-primary hover:text-accent transition-colors"
+          <FaLinkedinIn
+            size={24}
+            className="h-6 w-6 text-primary transition-colors hover:text-accent md:h-7 md:w-7"
           />
         </motion.button>
       </div>
@@ -613,7 +610,6 @@ export const Footer = () => {
         {!isLoadingCommitDate && (
           <div className="flex items-center justify-center gap-4">
             <div className={`flex items-center gap-2 ${getHealthColor()}`}>
-              {getHealthIcon()}
               <span className="text-sm geist-regular">{getHealthText()}</span>
             </div>
             
