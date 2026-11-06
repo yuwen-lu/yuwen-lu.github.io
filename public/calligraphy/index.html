@@ -1,0 +1,182 @@
+<!doctype html>
+<!-- Written by tools/export-yuwen.js in github.com/yuwen-lu/p5-brush. Edit there and run it again. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="/calligraphy/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>摹帖 · Twelve masterpieces of Chinese calligraphy, traced stroke by stroke · yuwen lu</title>
+<meta name="description" content="Twelve model works of Chinese calligraphy, from Wang Xizhi's Orchid Pavilion Preface to Huaisu's wild cursive, re-written by a simulated brush along strokes traced from scans of the originals.">
+<meta property="og:title" content="摹帖 · Chinese calligraphy, traced stroke by stroke">
+<meta property="og:description" content="A simulated brush re-writes twelve masterpieces along the strokes traced from the originals. Step through any character stroke by stroke.">
+<meta property="og:image" content="https://yuwen.io/calligraphy/assets/thumb-calligraphy.jpg">
+<meta property="og:url" content="https://yuwen.io/calligraphy">
+<meta property="og:site_name" content="yuwen lu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@yuwen_lu_">
+<link rel="canonical" href="https://yuwen.io/calligraphy">
+<link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F0EB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151515" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Geist:wght@300..600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="yuwen.css">
+</head>
+<body class="calli-page">
+<header class="site-header" id="siteHeader"></header>
+<div class="toolbar" id="toolbar">
+  <div class="toolbar__inner">
+    <div class="toolbar__group" role="group" aria-label="Playback">
+      <button type="button" class="btn btn-sm btn-primary" data-global-play aria-pressed="true">Pause all</button>
+      <button type="button" class="btn btn-sm btn-ghost btn-icon" data-restart-all aria-label="Start every piece over" data-tip="Start every piece over"></button>
+      <button type="button" class="btn btn-sm btn-ghost btn-icon" data-finish-all aria-label="Finish every piece now" data-tip="Finish every piece now"></button>
+      <label class="speed" data-tip="Writing speed"><span class="sr-only">Speed</span><span class="speed__icon"></span><input type="range" class="slider" data-global-speed min="-2" max="2" step="0.25" value="0" aria-label="Writing speed"><output data-global-speed-out>1×</output></label>
+      <button type="button" class="toggle" data-global-loop aria-pressed="true"><span class="dot"></span>Loop</button>
+    </div>
+    <span class="toolbar__sep" aria-hidden="true"></span>
+    <div class="toolbar__group" role="group" aria-label="Guide">
+      <span class="toolbar__label" id="guideLabel">Guide</span>
+      <div class="segmented" role="radiogroup" aria-labelledby="guideLabel" id="guide">
+        <button type="button" role="radio" data-value="off" aria-checked="true">None</button>
+        <button type="button" role="radio" data-value="outline" aria-checked="false" tabindex="-1" data-tip="雙鉤: each character's outline, for the brush to fill"><span class="zh">雙鉤</span>Outline</button>
+        <button type="button" role="radio" data-value="fill" aria-checked="false" tabindex="-1" data-tip="描紅: the outline filled red, as in a copybook; red left showing is ink the brush missed"><span class="zh">描紅</span>Filled</button>
+      </div>
+    </div>
+    <div class="toolbar__group" role="group" aria-label="View">
+      <button type="button" class="toggle" id="underlayToggle" aria-pressed="false" data-tip="Show the scan of the original under the writing"><span class="dot"></span><span class="zh">原帖</span>Scan beneath</button>
+      <button type="button" class="toggle" id="refToggle" aria-pressed="true" data-tip="Show the original beside each piece"><span class="dot"></span><span class="zh">對照</span>Side by side</button>
+      <button type="button" class="toggle" id="rubbingToggle" aria-pressed="false" data-tip="Show the pieces white on black, the way steles are seen as rubbings"><span class="dot"></span><span class="zh">拓本</span>Rubbing</button>
+    </div>
+  </div>
+</div>
+
+<main class="page">
+  <section class="intro">
+    <div>
+      <p class="intro__eyebrow">摹帖 · Tracing the masters</p>
+      <h1>Twelve masterpieces, written again stroke by stroke<small>A simulated brush follows the strokes traced from scans of the originals.</small></h1>
+      <p>Nothing here comes from a font. The tracer reads each scan or rubbing: it separates the ink from the paper and the seals, cuts the columns into characters, thins every character to the centre lines of its strokes and measures how wide each stroke runs. The brush then writes those strokes itself, with bristles, dry streaks and pooled ink, in the original's own layout. <a href="how-it-works">See how the tracer works</a>.</p>
+    </div>
+    <aside class="intro__aside" aria-label="How to use this page">
+      <h2 id="tryIt">Try it</h2>
+      <ul>
+        <li>Click any character to write it again, one stroke at a time.</li>
+        <li><kbd>←</kbd><kbd>→</kbd> a stroke, <kbd>⇧</kbd> with an arrow a character, <kbd>Space</kbd> play or pause.</li>
+        <li>Turn on the 描紅 guide: red left showing is ink the brush missed.</li>
+      </ul>
+    </aside>
+  </section>
+  <div id="gallery"></div>
+</main>
+
+<footer class="site-footer"><div class="site-footer__inner">
+  <span>Scans and rubbings from Wikimedia Commons (public domain or CC0), traced with <code>tools/trace-model.js</code>. Stroke order from hanzi-writer-data (Arphic Public License).</span>
+  <span>Rendered live with <a href="https://p5js.org">p5.js</a> · <a href="https://github.com/yuwen-lu/p5-brush">source</a></span>
+</div></footer>
+
+<script src="lib/p5.min.js"></script>
+<script src="js/ui/ui.js"></script>
+<script src="yuwen.js"></script>
+<script src="js/core/rng.js"></script>
+<script src="js/core/path.js"></script>
+<script src="js/core/player.js"></script>
+<script src="js/core/gallery.js"></script>
+<script src="js/ink/brush.js"></script>
+<script src="js/ink/paper.js"></script>
+<script src="js/calligraphy/seal.js"></script>
+<script src="js/calligraphy/traced.js"></script>
+<script src="js/calligraphy/inspector.js"></script>
+<script src="data/traced/index.js"></script>
+<script>
+(() => {
+  document.getElementById('siteHeader').innerHTML = YuwenSite.header('calligraphy'); YuwenSite.dots();
+  const tb = document.getElementById('toolbar');
+  tb.querySelector('[data-restart-all]').innerHTML = UI.icon('rotate');
+  tb.querySelector('[data-finish-all]').innerHTML = UI.icon('fast-forward');
+  tb.querySelector('.speed__icon').outerHTML = UI.icon('gauge');
+  document.getElementById('tryIt').insertAdjacentHTML('afterbegin', UI.icon('pointer'));
+
+  // the view, shared by every card (and remembered)
+  const store = { get: (k, d) => { try { const v = localStorage.getItem('p5brush.' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set: (k, v) => { try { localStorage.setItem('p5brush.' + k, JSON.stringify(v)); } catch (e) {} } };
+  const view = { guide: store.get('guide', 'off'), underlay: store.get('underlay', false), ref: store.get('ref', true), rubbing: false };
+  const handles = [];
+  const applyView = (h) => { h.guide = view.guide === 'off' ? null : view.guide; h.showUnderlay = view.underlay; h.filter = view.rubbing ? 'grayscale(1) invert(1) contrast(1.15)' : ''; if (h.p) h.p.redraw(); };
+
+  const gallery = document.getElementById('gallery');
+  const IX = window.TRACED_INDEX || {};
+  const pct = (v) => (v == null ? '' : `${Math.round(v * 1000) / 10}%`);
+  const mountQueue = new Map();
+  const lazy = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting && mountQueue.has(e.target)) { const go = mountQueue.get(e.target); mountQueue.delete(e.target); lazy.unobserve(e.target); go(); }
+  }, { rootMargin: '900px 0px' });
+
+  for (const g of Traced.groups) {
+    const ids = Traced.order.filter((id) => Traced.catalog[id].group === g.id && IX[id]);
+    if (!ids.length) continue;
+    const section = document.createElement('section');
+    section.className = 'group'; section.id = g.id;
+    section.innerHTML = `<div class="section-title"><h2>${g.title}</h2><span class="en">${g.en}</span><p>${g.sub}</p></div><div class="gallery calli"></div>`;
+    gallery.appendChild(section);
+    const grid = section.querySelector('.gallery');
+    for (const id of ids) {
+      const ix = IX[id], c = Traced.catalog[id];
+      const L = Traced.layout(ix, { cell: 60 });
+      const wide = L.W / L.H > 1.15;
+      const refSide = !wide || ix.ref.w / ix.ref.h < 1.2;
+      const card = document.createElement('article');
+      card.className = 'card ' + (wide ? 'wide' : 'tall');
+      card.id = 'piece-' + id;
+      card.setAttribute('aria-label', `${ix.title}, ${c.en}`);
+      card.innerHTML = `
+        <header class="card__head">
+          <div>
+            <h3 class="card__title">${ix.title}<span class="en">${c.en}</span></h3>
+            <p class="card__meta"><span class="zh">${ix.author}</span> ${c.author} · ${c.script} · ${c.year} · ${ix.chars} characters</p>
+          </div>
+          ${ix.fit != null ? `<span class="badge" tabindex="0" data-tip="Of the original's ink inside the characters' outlines, the share the traced strokes paint"><b>${pct(ix.fit)}</b> of the ink</span>` : ''}
+        </header>
+        <p class="card__notes">${c.notes}</p>
+        <div class="compare ${refSide ? 'side' : 'below'}">
+          <div class="frame"><div class="canvas-wrap"><div class="placeholder" style="aspect-ratio:${L.W} / ${L.H}">Loading…</div></div></div>
+          <figure class="reference"><img src="${ix.ref.src}" width="${ix.ref.w}" height="${ix.ref.h}" loading="lazy" alt="The original: ${ix.title}"><figcaption><b>原帖 The original</b> · ${ix.credit}</figcaption></figure>
+        </div>
+        <div class="controls"></div>`;
+      grid.appendChild(card);
+      mountQueue.set(card, () => mountPiece(card, id));
+      lazy.observe(card);
+    }
+  }
+
+  async function mountPiece(card, id) {
+    let T;
+    try { T = await Traced.load(id); } catch (e) { card.querySelector('.placeholder').textContent = 'Could not load this piece.'; return; }
+    const spec = Traced.spec(id, T, { cell: 60 });
+    let img = null;
+    spec.underlay = (dc) => {
+      if (!img) { img = new Image(); img.src = spec.image; img.onload = () => h.p && h.p.redraw(); }
+      if (img.complete && img.naturalWidth) Traced.drawUnderlay(dc, img, T, spec.layout);
+    };
+    spec.build = (env) => { const B = InkBrush.create(env); env.brush = B; return Traced.create(B).buildPiece(spec); };
+    spec.paper = (p, W, H, rng) => InkPaper(p, W, H, rng, { base: [240, 232, 214], mottle: 0.5, grain: 10 });
+    spec.cursor = 'ink'; spec.blend = 'multiply'; spec.holdAtEnd = 3500; spec.vary = true;
+    spec.onPick = (g) => Inspector.open(spec, g);
+    card.querySelector('.placeholder').remove();
+    const h = Gallery.mount(card, spec);
+    applyView(h); handles.push(h);
+  }
+
+  Gallery.bindToolbar(tb);
+  const guide = UI.segmented(document.getElementById('guide'), (v) => { view.guide = v; store.set('guide', v); handles.forEach(applyView); });
+  guide.set(view.guide);
+  const underlay = UI.toggle(document.getElementById('underlayToggle'), (on) => { view.underlay = on; store.set('underlay', on); handles.forEach(applyView); });
+  underlay.set(view.underlay);
+  const ref = UI.toggle(document.getElementById('refToggle'), (on) => { view.ref = on; store.set('ref', on); document.body.classList.toggle('no-ref', !on); });
+  ref.set(view.ref); document.body.classList.toggle('no-ref', !view.ref);
+  UI.toggle(document.getElementById('rubbingToggle'), (on) => { view.rubbing = on; handles.forEach(applyView); });
+})();
+</script>
+</body>
+</html>

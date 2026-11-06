@@ -13,8 +13,16 @@
   ],
   "rewrites": [
     {
+      "source": "/calligraphy",
+      "destination": "/calligraphy/index.html"
+    },
+    {
+      "source": "/calligraphy/how-it-works",
+      "destination": "/calligraphy/how-it-works.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
-} 
+}

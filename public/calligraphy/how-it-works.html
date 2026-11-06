@@ -1,0 +1,140 @@
+<!doctype html>
+<!-- Written by tools/export-yuwen.js in github.com/yuwen-lu/p5-brush. Edit there and run it again. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="/calligraphy/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>解 · How a scan becomes brush strokes · yuwen lu</title>
+<meta name="description" content="Short scenes that run each stage of the calligraphy tracer in the browser: separating ink, finding columns and characters, thinning, measuring, choosing strokes, ordering them, and the brush writing them.">
+<meta property="og:title" content="How a scan becomes brush strokes">
+<meta property="og:image" content="https://yuwen.io/calligraphy/assets/thumb-demo.jpg">
+<meta property="og:url" content="https://yuwen.io/calligraphy/how-it-works">
+<meta property="og:site_name" content="yuwen lu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@yuwen_lu_">
+<link rel="canonical" href="https://yuwen.io/calligraphy/how-it-works">
+<link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F0EB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151515" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Geist:wght@300..600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="yuwen.css">
+</head>
+<body class="demo-page">
+<header class="site-header" id="siteHeader"></header>
+
+<main class="page">
+  <section class="intro">
+    <div>
+      <p class="intro__eyebrow">解 · How the tracer works</p>
+      <h1>How a scan becomes brush strokes<small>Each scene runs one stage of the tracer, live, on a crop of the original.</small></h1>
+      <p>The same code that traced the twelve works runs here in your browser. Most scenes use the first four columns of the Orchid Pavilion Preface; two use Huaisu's wild cursive to show what changes when the brush never leaves the paper. Pick a scene and play it, or drag the timeline. Recorded versions are below.</p>
+    </div>
+  </section>
+
+  <section class="demo-layout" aria-label="Scenes">
+    <nav class="scene-list" id="sceneList" aria-label="Scenes"></nav>
+    <div class="demo-stage">
+      <div class="frame"><canvas id="c" width="1280" height="720" role="img" aria-label="The current scene"></canvas></div>
+      <div class="player">
+        <div class="player__row">
+          <div class="player__transport" id="transport"></div>
+          <input type="range" class="slider scrub" id="t" min="0" max="1000" value="0" aria-label="Position in the scene">
+          <output class="demo-time" id="tOut">0.0 s</output>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="videosTitle">
+    <div class="section-title"><h2 id="videosTitle">視頻</h2><span class="en">The recorded scenes</span><p>Each scene recorded at 30 frames a second, ten to fifteen seconds long.</p></div>
+    <div class="videos" id="videos"></div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="site-footer__inner">
+  <span>蘭亭序 (Shenlong copy) and 自敘帖 scans via Wikimedia Commons (public domain or CC0). Stroke templates from hanzi-writer-data (Arphic Public License).</span>
+  <span><a href="https://github.com/yuwen-lu/p5-brush">source</a></span>
+</div></footer>
+
+<script src="lib/p5.min.js"></script>
+<script src="js/ui/ui.js"></script>
+<script src="yuwen.js"></script>
+<script src="js/core/rng.js"></script>
+<script src="js/core/path.js"></script>
+<script src="js/ink/brush.js"></script>
+<script src="data/glyphs.js"></script>
+<script src="data/traced/lanting.js"></script>
+<script src="js/calligraphy/skeleton.js"></script>
+<script src="js/calligraphy/trace-core.js"></script>
+<script src="js/calligraphy/seal.js"></script>
+<script src="js/calligraphy/traced.js"></script>
+<script src="js/demo/demo.js"></script>
+<script src="js/demo/scenes.js"></script>
+<script>
+(() => {
+  document.getElementById('siteHeader').innerHTML = YuwenSite.header('how it works'); YuwenSite.dots();
+  const D = window.Demo;
+  D.attach(document.getElementById('c'));
+  const list = document.getElementById('sceneList');
+  const slider = document.getElementById('t'), tOut = document.getElementById('tOut');
+  const transport = document.getElementById('transport');
+  transport.innerHTML = UI.iconButton({ icon: 'play', label: 'Play', kbd: 'Space', variant: 'primary', cls: 'play' });
+  const playBtn = transport.querySelector('.play');
+  const params = new URLSearchParams(location.search);
+  let current = null, playing = false, t0 = 0;
+  const buttons = {};
+  D.scenes.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = `<span class="n">${String(i + 1).padStart(2, '0')}</span><span><span class="zh">${s.zh}</span><small>${s.en}</small></span>`;
+    b.addEventListener('click', () => select(s.id, true));
+    list.appendChild(b); buttons[s.id] = b;
+  });
+  const paintPlay = () => { playBtn.innerHTML = UI.icon(playing ? 'pause' : 'play'); playBtn.setAttribute('aria-label', playing ? 'Pause' : 'Play'); playBtn.setAttribute('data-tip', playing ? 'Pause' : 'Play'); };
+  async function select(id, autoplay) {
+    current = D.byId[id];
+    Object.values(buttons).forEach((b) => b.removeAttribute('aria-current')); buttons[id].setAttribute('aria-current', 'true');
+    playing = false; paintPlay();
+    history.replaceState(null, '', `${location.pathname}?scene=${id}`);
+    await D.prepare(id);
+    show(0);
+    if (autoplay) toggle();
+  }
+  function show(t) {
+    if (!current) return;
+    D.render(current.id, t);
+    slider.value = Math.round(t * 1000); UI.paintRange(slider);
+    tOut.textContent = `${(t * current.seconds).toFixed(1)} s`;
+  }
+  function toggle() {
+    if (!current) return;
+    playing = !playing; paintPlay();
+    if (playing) { if (+slider.value >= 1000) slider.value = 0; t0 = performance.now() - (slider.value / 1000) * current.seconds * 1000; requestAnimationFrame(tick); }
+  }
+  function tick() {
+    if (!playing) return;
+    const t = (performance.now() - t0) / (current.seconds * 1000);
+    if (t >= 1) { show(1); playing = false; paintPlay(); return; }
+    show(t); requestAnimationFrame(tick);
+  }
+  slider.addEventListener('input', () => { playing = false; paintPlay(); show(slider.value / 1000); });
+  playBtn.addEventListener('click', toggle);
+  document.addEventListener('keydown', (e) => { if (e.key === ' ' && !e.target.matches('input, button, textarea')) { e.preventDefault(); toggle(); } });
+  // recorded videos
+  const vids = document.getElementById('videos');
+  D.scenes.forEach((s, i) => {
+    const f = document.createElement('figure');
+    const n = String(i + 1).padStart(2, '0');
+    f.innerHTML = `<video controls preload="none" playsinline src="assets/demo/videos/${n}-${s.id}.mp4" poster="assets/demo/videos/${n}-${s.id}.jpg"></video><figcaption><b>${n} · ${s.zh}</b>${s.en} · ${s.seconds} s</figcaption>`;
+    vids.appendChild(f);
+  });
+  if (!params.has('embed')) select(params.get('scene') && D.byId[params.get('scene')] ? params.get('scene') : D.scenes[0].id, false);
+})();
+</script>
+</body>
+</html>

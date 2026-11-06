@@ -1,0 +1,91 @@
+/* yuwen.io/calligraphy: the calligraphy pages in the colours, type and header
+   of yuwen.io, light and dark. Loaded after styles.css by the pages
+   tools/export-yuwen.js writes; only tokens and a few overrides. */
+
+:root {
+  --bg: #f5f0eb;
+  --surface: #fbf8f5;
+  --surface-2: #ece6df;
+  --surface-3: #ded7cf;
+  --ink: #2c2824;
+  --ink-2: #5d5750;
+  --ink-3: #8b847b;
+  --on-ink: #f5f0eb;
+  --line: #e1dad3;
+  --line-strong: #cdc5bc;
+  --accent: #b89410;
+  --accent-hover: #9a7c0d;
+  --accent-soft: rgba(184, 148, 16, 0.14);
+  --ring: rgba(44, 40, 36, 0.32);
+  --shadow-sm: 0 1px 2px rgba(44, 40, 36, 0.06);
+  --shadow: 0 1px 2px rgba(44, 40, 36, 0.05), 0 10px 30px -14px rgba(44, 40, 36, 0.26);
+  --placeholder: #ede6dc;
+  --selection-bg: #b89410;
+  --selection-ink: #f5f0eb;
+  --font-ui: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang TC", "Noto Sans TC", sans-serif;
+  --font-cursive: "Cedarville Cursive", cursive;
+  /* the header scrolls away, as on yuwen.io; the toolbar sticks to the top */
+  --header-h: 0px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #151515;
+    --surface: #1c1b1a;
+    --surface-2: #232220;
+    --surface-3: #302e2b;
+    --ink: #e8e2d8;
+    --ink-2: #bdb6ac;
+    --ink-3: #8d877e;
+    --on-ink: #151515;
+    --line: #2c2b29;
+    --line-strong: #3d3b37;
+    --accent: #8b9bb5;
+    --accent-hover: #a0aec4;
+    --accent-soft: rgba(139, 155, 181, 0.18);
+    --ring: rgba(232, 226, 216, 0.4);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -14px rgba(0, 0, 0, 0.65);
+    --placeholder: #262523;
+    --selection-bg: rgba(139, 155, 181, 0.35);
+    --selection-ink: #e8e2d8;
+  }
+}
+
+::selection { background: var(--selection-bg); color: var(--selection-ink); }
+html { background: var(--bg); scroll-padding-top: 72px; }
+body { background: transparent; }
+.yw-dots { position: fixed; inset: 0; z-index: -1; width: 100vw; height: 100vh; pointer-events: none; }
+
+/* prose links: the accent, no underline, as on yuwen.io */
+.intro p a, .site-footer a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+.intro p a:hover, .site-footer a:hover { color: var(--accent-hover); }
+
+/* ---- header: the name on the left, lowercase links on the right ---------------- */
+.site-header { position: relative; background: transparent; border-bottom: 0; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.site-header__inner { height: auto; min-height: 76px; padding-top: 14px; padding-bottom: 14px; justify-content: space-between; gap: 16px; }
+.yw-brand { font: 400 28px/1 var(--font-cursive); color: var(--ink); text-decoration: none; white-space: nowrap; }
+.yw-brand:hover { color: var(--accent); }
+.yw-nav { display: flex; align-items: center; gap: 4px 28px; }
+.yw-nav a { color: var(--ink); text-decoration: none; font: 400 14.5px/1 var(--font-ui); white-space: nowrap; transition: color 0.2s; }
+.yw-nav a:hover, .yw-nav a[aria-current="page"] { color: var(--accent); }
+@media (max-width: 520px) { .yw-brand { font-size: 24px; } .yw-nav { gap: 4px 18px; } }
+
+.toolbar { border-top: 1px solid var(--line); }
+
+/* ---- type: Geist for the English, the serif kept for the Chinese --------------- */
+.intro h1 { font: 400 clamp(30px, 4vw, 46px)/1.12 var(--font-ui); letter-spacing: -0.025em; text-transform: lowercase; }
+.intro h1 small { text-transform: none; letter-spacing: -0.01em; }
+.intro h1 .zh, .intro h1 .zh-big { font-family: var(--font-serif); }
+
+/* ---- colours the base styles fix ------------------------------------------------- */
+.btn-primary:hover { background: color-mix(in srgb, var(--ink) 86%, var(--bg)); }
+.toggle[aria-pressed="true"] .dot { background: var(--accent); border-color: var(--accent); }
+.frame .placeholder { background: var(--placeholder); }
+.tooltip .tip-hint { color: color-mix(in srgb, var(--on-ink) 70%, transparent); }
+.tooltip kbd { background: color-mix(in srgb, var(--on-ink) 12%, transparent); border-color: color-mix(in srgb, var(--on-ink) 24%, transparent); }
+
+/* ---- footer: centred, quiet --------------------------------------------------------- */
+.site-footer { border-top: 0; margin-top: 16px; }
+.site-footer__inner { flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 40px var(--gutter) 64px; }
