@@ -1,0 +1,214 @@
+/* One source unit is one Figma unit, scaled from a 1440-wide frame to A4. */
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url("data:font/woff2;base64,{{GEIST_FONT}}") format("woff2");
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url("data:font/woff2;base64,{{GEIST_MONO_FONT}}") format("woff2");
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+:root {
+  --u: 0.1458333333mm;
+  --body-size: calc(23 * var(--u));
+  --body-leading: calc(36 * var(--u));
+  color-scheme: light;
+  font-synthesis: none;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: #e8e8e8;
+  color: #000;
+  font-family: "Geist", sans-serif;
+  font-size: var(--body-size);
+  font-weight: 400;
+  line-height: var(--body-leading);
+  -webkit-font-smoothing: antialiased;
+}
+
+.resume {
+  display: grid;
+  grid-template-columns: calc(380 * var(--u)) minmax(0, 1fr);
+  column-gap: calc(68 * var(--u));
+  align-items: start;
+  width: 210mm;
+  height: 296.9mm;
+  margin: 24px auto;
+  padding: calc(210 * var(--u)) calc(132 * var(--u)) calc(86 * var(--u)) calc(141 * var(--u));
+  background: #fff;
+}
+
+h1, h2, h3, p, ul { margin: 0; }
+
+h1 {
+  font-size: calc(48 * var(--u));
+  font-weight: 700;
+  line-height: calc(58 * var(--u));
+  letter-spacing: 0;
+  margin-bottom: calc(28 * var(--u));
+}
+
+h2 {
+  font-size: calc(30 * var(--u));
+  font-weight: 600;
+  line-height: calc(40 * var(--u));
+  letter-spacing: -0.015em;
+  margin-bottom: calc(22 * var(--u));
+}
+
+h3 {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 500;
+}
+
+strong { font-weight: 600; }
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.045em;
+  text-underline-offset: 0.1em;
+}
+
+.contact-list { list-style: none; padding: 0; }
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: calc(16 * var(--u));
+  min-height: calc(40 * var(--u));
+}
+
+.contact-list svg {
+  flex: none;
+  width: calc(26 * var(--u));
+  height: calc(26 * var(--u));
+  color: #454545;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.contact-list .plain-link { text-decoration: none; }
+
+.sidebar {
+  font-size: calc(22 * var(--u));
+  line-height: calc(34 * var(--u));
+}
+
+.sidebar section + section { margin-top: calc(54 * var(--u)); }
+
+.sidebar .record { line-height: calc(34 * var(--u)); }
+
+.record-date, .entry-meta {
+  font-size: calc(20 * var(--u));
+  line-height: calc(30 * var(--u));
+  color: #555;
+}
+
+.education .record + .record {
+  margin-top: calc(28 * var(--u));
+}
+
+.highlights .record p {
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+.highlights .record + .record { margin-top: calc(30 * var(--u)); }
+
+.highlights .record p + p { margin-top: calc(4 * var(--u)); }
+
+.entry + .entry { margin-top: calc(55 * var(--u)); }
+
+.entry h3 {
+  font-size: calc(24 * var(--u));
+  font-weight: 600;
+}
+
+.entry-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: calc(18 * var(--u));
+}
+
+.entry-company {
+  font-family: "Geist", sans-serif;
+  font-size: calc(24 * var(--u));
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+}
+
+.entry-role {
+  font-family: "Geist Mono", monospace;
+  font-size: calc(21 * var(--u));
+  font-weight: 400;
+  color: #444;
+  white-space: nowrap;
+}
+
+.project-role {
+  color: #333;
+}
+
+.entry-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: calc(12 * var(--u));
+  margin-top: calc(2 * var(--u));
+  margin-bottom: calc(14 * var(--u));
+}
+
+.entry-meta span { white-space: nowrap; }
+
+.entry-meta .entry-note { font-size: calc(19 * var(--u)); }
+
+.entry ul {
+  display: grid;
+  gap: calc(12 * var(--u));
+  list-style: none;
+  padding: 0;
+}
+
+.entry li { padding-left: 0; }
+
+.entry p, .entry li { text-wrap: pretty; }
+
+.projects { margin-top: calc(38 * var(--u)); }
+
+section, .record, .entry { break-inside: avoid; }
+
+@media print {
+  html, body { width: 210mm; background: #fff; }
+  .resume { margin: 0; }
+  .experience .entry + .entry { margin-top: calc(56 * var(--u)); }
+}
+
+@media screen and (max-width: 820px) {
+  body { width: max-content; min-width: 100%; }
+  .resume { margin: 16px; }
+}

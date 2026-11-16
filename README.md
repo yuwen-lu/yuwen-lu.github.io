@@ -19,6 +19,7 @@ The development server runs at [http://localhost:3000](http://localhost:3000).
 - `npm run build` — type-check and create the production build
 - `npm run lint` — run ESLint with React and TypeScript rules
 - `npm run preview` — preview the production build locally
+- `npm run resume:pdf` — generate the Geist HTML/CSS resume and PDF; see [resume/README.md](resume/README.md)
 
 ## Project structure
 

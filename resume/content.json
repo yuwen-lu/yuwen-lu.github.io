@@ -1,0 +1,137 @@
+{
+  "name": "Yuwen Lu",
+  "language": "en",
+  "showProjects": false,
+  "contact": [
+    { "icon": "mail", "label": "yuwen.lu@contra.com", "href": "mailto:yuwen.lu@contra.com", "underline": false },
+    { "icon": "phone", "label": "+1 (949) 527-8284", "href": "tel:+19495278284", "underline": false },
+    { "icon": "globe", "label": "yuwen.io", "href": "https://yuwen.io/" },
+    { "icon": "twitter", "label": "Twitter/X", "href": "https://x.com/yuwen_lu_" },
+    { "icon": "graduation", "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=wNVw1XQAAAAJ&hl=en&oi=ao" }
+  ],
+  "education": [
+    {
+      "dates": "2021 - Current",
+      "degree": "Ph.D. Computer Science & Engineering",
+      "school": "University of Notre Dame",
+      "detail": "Advisor: [Toby Jia-Jun Li](https://toby.li/)"
+    },
+    {
+      "dates": "2020 - 2021",
+      "degree": "Master, Human-Computer Interaction",
+      "school": "Carnegie Mellon University"
+    },
+    {
+      "dates": "2016 - 2020",
+      "degree": "B.Eng, Software Engineering",
+      "school": "Dalian University of Technology"
+    }
+  ],
+  "highlights": [
+    {
+      "dates": "2026",
+      "title": "Best Paper Honorable Mention, CHI",
+      "description": ["Crepe, accepted at CHI 2026", "Top 5% of accepted papers"]
+    },
+    {
+      "dates": "2024",
+      "title": "Best Paper Award, CSCW",
+      "description": ["Dark Pita - Top 1% of accepted papers"]
+    },
+    {
+      "dates": "2022 - 2024",
+      "title": "Lucy Scholars Fellowship",
+      "description": ["Lucy Institute of Data and Society"]
+    },
+    {
+      "dates": "2022 - 2024",
+      "title": "CHI Workshops on Computational UI",
+      "description": ["Organized three CHI workshops on computational user interfaces"]
+    }
+  ],
+  "experience": [
+    {
+      "dates": "Jun 2026 - Present",
+      "location": "New York, NY",
+      "organization": "Contra Labs",
+      "role": "Head of Research",
+      "bullets": [
+        "Collect and analyze high-quality, **design-focused data** for mid-training and post-training, working with most frontier labs",
+        "Leading the **harness design and evaluation** of an agent-focused canvas based design tool",
+        "Lead development of the **FronteirDesign benchmark**, covering methodology, data collection, evaluation criteria, and branding"
+      ]
+    },
+    {
+      "dates": "Oct 2025 - May 2026",
+      "location": "San Francisco, CA",
+      "organization": "Krea AI",
+      "role": "Design Engineer",
+      "bullets": [
+        "Developed the [**Krea AI**](https://krea.ai) web app to support creative control with AI models",
+        "Served as a core contributor to [**Krea Nodes**](https://krea.ai/nodes), a canvas-based AI image and video generation tool",
+        "Led the design and engineering of a growth-focused user referral program and redesigned the blog page"
+      ]
+    },
+    {
+      "dates": "May 2025 - Sept 2025",
+      "location": "San Francisco, CA",
+      "organization": "Midjourney",
+      "role": "Visiting Researcher",
+      "summary": "Developed **Seep**, an iOS app that turns personal daily journals into visual stories for reflection and wellbeing"
+    },
+    {
+      "dates": "May 2024 - Sept 2024",
+      "location": "Seattle, WA",
+      "organization": "Apple",
+      "role": "AI/ML Research Intern",
+      "bullets": [
+        "Led [**Misty**](https://github.com/yuwen-lu/Misty): UI prototyping through **interactive conceptual blending** with multimodal AI",
+        "Paper accepted at [**CHI 2025**](https://dl.acm.org/doi/10.1145/3706598.3713924) and featured on [Apple ML Research](https://machinelearning.apple.com/research/interactive-prototyping)"
+      ]
+    },
+    {
+      "dates": "July 2023 - Dec 2023",
+      "location": "Cambridge, MA",
+      "organization": "Google",
+      "role": "Student Researcher",
+      "bullets": [
+        "Prototyped AI-powered checks for Material Design guideline violations",
+        "Published a CHI 2024 case study on AI adoption in UI linting, with ongoing **internal adoption**"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "dates": "May 2024 - Sept 2024",
+      "note": "Work done during internship at Apple",
+      "title": "Misty: UI Prototyping Through Interactive Conceptual Blending ([Demo](https://x.com/yuwen_lu_/status/1850574331539276198))",
+      "role": "Lead Researcher",
+      "bullets": [
+        "Designed and developed novel interactions for UI prototyping with frontier AI models, implemented with Next.js, GPT-4o",
+        "Explored direct manipulation techniques, e.g. drag-and-drop, to support borrowing inspirations from references, as an alternative to prompting",
+        "Paper accepted at [CHI 2025](https://dl.acm.org/doi/10.1145/3706598.3713924) with concrete product impact at Apple"
+      ]
+    },
+    {
+      "dates": "Aug 2021 - Apr 2024",
+      "title": "Crepe: A Mobile Screen Data Collector Using Graph Query",
+      "role": "Lead Researcher",
+      "bullets": [
+        "Designed and Built an Android App that supports precise data collection of screen text data for algorithm auditing",
+        "Used a novel Graph Query algorithm and Android Accessibility API to parse and retrieve the target data",
+        "Achieved 96.0% F1 for data collection with low background battery use",
+        "Paper accepted at CHI 2026 with **Best Paper Honorable Mention Award**"
+      ]
+    },
+    {
+      "dates": "May 2023 - Sept 2023",
+      "title": "Dark Pita: A Browser Extension Against Dark Patterns",
+      "role": "Lead Researcher, Team of 4",
+      "bullets": [
+        "Developed browser extension enabling users to understand and customize to avoid manipulative website designs (i.e. “dark patterns”)",
+        "Built using Vue.js, Tailwind CSS, and Firebase, [code open sourced](https://github.com/yuwen-lu/dark-pita)",
+        "Won **Best Paper Award** at CSCW 2024 (top 1% of accepted papers)"
+      ]
+    }
+  ]
+}

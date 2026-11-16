@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{LANGUAGE}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>{{NAME}} - Resume</title>
+    <style>{{STYLES}}</style>
+  </head>
+  <body>
+    <main class="resume" aria-label="{{NAME}} resume">
+      <aside class="sidebar" aria-label="Contact, education, and highlights">
+        <h1>{{NAME}}</h1>
+        <section class="contact" aria-label="Contact">
+          <ul class="contact-list">{{CONTACT}}</ul>
+        </section>
+        <section class="education" aria-labelledby="education-heading">
+          <h2 id="education-heading">Education</h2>
+          {{EDUCATION}}
+        </section>
+        <section class="highlights" aria-labelledby="highlights-heading">
+          <h2 id="highlights-heading">Highlights</h2>
+          {{HIGHLIGHTS}}
+        </section>
+      </aside>
+      <div class="main-column">
+        <section class="experience" aria-labelledby="experience-heading">
+          <h2 id="experience-heading">Experience</h2>
+          {{EXPERIENCE}}
+        </section>
+        {{PROJECTS_SECTION}}
+      </div>
+    </main>
+  </body>
+</html>
