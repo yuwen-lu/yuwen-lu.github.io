@@ -3,7 +3,7 @@
   "language": "en",
   "showProjects": false,
   "contact": [
-    { "icon": "mail", "label": "yuwen.lu@contra.com", "href": "mailto:yuwen.lu@contra.com", "underline": false },
+    { "icon": "mail", "label": "yuwenlu987@gmail.com", "href": "mailto:yuwenlu987@gmail.com", "underline": false },
     { "icon": "phone", "label": "+1 (949) 527-8284", "href": "tel:+19495278284", "underline": false },
     { "icon": "globe", "label": "yuwen.io", "href": "https://yuwen.io/" },
     { "icon": "twitter", "label": "Twitter/X", "href": "https://x.com/yuwen_lu_" },
@@ -11,7 +11,7 @@
   ],
   "education": [
     {
-      "dates": "2021 - Current",
+      "dates": "2021 - 2026",
       "degree": "Ph.D. Computer Science & Engineering",
       "school": "University of Notre Dame",
       "detail": "Advisor: [Toby Jia-Jun Li](https://toby.li/)"

@@ -29,7 +29,8 @@ Contact details sit directly below the name, without a separate heading.
 Experience descriptions use a small gap between items instead of bullet dots or
 indentation. The right page padding is 132 source units (about 72.8 CSS pixels),
 roughly 5.5 pixels less than the original padding, to give descriptions more room.
-Short highlight descriptions use balanced wrapping to avoid isolated final words.
+Education titles and short highlight descriptions use balanced wrapping to avoid
+isolated final words.
 The top page padding is 210 source units (about 116 CSS pixels), increased from
 the original 90 source units to move the content lower without stretching gaps.
 Experience entries use slightly more separation to align the two column bottoms:

@@ -131,6 +131,8 @@ a {
   margin-top: calc(28 * var(--u));
 }
 
+.education .record h3 { text-wrap: balance; }
+
 .highlights .record p {
   max-width: 100%;
   text-wrap: balance;
