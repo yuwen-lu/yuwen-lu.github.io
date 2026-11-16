@@ -12,18 +12,18 @@
   "education": [
     {
       "dates": "2021 - 2026",
-      "degree": "Ph.D. Computer Science & Engineering",
+      "degree": "Ph.D. in Computer Science & Engineering",
       "school": "University of Notre Dame",
       "detail": "Advisor: [Toby Jia-Jun Li](https://toby.li/)"
     },
     {
       "dates": "2020 - 2021",
-      "degree": "Master, Human-Computer Interaction",
+      "degree": "Master's in Human-Computer Interaction",
       "school": "Carnegie Mellon University"
     },
     {
       "dates": "2016 - 2020",
-      "degree": "B.Eng, Software Engineering",
+      "degree": "B.Eng. in Software Engineering",
       "school": "Dalian University of Technology"
     }
   ],
@@ -56,9 +56,9 @@
       "organization": "Contra Labs",
       "role": "Head of Research",
       "bullets": [
-        "Collect and analyze high-quality, **design-focused data** for mid-training and post-training, working with most frontier labs",
-        "Leading the **harness design and evaluation** of an agent-focused canvas based design tool",
-        "Lead development of the **FronteirDesign benchmark**, covering methodology, data collection, evaluation criteria, and branding"
+        "Collect and analyze high-quality, **design-focused data** for mid-training and post-training, working with frontier labs",
+        "Lead the **harness design and evaluation** of an agent-focused canvas-based design tool",
+        "Lead development of the **FrontierDesign benchmark**, covering methodology, data collection, evaluation criteria, and branding"
       ]
     },
     {
@@ -73,14 +73,14 @@
       ]
     },
     {
-      "dates": "May 2025 - Sept 2025",
+      "dates": "May 2025 - Sep 2025",
       "location": "San Francisco, CA",
       "organization": "Midjourney",
       "role": "Visiting Researcher",
-      "summary": "Developed **Seep**, an iOS app that turns personal daily journals into visual stories for reflection and wellbeing"
+      "summary": "Developed **Seep**, an iOS app that turns personal daily journals into visual stories for reflection and well-being"
     },
     {
-      "dates": "May 2024 - Sept 2024",
+      "dates": "May 2024 - Sep 2024",
       "location": "Seattle, WA",
       "organization": "Apple",
       "role": "AI/ML Research Intern",
@@ -90,7 +90,7 @@
       ]
     },
     {
-      "dates": "July 2023 - Dec 2023",
+      "dates": "Jul 2023 - Dec 2023",
       "location": "Cambridge, MA",
       "organization": "Google",
       "role": "Student Researcher",
@@ -102,13 +102,13 @@
   ],
   "projects": [
     {
-      "dates": "May 2024 - Sept 2024",
+      "dates": "May 2024 - Sep 2024",
       "note": "Work done during internship at Apple",
       "title": "Misty: UI Prototyping Through Interactive Conceptual Blending ([Demo](https://x.com/yuwen_lu_/status/1850574331539276198))",
       "role": "Lead Researcher",
       "bullets": [
-        "Designed and developed novel interactions for UI prototyping with frontier AI models, implemented with Next.js, GPT-4o",
-        "Explored direct manipulation techniques, e.g. drag-and-drop, to support borrowing inspirations from references, as an alternative to prompting",
+        "Designed and developed novel interactions for UI prototyping with frontier AI models, implemented with Next.js and GPT-4o",
+        "Explored direct manipulation techniques, such as drag-and-drop, to support borrowing inspiration from references as an alternative to prompting",
         "Paper accepted at [CHI 2025](https://dl.acm.org/doi/10.1145/3706598.3713924) with concrete product impact at Apple"
       ]
     },
@@ -117,20 +117,20 @@
       "title": "Crepe: A Mobile Screen Data Collector Using Graph Query",
       "role": "Lead Researcher",
       "bullets": [
-        "Designed and Built an Android App that supports precise data collection of screen text data for algorithm auditing",
+        "Designed and built an Android app that supports precise data collection of screen text data for algorithm auditing",
         "Used a novel Graph Query algorithm and Android Accessibility API to parse and retrieve the target data",
         "Achieved 96.0% F1 for data collection with low background battery use",
-        "Paper accepted at CHI 2026 with **Best Paper Honorable Mention Award**"
+        "Paper accepted at CHI 2026 with a **Best Paper Honorable Mention Award**"
       ]
     },
     {
-      "dates": "May 2023 - Sept 2023",
+      "dates": "May 2023 - Sep 2023",
       "title": "Dark Pita: A Browser Extension Against Dark Patterns",
       "role": "Lead Researcher, Team of 4",
       "bullets": [
-        "Developed browser extension enabling users to understand and customize to avoid manipulative website designs (i.e. “dark patterns”)",
-        "Built using Vue.js, Tailwind CSS, and Firebase, [code open sourced](https://github.com/yuwen-lu/dark-pita)",
-        "Won **Best Paper Award** at CSCW 2024 (top 1% of accepted papers)"
+        "Developed a browser extension enabling users to understand and customize websites to avoid manipulative designs (i.e., “dark patterns”)",
+        "Built using Vue.js, Tailwind CSS, and Firebase; [open-sourced the code](https://github.com/yuwen-lu/dark-pita)",
+        "Won the **Best Paper Award** at CSCW 2024 (top 1% of accepted papers)"
       ]
     }
   ]
